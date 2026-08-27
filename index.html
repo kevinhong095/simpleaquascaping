@@ -9,361 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-  /* ---------- Reset ---------- */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
-  ul { list-style: none; }
-
-  /* ---------- Tokens: Light (default) ---------- */
-  :root {
-    --bg: #eef1eb;
-    --bg-soft: #e5eae0;
-    --card-bg: #f5f7f2;
-    --card-bg-soon: #e6ebe1;
-    --border: #d2dccb;
-    --border-strong: #b9c7ae;
-    --text: #16211a;
-    --text-muted: #55655a;
-    --text-faint: #7c8b7f;
-    --accent: #295f43;
-    --accent-soft: #295f4314;
-    --nav-bg: #eef1ebcc;
-    --focus-ring: #295f43;
-
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'DM Mono', 'SF Mono', Menlo, monospace;
-
-    --radius: 6px;
-    --transition: 180ms ease;
-  }
-
-  /* ---------- Tokens: Dark (OS preference) ---------- */
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0c1410;
-      --bg-soft: #101c15;
-      --card-bg: #111e17;
-      --card-bg-soon: #0f1b14;
-      --border: #24352b;
-      --border-strong: #33493c;
-      --text: #e9efe9;
-      --text-muted: #a3b5a8;
-      --text-faint: #71857a;
-      --accent: #48ab74;
-      --accent-soft: #48ab7422;
-      --nav-bg: #0c1410cc;
-      --focus-ring: #48ab74;
-    }
-  }
-
-  /* ---------- Tokens: Dark (explicit toggle) ---------- */
-  :root[data-theme="dark"] {
-    --bg: #0c1410;
-    --bg-soft: #101c15;
-    --card-bg: #111e17;
-    --card-bg-soon: #0f1b14;
-    --border: #24352b;
-    --border-strong: #33493c;
-    --text: #e9efe9;
-    --text-muted: #a3b5a8;
-    --text-faint: #71857a;
-    --accent: #48ab74;
-    --accent-soft: #48ab7422;
-    --nav-bg: #0c1410cc;
-    --focus-ring: #48ab74;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  main { overflow-x: hidden; }
-
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-
-  /* ---------- Nav ---------- */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: var(--nav-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 32px;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .wordmark {
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-  }
-  .nav-links a {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: var(--text-muted);
-    letter-spacing: 0.02em;
-    transition: color var(--transition);
-  }
-  .nav-links a:hover { color: var(--accent); }
-
-  .theme-toggle {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
-    padding: 6px 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: border-color var(--transition), color var(--transition);
-  }
-  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
-
-  @media (max-width: 720px) {
-    .nav-links { display: none; }
-  }
-
-  /* ---------- Hero ---------- */
-  .hero {
-    padding: 96px 0 72px;
-  }
-  .eyebrow {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    color: var(--accent);
-    margin-bottom: 24px;
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(2.3rem, 5.4vw, 4rem);
-    line-height: 1.12;
-    max-width: 16ch;
-    margin-bottom: 28px;
-    letter-spacing: -0.01em;
-  }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 52ch;
-    margin-bottom: 40px;
-  }
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: var(--bg);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    padding: 14px 24px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    transition: transform var(--transition), opacity var(--transition);
-  }
-  .cta:hover { transform: translateY(-2px); opacity: 0.92; }
-
-  /* ---------- Manifesto ---------- */
-  .manifesto {
-    padding: 56px 0 88px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .manifesto p {
-    font-size: 1.15rem;
-    max-width: 60ch;
-    margin-bottom: 18px;
-  }
-  .manifesto p:first-child {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.4rem;
-    color: var(--text);
-  }
-  .manifesto p:nth-child(2) {
-    color: var(--text-muted);
-  }
-  .manifesto p:last-child {
-    color: var(--text-muted);
-    margin-bottom: 0;
-  }
-
-  /* ---------- Sections ---------- */
-  .section {
-    padding: 88px 0;
-  }
-  .section-head {
-    margin-bottom: 44px;
-  }
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 14px;
-  }
-  .section-intro {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.25rem;
-    color: var(--text-muted);
-  }
-
-  /* ---------- Cards ---------- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-  }
-  .card {
-    position: relative;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--accent);
-    border-radius: var(--radius);
-    padding: 28px 26px 26px;
-    display: flex;
-    flex-direction: column;
-    transition: transform var(--transition), border-color var(--transition);
-  }
-  .card:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-strong);
-    border-top-color: var(--accent);
-  }
-  .card-icon {
-    font-size: 1.5rem;
-    margin-bottom: 18px;
-  }
-  .card-title {
-    font-size: 1.08rem;
-    font-weight: 700;
-    line-height: 1.35;
-    margin-bottom: 12px;
-  }
-  .card-desc {
-    color: var(--text-muted);
-    font-size: 0.94rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1;
-  }
-  .card-meta {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-faint);
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-  }
-  .badge {
-    position: absolute;
-    top: -11px;
-    left: 24px;
-    background: var(--accent);
-    color: var(--bg);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border-radius: var(--radius);
-  }
-
-  /* ---------- Coming Soon ---------- */
-  .coming-soon {
-    background: var(--bg-soft);
-    border-top: 1px solid var(--border);
-  }
-  .soon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-  }
-  .soon-item {
-    background: var(--card-bg-soon);
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius);
-    padding: 16px 18px;
-    font-size: 0.92rem;
-    color: var(--text-muted);
-  }
-
-  /* ---------- Footer ---------- */
-  footer {
-    padding: 48px 0 64px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: space-between;
-    align-items: baseline;
-    border-top: 1px solid var(--border);
-  }
-  footer .fine {
-    color: var(--text-faint);
-    font-size: 0.88rem;
-    max-width: 48ch;
-  }
-  footer .stats {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-faint);
-  }
-
-  @media (max-width: 600px) {
-    .wrap { padding: 0 20px; }
-    .nav-inner { padding: 16px 20px; }
-    .hero { padding: 64px 0 48px; }
-    .section { padding: 56px 0; }
-    .grid, .soon-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { transition: none !important; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -376,9 +22,24 @@
       <a href="#level-up">Level Up</a>
       <a href="#coming-soon">Coming Soon</a>
     </div>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
-      <span id="themeToggleLabel">Theme</span>
-    </button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+        <svg id="iconSun" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="12" y1="2" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="22"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="2" y1="12" x2="4" y2="12"></line>
+          <line x1="20" y1="12" x2="22" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg id="iconMoon" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -389,37 +50,35 @@
       <p class="eyebrow">A practical, no-BS guide to aquascaping</p>
       <h1>Simple is better. Here's what that looks like in practice.</h1>
       <p class="hero-sub">A straightforward guide to planted tanks — what works, why it works, and how to do it without overcomplicating everything.</p>
-      <a href="#foundation" class="cta">Get started →</a>
+      <a href="#routine" class="cta">Get started →</a>
     </div>
   </section>
 
   <section class="manifesto">
     <div class="wrap">
-      <p>A practical system for keeping a beautiful planted tank.</p>
-      <p>Just a clear, repeatable approach that gets results.</p>
-      <p>When I genuinely enjoy something, it matters to me to contribute to it in a meaningful way. This is that. Built to save you time, money, and frustration — and to bring more people into a hobby that's worth sharing.</p>
+      <p>This is my personal, no-BS system of tips &amp; tricks so you can save time and money. Everything is designed to be simple, repeatable, and easy to stick to — so you can spend less time dealing with issues and more time actually enjoying your tank.</p>
     </div>
   </section>
 
   <section class="section" id="foundation">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">Foundation — set it once, never revisit</p>
-        <p class="section-intro">Before you buy anything else — read this first.</p>
+        <p class="section-label">Foundation — get this right from the start</p>
+        <p class="section-intro">Two things worth setting up correctly before anything else.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <a class="card" href="equipment.html">
           <div class="card-icon">🔧</div>
-          <h3 class="card-title">The gear worth buying — and what you can skip</h3>
-          <p class="card-desc">No affiliate links. I don't make anything from any of this. Just what's actually in my tanks, what's held up, and what I'd pass on.</p>
+          <h3 class="card-title">What's actually worth buying — and what to skip</h3>
+          <p class="card-desc">The gear that moves the needle, with specific products and specific reasons. No affiliate links. Buy it once, set it up correctly, and move on.</p>
           <div class="card-meta">8 min read</div>
-        </article>
-        <article class="card">
+        </a>
+        <a class="card" href="light-co2.html">
           <div class="card-icon">💡</div>
-          <h3 class="card-title">Set your light &amp; CO₂ schedule once, then leave it alone forever</h3>
-          <p class="card-desc">The exact timer settings and bubble rates I use. Took months of trial and error to dial in. Takes you 10 minutes to copy.</p>
+          <h3 class="card-title">Set your light &amp; CO₂ schedule once, then leave it alone</h3>
+          <p class="card-desc">The exact timer settings and bubble rates that work. How to dial it in gradually without stressing your livestock — and why CO2 is the single best thing you can add early.</p>
           <div class="card-meta">6 min read</div>
-        </article>
+        </a>
       </div>
     </div>
   </section>
@@ -427,29 +86,29 @@
   <section class="section" id="routine">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">Weekly Routine — the system that actually works</p>
-        <p class="section-intro">This is the part that changed everything.</p>
+        <p class="section-label">Weekly Routine — the system that keeps everything running</p>
+        <p class="section-intro">Consistency is what prevents most problems.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <a class="card" href="maintenance.html">
           <span class="badge">Start here</span>
           <div class="card-icon">🪣</div>
-          <h3 class="card-title">The whole maintenance routine, in under 15 minutes a week</h3>
-          <p class="card-desc">The exact 3-step system I've run every week for 5+ years — the whole thing, not an oversimplified version.</p>
+          <h3 class="card-title">How to keep your tank clean in under 15 minutes a week</h3>
+          <p class="card-desc">A 3-step system built around speed and repeatability. The full process — RODI prep, water removal, refill — without cutting anything that actually matters.</p>
           <div class="card-meta">5 min read</div>
-        </article>
-        <article class="card">
+        </a>
+        <a class="card" href="water-change-schedule.html">
           <div class="card-icon">💧</div>
-          <h3 class="card-title">Never guess when to change the water again</h3>
-          <p class="card-desc">A dead-simple schedule based on tank size and bioload. Here's what you actually need to track.</p>
+          <h3 class="card-title">The water change schedule, from new tank to stable</h3>
+          <p class="card-desc">A phase-based schedule covering week one through the six-month mark. What to do when things are going well — and what to do when they're not.</p>
           <div class="card-meta">4 min read</div>
-        </article>
-        <article class="card">
+        </a>
+        <a class="card" href="best-practices.html">
           <div class="card-icon">📋</div>
-          <h3 class="card-title">10 things I do every week without thinking</h3>
-          <p class="card-desc">The habits that keep a tank healthy long-term. Most take under 30 seconds. None require expensive equipment.</p>
+          <h3 class="card-title">The habits and principles that keep a tank healthy</h3>
+          <p class="card-desc">Stability, flow, CO2, filtration, plant selection — what works, why it works, and the common mistakes worth knowing before they cost you time and money.</p>
           <div class="card-meta">6 min read</div>
-        </article>
+        </a>
       </div>
     </div>
   </section>
@@ -458,15 +117,15 @@
     <div class="wrap">
       <div class="section-head">
         <p class="section-label">Level Up — when you're ready to go deeper</p>
-        <p class="section-intro">Once the basics are dialed in, here's where to go next.</p>
+        <p class="section-intro">Resources for when the basics are dialed in.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <a class="card" href="resources.html">
           <div class="card-icon">🔬</div>
-          <h3 class="card-title">When something goes wrong (and it will), start here</h3>
-          <p class="card-desc">Troubleshooting, skill-building, and the resources that actually helped me improve.</p>
+          <h3 class="card-title">Troubleshooting, skill development &amp; inspiration</h3>
+          <p class="card-desc">The YouTube channels, plant sources, contest galleries, and learning resources worth your time — curated from 5+ years of running multiple tanks.</p>
           <div class="card-meta">Ongoing</div>
-        </article>
+        </a>
       </div>
     </div>
   </section>
@@ -491,54 +150,13 @@
 
   <footer>
     <div class="wrap" style="display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:baseline; width:100%;">
-      <p class="fine">No ads. No affiliate links. No sponsored recommendations. Just notes from someone who learned the hard way.</p>
-      <p class="stats">3 yrs · 4 tanks · 0 links</p>
+      <p class="fine">No ads. No affiliate links. Just what actually works, from someone with 5+ years and multiple tanks running.</p>
     </div>
   </footer>
 
 </main>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById('themeToggle');
-    var label = document.getElementById('themeToggleLabel');
-    var STORAGE_KEY = 'ptg-theme';
-
-    function systemPrefersDark() {
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-
-    function applyLabel(mode) {
-      if (mode === 'light') label.textContent = 'Light';
-      else if (mode === 'dark') label.textContent = 'Dark';
-      else label.textContent = systemPrefersDark() ? 'Dark' : 'Light';
-    }
-
-    function setTheme(mode) {
-      if (mode === 'light' || mode === 'dark') {
-        root.setAttribute('data-theme', mode);
-      } else {
-        root.removeAttribute('data-theme');
-      }
-      try {
-        if (mode === 'light' || mode === 'dark') localStorage.setItem(STORAGE_KEY, mode);
-        else localStorage.removeItem(STORAGE_KEY);
-      } catch (e) {}
-      applyLabel(mode);
-    }
-
-    var saved = null;
-    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-    setTheme(saved);
-
-    btn.addEventListener('click', function () {
-      var current = root.getAttribute('data-theme');
-      var effectiveDark = current ? current === 'dark' : systemPrefersDark();
-      setTheme(effectiveDark ? 'light' : 'dark');
-    });
-  })();
-</script>
-
+<script src="theme.js"></script>
+<script src="interactions.js"></script>
 </body>
 </html>
