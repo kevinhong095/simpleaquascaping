@@ -1234,6 +1234,22 @@ a.gear-card:hover, a.gear-card:focus-visible {
   transform: translateY(-2px);
   border-color: var(--border-strong);
 }
+a.gear-card h3 { text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; }
+a.gear-card:hover h3, a.gear-card:focus-visible h3 { text-decoration-color: var(--accent); }
+.gear-card h3:last-child, a.gear-card h3:last-child { margin-bottom: 0; }
+
+/* ---- Recipe list ---- */
+.recipe-list { display: flex; flex-direction: column; gap: 14px; max-width: 60ch; }
+.recipe-list li { font-size: 0.98rem; color: var(--text-muted); line-height: 1.6; }
+.recipe-list li strong { color: var(--text); }
+.recipe-plus { color: var(--accent); font-weight: 700; margin-right: 2px; }
+.recipe-highlight {
+  background: rgba(82, 184, 232, 0.2);
+  color: var(--text);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+}
 
 /* ---- Schedule table ---- */
 .table-wrap { overflow-x: auto; margin: 8px 0 28px; }
