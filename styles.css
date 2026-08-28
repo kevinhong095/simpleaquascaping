@@ -27,6 +27,7 @@ ul, ol { list-style: none; }
   --nav-bg-scrolled: #eef1eba8;
   --focus-ring: #295f43;
   --danger: #8a4a2c;
+  --badge-blue: #1d6f96;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -55,6 +56,7 @@ ul, ol { list-style: none; }
     --nav-bg-scrolled: #0c1410a8;
     --focus-ring: #48ab74;
     --danger: #d99566;
+    --badge-blue: #52b8e8;
   }
 }
 
@@ -76,6 +78,7 @@ ul, ol { list-style: none; }
   --nav-bg-scrolled: #0c1410a8;
   --focus-ring: #48ab74;
   --danger: #d99566;
+  --badge-blue: #52b8e8;
 }
 
 body {
@@ -268,18 +271,12 @@ a[target="_blank"]::after {
 .section { padding: 88px 0; }
 .section-head { margin-bottom: 44px; }
 .section-label {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-.section-intro {
   font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.25rem;
-  color: var(--text-muted);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 /* ---------- Home cards ---------- */
@@ -327,6 +324,55 @@ a[target="_blank"]::after {
   padding-top: 16px;
   border-top: 1px solid var(--border);
 }
+
+/* ---- Feature card (Resources) ---- */
+.card-feature {
+  padding: 40px 40px 36px;
+  cursor: default;
+}
+.card-feature:hover, .card-feature:focus-visible {
+  border-color: var(--border);
+  border-top-color: var(--accent);
+}
+.card-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: var(--text);
+  max-width: 52ch;
+  margin: 0 0 16px;
+}
+.card-feature .card-desc {
+  margin-bottom: 28px;
+  max-width: 56ch;
+  flex-grow: 0;
+}
+.card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 9px 16px;
+  text-decoration: none;
+  transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+}
+.chip:hover, .chip:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
 .badge {
   position: absolute;
   top: -11px;
@@ -340,35 +386,42 @@ a[target="_blank"]::after {
   padding: 4px 10px;
   border-radius: var(--radius);
 }
+.badge-blue {
+  background: var(--badge-blue);
+}
 
 /* ---------- Coming Soon ---------- */
 .coming-soon { background: var(--bg-soft); border-top: 1px solid var(--border); }
-.soon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px;
+.soon-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
 }
-.soon-item {
-  background: var(--card-bg-soon);
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  font-size: 0.92rem;
+.soon-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--border-strong);
+  font-size: 0.95rem;
   color: var(--text-muted);
+}
+.soon-list li:last-child { border-bottom: none; }
+.soon-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--text-faint);
+  flex-shrink: 0;
 }
 
 /* ---------- Footer ---------- */
 footer {
   padding: 48px 0 64px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: baseline;
   border-top: 1px solid var(--border);
 }
-footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 48ch; }
-footer .stats { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }
+footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 60ch; }
 
 /* ==========================================================================
    Inner-page components
@@ -632,6 +685,32 @@ footer .stats { font-family: var(--font-mono); font-size: 0.78rem; color: var(--
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-faint);
+}
+
+/* ---- Gear grid (equipment explainer cards) ---- */
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+.gear-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+.gear-icon { font-size: 1.3rem; margin-bottom: 12px; }
+.gear-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.gear-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 /* ---- Schedule table ---- */
