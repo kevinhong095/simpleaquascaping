@@ -854,7 +854,7 @@ footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 60ch; }
 .channel-chip {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -864,7 +864,19 @@ footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 60ch; }
   color: var(--text);
   transition: transform var(--transition), border-color var(--transition);
 }
-.channel-chip::after { content: "↗"; font-size: 0.75em; color: var(--text-faint); margin: 0; }
+.channel-chip::before {
+  content: "";
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background-color: #e33;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2.5 1.3v7.4l6-3.7z' fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 7px 8px;
+}
+.channel-chip::after { content: "↗"; font-size: 0.75em; color: var(--text-faint); margin-left: auto; }
 .channel-chip:hover, .channel-chip:focus-visible { transform: translateY(-2px); border-color: var(--accent); }
 
 /* ---- Stat tiles ---- */
