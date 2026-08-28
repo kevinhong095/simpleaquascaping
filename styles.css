@@ -1203,30 +1203,27 @@ footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 60ch; }
 /* ---- Gear grid (equipment explainer cards) ---- */
 .gear-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
 }
 .gear-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
   border-radius: var(--radius);
-  padding: 22px 24px;
+  padding: 14px 16px;
 }
-.gear-icon { font-size: 1.3rem; margin-bottom: 12px; }
+.gear-icon { font-size: 1.3rem; flex-shrink: 0; }
 .gear-card h3 {
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--text);
-  margin: 0 0 8px;
-}
-.gear-card p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+  margin: 0;
 }
 a.gear-card {
-  display: block;
   text-decoration: none;
   transition: transform var(--transition), border-color var(--transition);
 }
@@ -1236,20 +1233,6 @@ a.gear-card:hover, a.gear-card:focus-visible {
 }
 a.gear-card h3 { text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; }
 a.gear-card:hover h3, a.gear-card:focus-visible h3 { text-decoration-color: var(--accent); }
-.gear-card h3:last-child, a.gear-card h3:last-child { margin-bottom: 0; }
-
-/* ---- Recipe list ---- */
-.recipe-list { display: flex; flex-direction: column; gap: 14px; max-width: 60ch; }
-.recipe-list li { font-size: 0.98rem; color: var(--text-muted); line-height: 1.6; }
-.recipe-list li strong { color: var(--text); }
-.recipe-plus { color: var(--accent); font-weight: 700; margin-right: 2px; }
-.recipe-highlight {
-  background: rgba(82, 184, 232, 0.2);
-  color: var(--text);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-weight: 600;
-}
 
 /* ---- Schedule table ---- */
 .table-wrap { overflow-x: auto; margin: 8px 0 28px; }
