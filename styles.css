@@ -268,10 +268,15 @@ a[target="_blank"]::after {
   letter-spacing: -0.01em;
 }
 .hero-sub {
-  font-size: 1.1rem;
-  color: var(--text-muted);
   max-width: 52ch;
   margin-bottom: 40px;
+}
+.hero-sub p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+.hero-sub p + p {
+  margin-top: 14px;
 }
 .cta {
   display: inline-flex;
@@ -754,14 +759,19 @@ footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 60ch; }
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent);
   margin-bottom: 8px;
+}
+.callout-muted {
+  background: var(--bg-soft);
+  border-left-color: var(--border-strong);
 }
 .callout p, .callout li {
   font-size: 0.94rem;
   color: var(--text);
   line-height: 1.6;
 }
+.callout p.callout-label { color: var(--accent); }
+.callout-muted p.callout-label { color: var(--text-faint); }
 .callout ul { display: flex; flex-direction: column; gap: 6px; }
 .callout li { position: relative; padding-left: 16px; }
 .callout li::before { content: "·"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
