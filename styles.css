@@ -28,6 +28,7 @@ ul, ol { list-style: none; }
   --danger: #8a4a2c;
   --badge-blue: #1d6f96;
   --badge-gold: #96751a;
+  --badge-orange: #b8401c;
   --badge-blue-soft: #1d6f9614;
   --badge-gold-soft: #96751a14;
   --basket-gold-bg: #96751a40;
@@ -62,6 +63,7 @@ ul, ol { list-style: none; }
     --danger: #d99566;
     --badge-blue: #52b8e8;
     --badge-gold: #e3bb52;
+    --badge-orange: #f4703c;
     --badge-blue-soft: #52b8e822;
     --badge-gold-soft: #e3bb5222;
     --basket-gold-bg: var(--badge-gold-soft);
@@ -89,6 +91,7 @@ ul, ol { list-style: none; }
   --danger: #d99566;
   --badge-blue: #52b8e8;
   --badge-gold: #e3bb52;
+  --badge-orange: #f4703c;
   --badge-blue-soft: #52b8e822;
   --badge-gold-soft: #e3bb5222;
   --basket-gold-bg: var(--badge-gold-soft);
@@ -470,6 +473,9 @@ a[target="_blank"]::after {
 .badge-gold {
   background: var(--badge-gold);
 }
+.badge-orange {
+  background: var(--badge-orange);
+}
 
 /* ---------- Media Calculator ---------- */
 .calc-controls {
@@ -778,7 +784,7 @@ footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 60ch; }
 
 /* ---- Callouts ---- */
 .callout {
-  background: var(--accent-soft);
+  background: var(--basket-accent-bg);
   border-left: 2px solid var(--accent);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: 18px 22px;
