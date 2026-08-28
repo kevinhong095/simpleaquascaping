@@ -108,6 +108,10 @@
       <h2>Media Calculator</h2>
       <p class="section-sub">Figure out exactly what goes in each basket, bottom to top — first is always mechanical, last is always chemical, everything in between is biological.</p>
 
+      <div class="callout callout-muted" style="margin-bottom:20px;">
+        <p>By default, this shows flow from the bottom basket to the top, which is how most canister filters run. If yours flows top to bottom instead, hit <strong>Reverse Flow</strong> below to match your setup.</p>
+      </div>
+
       <div class="calc-controls">
         <div class="calc-field">
           <label for="basketCount" class="calc-label">How many baskets does your filter have?</label>
@@ -141,7 +145,7 @@
           <li>Fill each basket to about the 75% mark — don't pack it 100% full. Water needs room to flow through.</li>
           <li>Chemical (<a href="https://www.amazon.com/Seachem-Purigen-Organic-Filtration-Resin/dp/B0002A5VK2" target="_blank" rel="noopener noreferrer">Purigen</a>): roughly 200g for a 20-gallon tank, at least 400g for anything larger.</li>
           <li>Biological (<a href="https://www.amazon.com/Matrix-4-L-1-gal/dp/B0006JLVU8" target="_blank" rel="noopener noreferrer">Matrix</a>): given the 75% rule above, put in as much as you're able to.</li>
-          <li>Mechanical: <a href="https://www.amazon.com/Fairfield-Original-Polyester-Decorations-Machine-Washable/dp/B004ALQ0M2/ref=sr_1_6?crid=20W7LT246E9DL&dib=eyJ2IjoiMSJ9.bCm19UYojL2mpKJfNfPcFoT3PagTEcbteqBt_P5h18b-utpT8WLcEsMArzKYuHFmlsCStQcHM5C1N5U71IYZz9hWeQOUGEEkV82LnZcqArm6VigViN2ei6IcS9XmxrUIubGrXzVMch5gXDmP9CBYWsZn_GjaCehGWYcLvMoLeruQNni8tNqAzTPoj8DcZ3nmLFliOc4uU9CDSCAHCnI08S6usBoMj5aKiQfAxnu59ZHnkjXQyxD32VqjcaY8fEDx4rnTRXXpxJ1ZAAvIZ2ODe2CL5ahuzW1KDFc1H43V9IA.mz0KrbIC5UPGxketkweJ2O90A8ABZMJyIJCNMvlJdzU&dib_tag=se&keywords=pillow+stuffing&qid=1787905132&sprefix=pillow+stuffin%2Caps%2C205&sr=8-6" target="_blank" rel="noopener noreferrer">pillow stuffing</a> only — skip the filter floss.</li>
+          <li>Mechanical: <a href="https://www.amazon.com/Fairfield-Original-Polyester-Decorations-Machine-Washable/dp/B004ALQ0M2/ref=sr_1_6?crid=20W7LT246E9DL&dib=eyJ2IjoiMSJ9.bCm19UYojL2mpKJfNfPcFoT3PagTEcbteqBt_P5h18b-utpT8WLcEsMArzKYuHFmlsCStQcHM5C1N5U71IYZz9hWeQOUGEEkV82LnZcqArm6VigViN2ei6IcS9XmxrUIubGrXzVMch5gXDmP9CBYWsZn_GjaCehGWYcLvMoLeruQNni8tNqAzTPoj8DcZ3nmLFliOc4uU9CDSCAHCnI08S6usBoMj5aKiQfAxnu59ZHnkjXQyxD32VqjcaY8fEDx4rnTRXXpxJ1ZAAvIZ2ODe2CL5ahuzW1KDFc1H43V9IA.mz0KrbIC5UPGxketkweJ2O90A8ABZMJyIJCNMvlJdzU&dib_tag=se&keywords=pillow+stuffing&qid=1787905132&sprefix=pillow+stuffin%2Caps%2C205&sr=8-6" target="_blank" rel="noopener noreferrer">pillow stuffing</a> instead of filter floss — it does the same job, costs less, and doesn't need to be cut to size like floss does.</li>
         </ul>
       </div>
     </div>
@@ -165,6 +169,10 @@
           <div class="label">Recommended filter flow rate</div>
         </div>
       </div>
+
+      <div class="callout callout-muted" style="margin-top:20px;">
+        <p>The number above is your <strong>total</strong> filter flow — it doesn't need to come from a single filter. For example, an 80-gallon tank needs 400–800 GPH total, which you could get from two 400 GPH filters running together instead of one large one.</p>
+      </div>
     </div>
   </section>
 
@@ -183,6 +191,7 @@
     var arrowEl = document.getElementById('flowArrow');
     var captionEl = document.getElementById('flowCaption');
     var stackEl = document.getElementById('filterStack');
+    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function getFlowOrder(count) {
       var order = [];
@@ -194,7 +203,7 @@
       return order; // entry basket first, exit basket last
     }
 
-    function render() {
+    function build() {
       var count = parseInt(select.value, 10);
       var reversed = reverseBtn.getAttribute('aria-pressed') === 'true';
       var flowOrder = getFlowOrder(count);
@@ -225,6 +234,15 @@
       captionEl.textContent = reversed ? 'Flow: top to bottom' : 'Flow: bottom to top';
     }
 
+    function render() {
+      if (reducedMotion) { build(); return; }
+      stackEl.style.opacity = '0';
+      setTimeout(function () {
+        build();
+        stackEl.style.opacity = '1';
+      }, 120);
+    }
+
     select.addEventListener('change', render);
     reverseBtn.addEventListener('click', function () {
       var pressed = reverseBtn.getAttribute('aria-pressed') === 'true';
@@ -232,22 +250,56 @@
       render();
     });
 
-    render();
+    build();
   })();
 
   (function () {
     var gallonsInput = document.getElementById('tankGallons');
     var resultEl = document.getElementById('gphResult');
+    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var currentLow = 0, currentHigh = 0, animFrame = null;
+
+    function format(low, high) {
+      return Math.round(low) + '–' + Math.round(high) + ' GPH';
+    }
+
+    function animateTo(targetLow, targetHigh) {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      if (reducedMotion) {
+        currentLow = targetLow;
+        currentHigh = targetHigh;
+        resultEl.textContent = format(currentLow, currentHigh);
+        return;
+      }
+      var startLow = currentLow, startHigh = currentHigh, startTime = null;
+      var duration = 400;
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        resultEl.textContent = format(
+          startLow + (targetLow - startLow) * eased,
+          startHigh + (targetHigh - startHigh) * eased
+        );
+        if (progress < 1) {
+          animFrame = requestAnimationFrame(step);
+        } else {
+          currentLow = targetLow;
+          currentHigh = targetHigh;
+        }
+      }
+      animFrame = requestAnimationFrame(step);
+    }
 
     function render() {
       var gallons = parseFloat(gallonsInput.value);
       if (!gallons || gallons <= 0) {
         resultEl.textContent = '—';
+        currentLow = 0;
+        currentHigh = 0;
         return;
       }
-      var low = Math.round(gallons * 5);
-      var high = Math.round(gallons * 10);
-      resultEl.textContent = low + '–' + high + ' GPH';
+      animateTo(gallons * 5, gallons * 10);
     }
 
     gallonsInput.addEventListener('input', render);

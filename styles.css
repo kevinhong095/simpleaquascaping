@@ -30,6 +30,9 @@ ul, ol { list-style: none; }
   --badge-gold: #96751a;
   --badge-blue-soft: #1d6f9614;
   --badge-gold-soft: #96751a14;
+  --basket-gold-bg: #96751a40;
+  --basket-accent-bg: #295f4340;
+  --basket-blue-bg: #1d6f9640;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -61,6 +64,9 @@ ul, ol { list-style: none; }
     --badge-gold: #e3bb52;
     --badge-blue-soft: #52b8e822;
     --badge-gold-soft: #e3bb5222;
+    --basket-gold-bg: var(--badge-gold-soft);
+    --basket-accent-bg: var(--accent-soft);
+    --basket-blue-bg: var(--badge-blue-soft);
   }
 }
 
@@ -85,6 +91,9 @@ ul, ol { list-style: none; }
   --badge-gold: #e3bb52;
   --badge-blue-soft: #52b8e822;
   --badge-gold-soft: #e3bb5222;
+  --basket-gold-bg: var(--badge-gold-soft);
+  --basket-accent-bg: var(--accent-soft);
+  --basket-blue-bg: var(--badge-blue-soft);
 }
 
 body {
@@ -98,6 +107,27 @@ body {
 }
 
 main { overflow-x: hidden; }
+
+/* ---------- Selection & Scrollbar ---------- */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 6px;
+  border: 3px solid var(--bg);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  border-width: 2px;
+}
 
 .wrap {
   max-width: 1080px;
@@ -527,6 +557,7 @@ a[target="_blank"]::after {
   border: 2px solid var(--border-strong);
   border-radius: var(--radius);
   overflow: hidden;
+  transition: opacity 150ms ease;
   background: var(--card-bg);
 }
 .filter-basket {
@@ -548,11 +579,11 @@ a[target="_blank"]::after {
   font-size: 0.9rem;
   color: var(--text);
 }
-.basket-mechanical { background: var(--badge-gold-soft); }
+.basket-mechanical { background: var(--basket-gold-bg); }
 .basket-mechanical .basket-type { color: var(--badge-gold); }
-.basket-biological { background: var(--accent-soft); }
+.basket-biological { background: var(--basket-accent-bg); }
 .basket-biological .basket-type { color: var(--accent); }
-.basket-chemical { background: var(--badge-blue-soft); }
+.basket-chemical { background: var(--basket-blue-bg); }
 .basket-chemical .basket-type { color: var(--badge-blue); }
 
 @media (max-width: 480px) {
