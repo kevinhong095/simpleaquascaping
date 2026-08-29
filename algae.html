@@ -19,41 +19,11 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-  .algae-header h1 {
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    max-width: none;
-  }
-
   .algae-ref .lb-content-wrap {
     max-width: 720px;
     margin: 0 auto;
     padding: 8px 24px 96px;
   }
-  .lb-bottom-nav {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 40;
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
-    background: var(--nav-bg);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--border);
-  }
-  .lb-bottom-nav a {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-faint);
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 999px;
-    transition: color var(--transition), background var(--transition);
-  }
-  .lb-bottom-nav a:hover { color: var(--text); }
-  .lb-bottom-nav a.active { color: var(--accent); background: var(--accent-soft); }
   .algae-ref h2 {
     font-family: var(--font-display);
     font-size: 2.2rem;
@@ -77,6 +47,16 @@
     margin: 36px 0 12px;
   }
   .algae-ref .lb-overview-editorial p { font-size: 1rem; line-height: 1.8; }
+  .algae-ref .note-box {
+    background: var(--basket-gold-bg);
+    border: 1px solid rgba(150, 117, 26, 0.3);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 8px;
+  }
+  .algae-ref .note-box p { margin-bottom: 12px; }
+  .algae-ref .note-box p:last-child { margin-bottom: 0; }
+  .algae-ref .thin-underline { border-bottom: 1px solid #D64545; }
   .algae-ref .lb-ov-lede {
     font-family: var(--font-display);
     font-weight: 700;
@@ -279,7 +259,7 @@
 
 <main>
 
-  <header class="page-header algae-header">
+  <header class="page-header advanced-page-header">
     <div class="wrap">
       <a href="index.html" class="back-link">← Back to main guide</a>
       <p class="read-meta">Advanced</p>
@@ -291,8 +271,10 @@
     <div class="lb-content-wrap">
         <section id="lb-overview" class="lb-overview-editorial">
           <h2>Overview</h2>
-          <p><strong>A note on this guide:</strong> Algae is the #1 reason people get frustrated and quit this hobby. So I'm going to share everything I know — every tip, every tool, every thing I would do. It's the most thorough framework I can give you.</p>
-          <p>The truth is, algae isn't a complicated problem. Like most things, prevention and catching it early give you the best chance of success. And there's a lot you can do on both fronts — which is exactly what this guide covers.</p>
+          <div class="note-box">
+            <p><strong>A note on this guide:</strong> Algae is the #1 reason people get frustrated and quit this hobby. I'm going to share absolutely everything I know — every tip, every tool — so that you can have success with your own personal planted tank.</p>
+            <p><span class="thin-underline">The truth is, algae isn't a complicated problem.</span> Like most things, prevention and catching it early give you the best chance of success.</p>
+          </div>
 
           <h3>The Right Way to Think About It</h3>
           <p class="lb-ov-lede">Algae doesn't take over a healthy tank. It takes over a struggling one.</p>
@@ -300,7 +282,7 @@
           <div class="billboard-banner"><p>Healthier plants = less algae</p></div>
 
           <h3>The 3 Variables</h3>
-          <p>Every planted tank is controlled by three things: CO2, light, and nutrients. My general approach from day one is to take nutrients out of the equation entirely, keep light on the lower side, and run CO2 significantly higher than average. Fewer variables means less to troubleshoot — and less that can go wrong.</p>
+          <p>Every planted tank is controlled by 3 things: CO2, light, and nutrients. My general approach from day 1 is to take nutrients out of the equation entirely, keep light on the lower side, and run CO2 significantly higher than average. Fewer variables means less to troubleshoot — and less that can go wrong.</p>
           <div class="triangle-panel" id="triangleWrap"></div>
         </section>
 
@@ -312,9 +294,9 @@
 
         <section id="lb-treatment">
           <h2>Treatment</h2>
-          <p class="lb-ov-lede" style="margin-bottom:16px;">Algae in week one or two is completely normal — don't panic. But if you're still dealing with it by week four, it's time to move to active treatment.</p>
-          <p>When algae does appear, the approach is layered. Start with the least invasive steps first and add more based on how serious the problem is. Whatever combination you run, give it a minimum of two weeks — ideally three — before judging whether it's working.</p>
-          <p>If you want to pinpoint the exact cause, split test one change at a time. If you just want the problem gone, run the full framework for your severity level and let it work.</p>
+          <p class="lb-ov-lede" style="margin-bottom:16px;">Algae in week 1 or 2 is completely normal — don't panic. But if you're still dealing with it by week 4, it's time to move to active treatment.</p>
+          <p>When algae does appear, the approach is layered. Start with the least invasive steps first and add more based on how serious the problem is. Whatever combination you run, give it a minimum of 2 weeks — ideally 3 — before judging whether it's working.</p>
+          <p>If you want to pinpoint the exact cause, split test 1 change at a time. If you just want the problem gone, run the full framework for your severity level and let it work.</p>
           <div id="lbSeverity"></div>
           <div class="lb-flow" id="lbFlow" style="margin-top:28px;"></div>
         </section>
@@ -337,20 +319,20 @@
     { title: "Start with an aggressive water change schedule",
       body: "Go overboard on <a href=\"water-change-schedule.html\">water changes</a> at the beginning. It's the easiest, lowest-risk thing you can do — there's no downside, only upside. Consistent water changes dilute excess nutrients before they become a problem. It's a lot easier to prevent an algae outbreak than to recover from one." },
     { title: "Overfilter and eliminate dead spots",
-      body: "The stronger your flow, the fewer dead spots — and dead spots are where algae takes hold. On my UNS 120m I run two <a href=\"canister-filter.html\">canister filters</a> because one wasn't enough to reach the front half of the tank. The difference in plant health between the two sides was visible. Get the largest filter you can and make sure flow reaches every corner." },
+      body: "The stronger your flow, the fewer dead spots — and dead spots are where algae takes hold. On my UNS 120m I run 2 <a href=\"canister-filter.html\">canister filters</a> because 1 wasn't enough to reach the front half of the tank. The difference in plant health between the 2 sides was visible. Get the largest filter you can and make sure flow reaches every corner." },
     { title: "Go bigger than you think you need to",
-      body: "More water volume means more stable water. Your risk of algae decreases significantly once you're at 10 gallons or larger — in a small tank, one or two fish dying can genuinely throw off the water chemistry enough to trigger an outbreak.<br><br>The larger the body of water, the more stable it is — and the more a small mistake gets absorbed without consequence. If you're on the fence between two tank sizes, this is a good reason to go larger. All else being equal, the bigger tank is the more forgiving one." },
+      body: "More water volume means more stable water. Your risk of algae decreases significantly once you're at 10 gallons or larger — in a small tank, 1 or 2 fish dying can genuinely throw off the water chemistry enough to trigger an outbreak.<br><br>The larger the body of water, the more stable it is — and the more a small mistake gets absorbed without consequence. If you're on the fence between 2 tank sizes, this is a good reason to go larger. All else being equal, the bigger tank is the more forgiving one." },
     { title: "Don't dose nutrients early — let your fish do it",
-      body: "Fish waste provides nutrients for plants. In a new tank, that's usually enough. I don't dose fertilizers at the start — it removes a variable entirely and makes the tank easier to read.<br><br>If you do start dosing later, begin at 50% of the recommended amount and increase by 25% every two weeks until you see improvement. Nutrient spikes are the #1 cause of algae. They come from overfeeding, from overdosing, or from a fish dying somewhere out of sight." },
+      body: "Fish waste provides nutrients for plants. In a new tank, that's usually enough. I don't dose fertilizers at the start — it removes a variable entirely and makes the tank easier to read.<br><br>If you do start dosing later, begin at 50% of the recommended amount and increase by 25% every 2 weeks until you see improvement. Nutrient spikes are the #1 cause of algae. They come from overfeeding, from overdosing, or from a fish dying somewhere out of sight." },
     { title: "Source your plants carefully",
       body: "Tissue cultures are guaranteed pest and algae-free — grown above water, so nothing unwanted comes with them. The tradeoff: they have to transition to a submerged environment, and during that transition they grow slowly and are more vulnerable.<br><br>My preference is submerged plants from other hobbyists — no transition period, lower risk if there's no visible algae on them. Either approach works. Just don't buy plants that already have algae on them.",
       proTip: "Anubias are forgiving and fairly resistant. Bucephalandra is much more sensitive — it needs a stable, mature tank to thrive. Don't start with it." },
     { title: "Keep light low",
       body: "Most beginner plants — anubias, mosses, ferns — don't need much <a href=\"light.html\">light</a>. You'd be surprised how little it actually takes. Keep it dimmer than you think is necessary, especially early on." },
     { title: "Run CO2 from day one",
-      body: "<a href=\"co2.html\">CO2</a> encourages healthy plants, and healthy plants resist algae. Even plants that technically don't need CO2, I run CO2 on every tank with plants. The math is simple: if running CO2 prevents one bad algae outbreak, it's already paid for itself in plants you didn't have to replace — plus the time and frustration saved." },
+      body: "<a href=\"co2.html\">CO2</a> encourages healthy plants, and healthy plants resist algae. Even plants that technically don't need CO2, I run CO2 on every tank with plants. The math is simple: if running CO2 prevents 1 bad algae outbreak, it's already paid for itself in plants you didn't have to replace — plus the time and frustration saved." },
     { title: "Start with mature biological media",
-      body: "One of the best things you can do is start a new tank with already-cycled biomedia. I keep one or two canister filters running with an airstone at the bottom between setups — this keeps the biological colony alive and ready. When I'm ready for a new tank, I'm not starting from zero.<br><br>On day one of any new tank, I also dose TurboStart Freshwater at 2–3x the recommended amount to get the biological colony established as fast as possible.",
+      body: "One of the best things you can do is start a new tank with already-cycled biomedia. I keep 1 or 2 canister filters running with an airstone at the bottom between setups — this keeps the biological colony alive and ready. When I'm ready for a new tank, I'm not starting from zero.<br><br>On day 1 of any new tank, I also dose TurboStart Freshwater at 2–3x the recommended amount to get the biological colony established as fast as possible.",
       proTip: "Keep a canister filter running with just an airstone between tank setups. When you need it, your biological colony is already mature and ready to go." },
     { title: "Plant heavily from the start",
       body: "More plants means more nutrient absorption — which means less available for algae. Overplant early, thin it out once the tank is stable.",
@@ -379,8 +361,8 @@
     { num: 4, title: "Reduce bio-load if overstocked", body: "Shrimp waste in particular accumulates unseen in soil and carpet crevices — a slow buildup that eventually tips the balance. If the tank feels overstocked, reduce numbers." },
     { num: 5, title: "Add floating plants <em>(red root floaters recommended)</em>", body: "Any floating plant will help — they absorb excess nutrients quickly through their root systems. Red root floaters are the ones I recommend: nicest looking, easiest to manage, and just as effective as anything else." }
   ];
-  var STEP6 = { num: 6, title: "Spot treat with hydrogen peroxide", body: "Try this before anything stronger. It's cheap, accessible, and worth attempting — roughly a 50/50 shot at working. Don't retreat for at least three days after applying. Give it time to actually work before adding anything else. <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">Watch how to apply it →</a>" };
-  var STEP7 = { num: 7, title: "APT Fix (last resort)", body: "APT Fix is powerful. Use it carefully — and only after everything above has failed." };
+  var STEP6 = { num: 6, title: "Spot treat with hydrogen peroxide", body: "Try this before anything stronger. It's cheap, accessible, and worth attempting — roughly a 50/50 shot at working. Don't retreat for at least 3 days after applying. Give it time to actually work before adding anything else. <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">Watch how to apply it →</a>" };
+  var STEP7 = { num: 7, title: "APT Fixlite (last resort)", body: "<a href=\"https://www.2hraquarist.com/products/2hr-aquarist-fixlite?srsltid=AfmBOopAXWI3DKmRGPDf3b_NXcERybVf3Zv4dxyNCO_VfUh-VZW9kzv0\" target=\"_blank\" rel=\"noopener noreferrer\">APT Fixlite</a> is powerful. Use it carefully — and only after everything above has failed." };
 
   var TRIANGLE_SVG = '<svg viewBox="0 0 280 250" role="img" aria-label="Triangle diagram showing the three variables: CO2, Light, and Nutrients" style="width:100%; max-width:280px; height:auto; overflow:visible;">' +
     '<line x1="140" y1="26" x2="30" y2="212" stroke="var(--accent)" stroke-width="1" stroke-dasharray="1 5" stroke-linecap="round"/>' +
@@ -395,7 +377,7 @@
     '</svg>';
 
   var APT_SURFACE = [
-    { label: "Rocks or wood", text: "Lower the water level, apply with a very soft paintbrush directly onto the algae, let it sit for about two minutes, then refill. This is the most effective method." },
+    { label: "Rocks or wood", text: "Lower the water level, apply with a very soft paintbrush directly onto the algae, let it sit for about 2 minutes, then refill. This is the most effective method." },
     { label: "Plants", text: "Dose the water column instead of applying directly. Topical application is easy to overdo — 30 extra seconds of contact can destroy the plant." }
   ];
   var APT_SEVERITY = [
@@ -436,7 +418,7 @@
     APT_SEVERITY.map(function (r) {
       return '<div class="apt-item"><strong>' + r.label + '</strong><p>' + r.text + '</p></div>';
     }).join('') +
-    '</div><p class="apt-important"><strong>Important.</strong> Do not treat your tank with APT Fix again for at least another week.</p>' +
+    '</div><p class="apt-important"><strong>Important.</strong> Do not treat your tank with APT Fixlite again for at least another week.</p>' +
     '</div></div></div></div>';
   document.getElementById('lbFlow').innerHTML = lbFlowHtml;
 

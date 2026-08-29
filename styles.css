@@ -374,6 +374,39 @@ a[target="_blank"]::after {
 .advanced-list a:hover, .advanced-list a:focus-visible { color: var(--accent); }
 .advanced-list .advanced-item-soon { color: var(--text-faint); cursor: default; }
 
+/* ---------- Advanced sub-page header (full-width, larger h1) ---------- */
+.page-header.advanced-page-header h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  max-width: none;
+}
+
+/* ---------- Fixed bottom section nav (Advanced sub-pages) ---------- */
+.lb-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--border);
+}
+.lb-bottom-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: color var(--transition), background var(--transition);
+}
+.lb-bottom-nav a:hover { color: var(--text); }
+.lb-bottom-nav a.active { color: var(--accent); background: var(--accent-soft); }
+
 /* ---------- Algae page graphics ---------- */
 .algae-billboard {
   font-family: var(--font-display);
@@ -502,6 +535,12 @@ a[target="_blank"]::after {
   line-height: 1.35;
   margin-bottom: 12px;
   color: var(--text);
+}
+.card-sub {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  line-height: 1.5;
+  margin: 0;
 }
 .card-desc {
   color: var(--text-muted);
