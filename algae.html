@@ -19,32 +19,36 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-  .algae-ref .lb-shell {
-    max-width: 1100px;
+  .algae-ref .lb-content-wrap {
+    max-width: 720px;
     margin: 0 auto;
-    padding: 8px 24px 100px;
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 48px;
-    align-items: start;
+    padding: 8px 24px 96px;
   }
-  .algae-ref .lb-nav {
-    position: sticky;
-    top: 68px;
+  .lb-bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--border);
   }
-  .algae-ref .lb-nav a {
+  .lb-bottom-nav a {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-faint);
     text-decoration: none;
-    padding: 8px 0;
-    border-left: 2px solid var(--border);
-    padding-left: 14px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: color var(--transition), background var(--transition);
   }
-  .algae-ref .lb-nav a:hover { color: var(--accent); border-left-color: var(--accent); }
+  .lb-bottom-nav a:hover { color: var(--text); }
+  .lb-bottom-nav a.active { color: var(--accent); background: var(--accent-soft); }
   .algae-ref h2 {
     font-family: var(--font-display);
     font-size: 2.2rem;
@@ -150,6 +154,8 @@
     color: var(--text);
   }
   .algae-ref .lb-quote-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 4px; }
+  .algae-ref .lb-quote-danger { background: var(--basket-red-bg); border-left-color: #D64545; }
+  .algae-ref .lb-quote-danger .lb-quote-label { color: #D64545; }
 
   .algae-ref .lb-flow { display: flex; flex-direction: column; gap: 0; }
   .algae-ref .lb-flow-step {
@@ -179,7 +185,18 @@
   }
   .algae-ref .lb-flow-title { font-weight: 700; color: var(--text); font-size: 0.95rem; margin-bottom: 4px; }
   .algae-ref .lb-flow-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
-  .algae-ref .lb-flow-body ul { margin: 6px 0 0; padding-left: 16px; }
+  .algae-ref .lb-flow-body ul { margin: 6px 0 0; padding-left: 0; }
+  .algae-ref .lb-flow-body ul li { position: relative; padding-left: 16px; }
+  .algae-ref .lb-flow-body ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
   .algae-ref .lb-escalate { margin-top: 8px; padding-top: 24px; border-top: 1px dashed var(--border-strong); }
 
   /* Escalation callouts — fit-content, centered, no step-number text */
@@ -204,11 +221,12 @@
     margin: 2px 0 10px;
   }
 
-  .algae-ref .apt-guide {
+  .algae-ref .apt-table { margin-top: 16px; }
+  .algae-ref .apt-headrow {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    margin-top: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
   }
   .algae-ref .apt-col-label {
     display: block;
@@ -217,24 +235,27 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--text-faint);
-    margin-bottom: 12px;
   }
+  .algae-ref .apt-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .algae-ref .apt-row:last-child { margin-bottom: 0; }
   .algae-ref .apt-item {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 14px 16px;
-    margin-bottom: 10px;
   }
-  .algae-ref .apt-item:last-child { margin-bottom: 0; }
   .algae-ref .apt-item strong { display: block; color: var(--text); font-size: 0.88rem; margin-bottom: 6px; }
   .algae-ref .apt-item p { margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
   @media (max-width: 760px) {
-    .algae-ref .lb-shell { grid-template-columns: 1fr; }
-    .algae-ref .lb-nav { position: static; flex-direction: row; flex-wrap: wrap; }
     .algae-ref .billboard-banner p { font-size: 1.8rem; }
     .algae-ref h2 { font-size: 1.7rem; }
+    .lb-bottom-nav a { padding: 8px 12px; font-size: 0.72rem; }
   }
 </style>
 </head>
@@ -268,13 +289,7 @@
   </header>
 
   <div class="algae-ref">
-    <div class="lb-shell">
-      <nav class="lb-nav">
-        <a href="#lb-overview">Overview</a>
-        <a href="#lb-prevention">Prevention</a>
-        <a href="#lb-treatment">Treatment</a>
-      </nav>
-      <div>
+    <div class="lb-content-wrap">
         <section id="lb-overview" class="lb-overview-editorial">
           <h2>Overview</h2>
           <p><strong>A note on this guide:</strong> Algae is the #1 reason people get frustrated and quit this hobby. So I'm going to share everything I know — every tip, every tool, every thing I would do. It's the most thorough framework I can give you.</p>
@@ -283,9 +298,9 @@
           <h3>The Right Way to Think About It</h3>
           <p class="lb-ov-lede">Algae doesn't take over a healthy tank. It takes over a struggling one.</p>
           <p>Think of it like a compromised immune system. The healthier your plants, the stronger their resistance — and the larger your margin of error when something goes slightly wrong. An extra feeding, a fish that died somewhere you can't see, a slightly off water change. Healthy plants absorb the hit. Struggling plants don't.</p>
-          <div class="billboard-banner"><p>Healthier plants = less algae.</p></div>
+          <div class="billboard-banner"><p>Healthier plants = less algae</p></div>
 
-          <h3>The Three Variables</h3>
+          <h3>The 3 Variables</h3>
           <p>Every planted tank is controlled by three things: CO2, light, and nutrients. My general approach from day one is to take nutrients out of the equation entirely, keep light on the lower side, and run CO2 significantly higher than average. Fewer variables means less to troubleshoot — and less that can go wrong.</p>
           <div class="triangle-panel" id="triangleWrap"></div>
         </section>
@@ -304,9 +319,14 @@
           <div id="lbSeverity"></div>
           <div class="lb-flow" id="lbFlow" style="margin-top:28px;"></div>
         </section>
-      </div>
     </div>
   </div>
+
+  <nav class="lb-bottom-nav">
+    <a href="#lb-overview" data-section="lb-overview">Overview</a>
+    <a href="#lb-prevention" data-section="lb-prevention">Prevention</a>
+    <a href="#lb-treatment" data-section="lb-treatment">Treatment</a>
+  </nav>
 
 </main>
 
@@ -355,7 +375,7 @@
 
   var STEPS = [
     { num: 1, title: "Increase water changes to 2x", body: "More frequent <a href=\"water-change-schedule.html\">water changes</a> dilute nutrients and calm the tank — aim for 2x your normal frequency. Zero risk, only upside. Always start here first." },
-    { num: 2, title: "Increase CO2 and decrease light", list: ["Turn <a href=\"co2.html\">CO2</a> up as high as possible without visibly stressing fish", "Dim <a href=\"light.html\">lights</a> by 25% for a low to moderate problem; 50% for moderate to significant"] },
+    { num: 2, title: "Increase CO2 and decrease light", list: ["<a href=\"co2.html\">Learn how to turn CO2 up as high as possible</a> without visibly stressing fish", "Learn how to dim lights by 25% for a low to moderate problem; 50% for moderate to significant"] },
     { num: 3, title: "Cut off excess nutrients", list: ["Stop fertilizers immediately", "Reduce fish feeding by 50%"] },
     { num: 4, title: "Reduce bio-load if overstocked", body: "Shrimp waste in particular accumulates unseen in soil and carpet crevices — a slow buildup that eventually tips the balance. If the tank feels overstocked, reduce numbers." },
     { num: 5, title: "Add floating plants (red root floaters recommended)", body: "Any floating plant will help — they absorb excess nutrients quickly through their root systems. Red root floaters are the ones I recommend: nicest looking, easiest to manage, and just as effective as anything else." }
@@ -364,26 +384,12 @@
   var STEP7 = { num: 7, title: "APT Fix (last resort)", body: "APT Fix is powerful. Use it carefully — and only after everything above has failed." };
 
   var TRIANGLE_SVG = '<svg viewBox="0 0 280 240" role="img" aria-label="Triangle diagram showing the three variables: CO2, Light, and Nutrients" style="width:100%; max-width:280px; height:auto; overflow:visible;">' +
-    '<defs>' +
-    '<radialGradient id="nodeGrad" cx="35%" cy="30%" r="70%">' +
-    '<stop offset="0%" stop-color="#7fd9a4"/>' +
-    '<stop offset="100%" stop-color="var(--accent)"/>' +
-    '</radialGradient>' +
-    '<linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">' +
-    '<stop offset="0%" stop-color="var(--accent)" stop-opacity="0.75"/>' +
-    '<stop offset="100%" stop-color="var(--accent)" stop-opacity="0.25"/>' +
-    '</linearGradient>' +
-    '<filter id="nodeGlow" x="-60%" y="-60%" width="220%" height="220%">' +
-    '<feGaussianBlur stdDeviation="4" result="blur"/>' +
-    '<feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>' +
-    '</filter>' +
-    '</defs>' +
-    '<line x1="140" y1="20" x2="30" y2="210" stroke="url(#lineGrad)" stroke-width="1.25"/>' +
-    '<line x1="140" y1="20" x2="250" y2="210" stroke="url(#lineGrad)" stroke-width="1.25"/>' +
-    '<line x1="30" y1="210" x2="250" y2="210" stroke="url(#lineGrad)" stroke-width="1.25"/>' +
-    '<circle cx="140" cy="20" r="8" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>' +
-    '<circle cx="30" cy="210" r="8" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>' +
-    '<circle cx="250" cy="210" r="8" fill="url(#nodeGrad)" filter="url(#nodeGlow)"/>' +
+    '<line x1="140" y1="20" x2="30" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<line x1="140" y1="20" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<line x1="30" y1="210" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<circle cx="140" cy="20" r="7" fill="var(--accent)"/>' +
+    '<circle cx="30" cy="210" r="7" fill="var(--accent)"/>' +
+    '<circle cx="250" cy="210" r="7" fill="var(--accent)"/>' +
     '<text x="140" y="6" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:1.5px; fill:var(--text);">CO2</text>' +
     '<text x="30" y="234" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:1.5px; fill:var(--text);">LIGHT</text>' +
     '<text x="250" y="234" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:1.5px; fill:var(--text);">NUTRIENTS</text>' +
@@ -419,15 +425,31 @@
     '<div class="lb-escalate-node">No improvement after 2 weeks</div>' +
     '<div class="lb-escalate-arrow">↓</div>' +
     '<div class="lb-flow-step"><div class="lb-flow-num">' + STEP6.num + '</div><div><div class="lb-flow-title">' + STEP6.title + '</div><div class="lb-flow-body">' + STEP6.body + '</div></div></div>' +
-    '<div class="lb-escalate-node">Still no improvement one week after that</div>' +
+    '<div class="lb-escalate-node">Still no improvement 1 week after that</div>' +
     '<div class="lb-escalate-arrow">↓</div>' +
     '<div class="lb-flow-step"><div class="lb-flow-num">' + STEP7.num + '</div><div><div class="lb-flow-title">' + STEP7.title + '</div><div class="lb-flow-body">' + STEP7.body +
-    '<div class="apt-guide">' +
-    '<div class="apt-col"><span class="apt-col-label">By surface</span>' + APT_SURFACE.map(function (r) { return '<div class="apt-item"><strong>' + r.label + '</strong><p>' + r.text + '</p></div>'; }).join('') + '</div>' +
-    '<div class="apt-col"><span class="apt-col-label">By severity</span>' + APT_SEVERITY.map(function (r) { return '<div class="apt-item"><strong>' + r.label + '</strong><p>' + r.text + '</p></div>'; }).join('') + '</div>' +
-    '</div><div class="lb-escalate-node" style="margin-top:20px; border-color:#D64545; color:#D64545;">Do not treat your tank with APT Fix again for at least another week.</div>' +
+    '<div class="apt-table">' +
+    '<div class="apt-headrow"><span class="apt-col-label">By surface</span><span class="apt-col-label">By severity</span></div>' +
+    APT_SURFACE.map(function (r, i) {
+      var sev = APT_SEVERITY[i];
+      return '<div class="apt-row"><div class="apt-item"><strong>' + r.label + '</strong><p>' + r.text + '</p></div><div class="apt-item"><strong>' + sev.label + '</strong><p>' + sev.text + '</p></div></div>';
+    }).join('') +
+    '</div><div class="lb-quote lb-quote-danger" style="margin-top:16px;"><span class="lb-quote-label">Important</span>Do not treat your tank with APT Fix again for at least another week.</div>' +
     '</div></div></div></div>';
   document.getElementById('lbFlow').innerHTML = lbFlowHtml;
+
+  var navLinks = document.querySelectorAll('.lb-bottom-nav a');
+  var sections = ['lb-overview', 'lb-prevention', 'lb-treatment'].map(function (id) { return document.getElementById(id); });
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (a) { a.classList.toggle('active', a.dataset.section === entry.target.id); });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { if (s) spy.observe(s); });
+  }
 })();
 </script>
 </body>
