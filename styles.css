@@ -421,11 +421,11 @@ a[target="_blank"]::after {
   color: var(--text-faint);
 }
 .severity-steps { font-weight: 700; color: var(--text); font-size: 1rem; }
-.severity-col.sev-low { background: color-mix(in srgb, var(--accent) 24%, var(--card-bg)); border-top-color: var(--accent); }
+.severity-col.sev-low { background: color-mix(in srgb, var(--accent) 12%, var(--card-bg)); border-top-color: var(--accent); }
 .severity-col.sev-low .severity-label, .severity-col.sev-low .severity-steps { color: var(--accent); }
-.severity-col.sev-moderate { background: color-mix(in srgb, var(--badge-gold) 24%, var(--card-bg)); border-top-color: var(--badge-gold); }
+.severity-col.sev-moderate { background: color-mix(in srgb, var(--badge-gold) 12%, var(--card-bg)); border-top-color: var(--badge-gold); }
 .severity-col.sev-moderate .severity-label, .severity-col.sev-moderate .severity-steps { color: var(--badge-gold); }
-.severity-col.sev-significant { background: color-mix(in srgb, #D64545 24%, var(--card-bg)); border-top-color: #D64545; }
+.severity-col.sev-significant { background: color-mix(in srgb, #D64545 12%, var(--card-bg)); border-top-color: #D64545; }
 .severity-col.sev-significant .severity-label, .severity-col.sev-significant .severity-steps { color: #D64545; }
 .escalation-row {
   display: flex;
