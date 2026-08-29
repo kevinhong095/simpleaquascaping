@@ -19,6 +19,11 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
+  .algae-header h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    max-width: none;
+  }
+
   .algae-ref .lb-content-wrap {
     max-width: 720px;
     margin: 0 auto;
@@ -154,8 +159,8 @@
     color: var(--text);
   }
   .algae-ref .lb-quote-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 4px; }
-  .algae-ref .lb-quote-danger { background: var(--basket-red-bg); border-left-color: #D64545; }
-  .algae-ref .lb-quote-danger .lb-quote-label { color: #D64545; }
+  .algae-ref .apt-important { margin-top: 16px; font-size: 0.88rem; color: #D64545; line-height: 1.6; }
+  .algae-ref .apt-important strong { color: #D64545; }
 
   .algae-ref .lb-flow { display: flex; flex-direction: column; gap: 0; }
   .algae-ref .lb-flow-step {
@@ -221,36 +226,28 @@
     margin: 2px 0 10px;
   }
 
-  .algae-ref .apt-table { margin-top: 16px; }
-  .algae-ref .apt-headrow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 8px;
+  .algae-ref .apt-table {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   .algae-ref .apt-col-label {
-    display: block;
     font-family: var(--font-mono);
     font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--text-faint);
+    margin-right: 4px;
   }
-  .algae-ref .apt-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-  .algae-ref .apt-row:last-child { margin-bottom: 0; }
   .algae-ref .apt-item {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 14px 16px;
   }
-  .algae-ref .apt-item strong { display: block; color: var(--text); font-size: 0.88rem; margin-bottom: 6px; }
-  .algae-ref .apt-item p { margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+  .algae-ref .apt-item strong { color: var(--text); font-size: 0.88rem; }
+  .algae-ref .apt-item p { margin: 6px 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
   @media (max-width: 760px) {
     .algae-ref .billboard-banner p { font-size: 1.8rem; }
@@ -280,8 +277,8 @@
 
 <main>
 
-  <header class="page-header">
-    <div class="wrap-narrow">
+  <header class="page-header algae-header">
+    <div class="wrap">
       <a href="index.html" class="back-link">← Back to main guide</a>
       <p class="read-meta">Advanced</p>
       <h1>How to Prevent &amp; Treat Algae</h1>
@@ -383,16 +380,16 @@
   var STEP6 = { num: 6, title: "Spot treat with hydrogen peroxide", body: "Try this before anything stronger. It's cheap, accessible, and worth attempting — roughly a 50/50 shot at working. Don't retreat for at least three days after applying. Give it time to actually work before adding anything else. <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">Watch how to apply it →</a>" };
   var STEP7 = { num: 7, title: "APT Fix (last resort)", body: "APT Fix is powerful. Use it carefully — and only after everything above has failed." };
 
-  var TRIANGLE_SVG = '<svg viewBox="0 0 280 240" role="img" aria-label="Triangle diagram showing the three variables: CO2, Light, and Nutrients" style="width:100%; max-width:280px; height:auto; overflow:visible;">' +
-    '<line x1="140" y1="20" x2="30" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
-    '<line x1="140" y1="20" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
-    '<line x1="30" y1="210" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
-    '<circle cx="140" cy="20" r="7" fill="var(--accent)"/>' +
-    '<circle cx="30" cy="210" r="7" fill="var(--accent)"/>' +
-    '<circle cx="250" cy="210" r="7" fill="var(--accent)"/>' +
-    '<text x="140" y="6" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:1.5px; fill:var(--text);">CO2</text>' +
-    '<text x="30" y="234" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:1.5px; fill:var(--text);">LIGHT</text>' +
-    '<text x="250" y="234" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:1.5px; fill:var(--text);">NUTRIENTS</text>' +
+  var TRIANGLE_SVG = '<svg viewBox="0 0 280 250" role="img" aria-label="Triangle diagram showing the three variables: CO2, Light, and Nutrients" style="width:100%; max-width:280px; height:auto; overflow:visible;">' +
+    '<line x1="140" y1="26" x2="30" y2="212" stroke="var(--accent)" stroke-width="1" stroke-dasharray="1 5" stroke-linecap="round"/>' +
+    '<line x1="140" y1="26" x2="250" y2="212" stroke="var(--accent)" stroke-width="1" stroke-dasharray="1 5" stroke-linecap="round"/>' +
+    '<line x1="30" y1="212" x2="250" y2="212" stroke="var(--accent)" stroke-width="1" stroke-dasharray="1 5" stroke-linecap="round"/>' +
+    '<circle cx="140" cy="26" r="11" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<circle cx="30" cy="212" r="11" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<circle cx="250" cy="212" r="11" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<text x="140" y="4" text-anchor="middle" style="font-family:var(--font-display); font-style:italic; font-weight:600; font-size:16px; fill:var(--text);">CO2</text>' +
+    '<text x="30" y="240" text-anchor="middle" style="font-family:var(--font-display); font-style:italic; font-weight:600; font-size:16px; fill:var(--text);">Light</text>' +
+    '<text x="250" y="240" text-anchor="middle" style="font-family:var(--font-display); font-style:italic; font-weight:600; font-size:16px; fill:var(--text);">Nutrients</text>' +
     '</svg>';
 
   var APT_SURFACE = [
@@ -429,12 +426,15 @@
     '<div class="lb-escalate-arrow">↓</div>' +
     '<div class="lb-flow-step"><div class="lb-flow-num">' + STEP7.num + '</div><div><div class="lb-flow-title">' + STEP7.title + '</div><div class="lb-flow-body">' + STEP7.body +
     '<div class="apt-table">' +
-    '<div class="apt-headrow"><span class="apt-col-label">By surface</span><span class="apt-col-label">By severity</span></div>' +
     APT_SURFACE.map(function (r, i) {
-      var sev = APT_SEVERITY[i];
-      return '<div class="apt-row"><div class="apt-item"><strong>' + r.label + '</strong><p>' + r.text + '</p></div><div class="apt-item"><strong>' + sev.label + '</strong><p>' + sev.text + '</p></div></div>';
+      var labelHtml = i === 0 ? '<span class="apt-col-label">By surface</span> ' : '';
+      return '<div class="apt-item">' + labelHtml + '<strong>' + r.label + '</strong><p>' + r.text + '</p></div>';
     }).join('') +
-    '</div><div class="lb-quote lb-quote-danger" style="margin-top:16px;"><span class="lb-quote-label">Important</span>Do not treat your tank with APT Fix again for at least another week.</div>' +
+    APT_SEVERITY.map(function (r, i) {
+      var labelHtml = i === 0 ? '<span class="apt-col-label">By severity</span> ' : '';
+      return '<div class="apt-item">' + labelHtml + '<strong>' + r.label + '</strong><p>' + r.text + '</p></div>';
+    }).join('') +
+    '</div><p class="apt-important"><strong>Important.</strong> Do not treat your tank with APT Fix again for at least another week.</p>' +
     '</div></div></div></div>';
   document.getElementById('lbFlow').innerHTML = lbFlowHtml;
 
