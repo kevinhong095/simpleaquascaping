@@ -420,6 +420,12 @@ a[target="_blank"]::after {
   color: var(--text-faint);
 }
 .severity-steps { font-weight: 700; color: var(--text); font-size: 1rem; }
+.severity-col.sev-low { border-top-color: var(--badge-blue); }
+.severity-col.sev-low .severity-steps { color: var(--badge-blue); }
+.severity-col.sev-moderate { border-top-color: var(--badge-gold); }
+.severity-col.sev-moderate .severity-steps { color: var(--badge-gold); }
+.severity-col.sev-significant { border-top-color: #D64545; }
+.severity-col.sev-significant .severity-steps { color: #D64545; }
 .escalation-row {
   display: flex;
   flex-wrap: wrap;
