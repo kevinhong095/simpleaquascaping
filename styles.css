@@ -359,7 +359,8 @@ a[target="_blank"]::after {
   flex-direction: column;
   gap: 4px;
 }
-.advanced-list a {
+.advanced-list a, .advanced-list .advanced-item-soon {
+  display: block;
   font-size: 0.98rem;
   color: var(--text);
   text-decoration: none;
@@ -367,9 +368,102 @@ a[target="_blank"]::after {
   border-bottom: 1px solid var(--border);
   transition: color var(--transition);
 }
-.advanced-list a:first-child { padding-top: 0; }
-.advanced-list a:last-child { border-bottom: none; }
+.advanced-list > :first-child { padding-top: 0; }
+.advanced-list > :last-child { border-bottom: none; }
 .advanced-list a:hover, .advanced-list a:focus-visible { color: var(--accent); }
+.advanced-list .advanced-item-soon { color: var(--text-faint); cursor: default; }
+
+/* ---------- Algae page graphics ---------- */
+.algae-billboard {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  text-align: center;
+  color: var(--accent);
+  line-height: 1.3;
+  max-width: 20ch;
+  margin: 40px auto 8px;
+}
+.algae-billboard-eq { color: var(--text-faint); font-weight: 400; margin: 0 6px; }
+
+.triangle-wrap { display: flex; justify-content: center; margin: 32px 0 12px; }
+.triangle-graphic { width: 100%; max-width: 320px; height: auto; overflow: visible; }
+.triangle-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--text);
+}
+
+.severity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 28px 0 12px;
+  max-width: 68ch;
+}
+.severity-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.severity-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+.severity-steps { font-weight: 700; color: var(--text); font-size: 1rem; }
+.escalation-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 68ch;
+  padding-top: 4px;
+}
+.escalation-row div { font-size: 0.88rem; color: var(--text-muted); }
+.esc-arrow { color: var(--text-faint); margin: 0 4px; }
+.esc-step { color: var(--accent); font-weight: 700; }
+
+.escalation-block {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px dashed var(--border-strong);
+}
+.escalation-heading {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.apt-guide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+  max-width: 68ch;
+}
+.apt-col h4 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin: 0 0 12px;
+}
+.apt-row { margin-bottom: 14px; }
+.apt-row:last-child { margin-bottom: 0; }
+.apt-row-label { display: block; font-weight: 700; color: var(--text); font-size: 0.92rem; margin-bottom: 4px; }
+.apt-row p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; margin: 0; }
 
 /* ---------- Home cards ---------- */
 .grid {
@@ -643,7 +737,7 @@ a[target="_blank"]::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8,28,30,.15) 0%, rgba(8,28,30,.55) 55%, var(--water) 100%);
+  background: linear-gradient(180deg, rgba(8,28,30,.3) 0%, rgba(8,28,30,.72) 55%, var(--water) 100%);
 }
 .announce-hero-inner {
   position: relative;
@@ -727,6 +821,16 @@ a[target="_blank"]::after {
   color: #CFE3DF;
   line-height: 1.5;
 }
+.af-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.af-list li {
+  font-family: 'Work Sans', var(--font-body);
+  font-size: 0.88rem;
+  color: #CFE3DF;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 14px;
+}
+.af-list li::before { content: "·"; position: absolute; left: 0; color: var(--seafoam); font-weight: 700; }
 .hand-mark {
   display: inline-block;
   border-bottom: 4px solid #D64545;
@@ -1083,6 +1187,59 @@ footer .fine { color: var(--text-faint); font-size: 0.88rem; max-width: 60ch; }
 }
 .channel-chip::after { content: "↗"; font-size: 0.75em; color: var(--text-faint); margin-left: auto; }
 .channel-chip:hover, .channel-chip:focus-visible { transform: translateY(-2px); border-color: var(--accent); }
+.channel-chip.has-note { position: relative; }
+.chip-note-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--badge-gold);
+  border: 1.5px solid var(--card-bg);
+}
+.chip-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 9px);
+  transform: translateX(-50%) translateY(4px);
+  width: max-content;
+  max-width: 220px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-muted);
+  white-space: normal;
+  text-align: left;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 20;
+}
+.chip-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--border-strong);
+}
+.channel-chip.has-note:hover .chip-tooltip,
+.channel-chip.has-note:focus-visible .chip-tooltip,
+.channel-chip.has-note.tip-open .chip-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
 .channel-chip.chip-web::before {
   background-color: var(--badge-blue);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='3.6' fill='none' stroke='white' stroke-width='0.9'/%3E%3Cpath d='M1.4 5h7.2M5 1.4v7.2M2.6 2.6c1.7 1.7 1.7 3.1 0 4.8M7.4 2.6c-1.7 1.7-1.7 3.1 0 4.8' fill='none' stroke='white' stroke-width='0.7'/%3E%3C/svg%3E");

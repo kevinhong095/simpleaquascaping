@@ -64,13 +64,29 @@
         <a class="channel-chip" href="https://www.youtube.com/@Tropictank" target="_blank" rel="noopener noreferrer">Tropictank</a>
         <a class="channel-chip" href="https://www.youtube.com/@OliverKnott_aquascaper" target="_blank" rel="noopener noreferrer">Oliver Knott</a>
         <a class="channel-chip" href="https://www.youtube.com/@aquadesignamano" target="_blank" rel="noopener noreferrer">aquadesignamano</a>
-        <a class="channel-chip" href="https://www.youtube.com/@HieptheHuman" target="_blank" rel="noopener noreferrer">Hiep the Human</a>
-        <a class="channel-chip" href="https://www.youtube.com/@buiscape" target="_blank" rel="noopener noreferrer">Buiscape</a>
+        <a class="channel-chip has-note" href="https://www.youtube.com/@HieptheHuman" target="_blank" rel="noopener noreferrer">
+          Hiep the Human
+          <span class="chip-note-dot" aria-hidden="true"></span>
+          <span class="chip-tooltip">Filler note: great for slow, meditative full-build timelapses if that's your thing.</span>
+        </a>
+        <a class="channel-chip has-note" href="https://www.youtube.com/@buiscape" target="_blank" rel="noopener noreferrer">
+          Buiscape
+          <span class="chip-note-dot" aria-hidden="true"></span>
+          <span class="chip-tooltip">Filler note: best budget-tank breakdowns — proof you don't need expensive gear to do this well.</span>
+        </a>
         <a class="channel-chip" href="https://www.youtube.com/@ferretwonderland" target="_blank" rel="noopener noreferrer">FERRET WONDERLAND</a>
-        <a class="channel-chip" href="https://www.youtube.com/@MJAquascaping" target="_blank" rel="noopener noreferrer">MJ Aquascaping</a>
+        <a class="channel-chip has-note" href="https://www.youtube.com/@MJAquascaping" target="_blank" rel="noopener noreferrer">
+          MJ Aquascaping
+          <span class="chip-note-dot" aria-hidden="true"></span>
+          <span class="chip-tooltip">Filler note: the aquascaping-competition breakdowns here are some of the clearest explanations in the hobby.</span>
+        </a>
         <a class="channel-chip" href="https://www.youtube.com/@HIDUaqua" target="_blank" rel="noopener noreferrer">Hùng Design</a>
         <a class="channel-chip" href="https://www.youtube.com/@JurijsJutjajevs" target="_blank" rel="noopener noreferrer">Jurijs Jutjajevs</a>
-        <a class="channel-chip" href="https://www.youtube.com/@fritzaquaticsvideo" target="_blank" rel="noopener noreferrer">Fritz Aquatics</a>
+        <a class="channel-chip has-note" href="https://www.youtube.com/@fritzaquaticsvideo" target="_blank" rel="noopener noreferrer">
+          Fritz Aquatics
+          <span class="chip-note-dot" aria-hidden="true"></span>
+          <span class="chip-tooltip">Filler note: this channel has the best fish interviews, breeder visits, and behind-the-scenes hobby content around.</span>
+        </a>
       </div>
     </div>
   </section>
@@ -155,5 +171,25 @@
 
 <script src="theme.js"></script>
 <script src="interactions.js"></script>
+<script>
+  (function () {
+    if (!window.matchMedia || !window.matchMedia('(hover: none)').matches) return;
+    var noteChips = document.querySelectorAll('.channel-chip.has-note');
+    noteChips.forEach(function (chip) {
+      chip.addEventListener('click', function (e) {
+        if (!chip.classList.contains('tip-open')) {
+          e.preventDefault();
+          noteChips.forEach(function (c) { c.classList.remove('tip-open'); });
+          chip.classList.add('tip-open');
+        }
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.channel-chip.has-note')) {
+        noteChips.forEach(function (c) { c.classList.remove('tip-open'); });
+      }
+    });
+  })();
+</script>
 </body>
 </html>

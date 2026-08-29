@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algae Page — Structured Reference</title>
+<meta name="description" content="Prevention and treatment framework for algae, in a structured reference layout.">
+<meta name="robots" content="noindex">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  #layout-b .lb-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  #layout-b .lb-nav {
+    position: sticky;
+    top: 68px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  #layout-b .lb-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    text-decoration: none;
+    padding: 8px 0;
+    border-left: 2px solid var(--border);
+    padding-left: 14px;
+  }
+  #layout-b .lb-nav a:hover { color: var(--accent); border-left-color: var(--accent); }
+  #layout-b h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 16px;
+    padding-top: 8px;
+    scroll-margin-top: 80px;
+  }
+  #layout-b section + section { margin-top: 56px; }
+  #layout-b p { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin: 0 0 14px; }
+  #layout-b a { color: var(--accent); }
+  #layout-b .lb-lede { font-weight: 500; color: var(--text); font-size: 1rem; margin-bottom: 12px; }
+  #layout-b .callout p { font-size: 0.94rem; color: var(--text); line-height: 1.6; margin: 0; }
+
+  #layout-b .lb-overview-editorial h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text);
+    margin: 36px 0 12px;
+  }
+  #layout-b .lb-overview-editorial p { font-size: 1rem; line-height: 1.8; }
+  #layout-b .lb-ov-lede {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  /* Billboard: "Healthier plants = less algae." — premium translucent banner */
+  #layout-b .billboard-banner {
+    margin: 32px 0;
+    padding: 40px 32px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(72,171,116,.14), rgba(72,171,116,.04));
+    border: 1px solid rgba(72,171,116,.3);
+    text-align: center;
+  }
+  #layout-b .billboard-banner p {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 1.25;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  #layout-b .lb-tip {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  #layout-b .lb-tip summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 0.92rem;
+    background: var(--card-bg);
+  }
+  #layout-b .lb-tip summary::-webkit-details-marker { display: none; }
+  #layout-b .lb-tip summary .lb-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  #layout-b .lb-tip summary::after { content: "+"; margin-left: auto; color: var(--text-faint); font-family: var(--font-mono); }
+  #layout-b .lb-tip[open] summary::after { content: "–"; }
+  #layout-b .lb-tip-body { padding: 4px 16px 18px 52px; }
+  #layout-b .lb-tip-body p:last-child { margin-bottom: 0; }
+  #layout-b .lb-quote {
+    background: var(--basket-accent-bg);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+  #layout-b .lb-quote-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 4px; }
+
+  #layout-b .lb-flow { display: flex; flex-direction: column; gap: 0; }
+  #layout-b .lb-flow-step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+    padding-bottom: 22px;
+    position: relative;
+  }
+  #layout-b .lb-flow-step::before {
+    content: "";
+    position: absolute;
+    left: 15px; top: 32px; bottom: 0;
+    width: 1px;
+    background: var(--border-strong);
+  }
+  #layout-b .lb-flow-step:last-child::before { display: none; }
+  #layout-b .lb-flow-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid var(--border-strong);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #layout-b .lb-flow-title { font-weight: 700; color: var(--text); font-size: 0.95rem; margin-bottom: 4px; }
+  #layout-b .lb-flow-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+  #layout-b .lb-flow-body ul { margin: 6px 0 0; padding-left: 16px; }
+  #layout-b .lb-escalate { margin-top: 8px; padding-top: 24px; border-top: 1px dashed var(--border-strong); }
+
+  /* Escalation callouts — copied exactly from the Layout C tree-node treatment */
+  #layout-b .lb-escalate-node {
+    background: var(--card-bg);
+    border: 1px solid var(--badge-gold);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--badge-gold);
+    margin: 14px 0;
+  }
+
+  @media (max-width: 760px) {
+    #layout-b .lb-shell { grid-template-columns: 1fr; }
+    #layout-b .lb-nav { position: static; flex-direction: row; flex-wrap: wrap; }
+    #layout-b .billboard-banner p { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark">Planted Tank Guide</a>
+    <div class="nav-links">
+      <a href="index.html#setup">Setup</a>
+      <a href="index.html#routine">Routine</a>
+      <a href="index.html#resources">Resources</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+        <span id="themeToggleLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <div id="layout-b">
+    <div class="lb-shell">
+      <nav class="lb-nav">
+        <a href="#lb-overview">Overview</a>
+        <a href="#lb-prevention">Prevention</a>
+        <a href="#lb-treatment">Treatment</a>
+      </nav>
+      <div>
+        <section id="lb-overview" class="lb-overview-editorial">
+          <h2>Overview</h2>
+          <p><strong>A note on this guide:</strong> Algae is the #1 reason people get frustrated and quit this hobby. So I'm going to share everything I know — every tip, every tool, every thing I would do. It's the most thorough framework I can give you.</p>
+          <p>The truth is, algae isn't a complicated problem. Like most things, prevention and catching it early give you the best chance of success. And there's a lot you can do on both fronts — which is exactly what this guide covers.</p>
+
+          <h3>The Right Way to Think About It</h3>
+          <p class="lb-ov-lede">Algae doesn't take over a healthy tank. It takes over a struggling one.</p>
+          <p>Think of it like a compromised immune system. The healthier your plants, the stronger their resistance — and the larger your margin of error when something goes slightly wrong. An extra feeding, a fish that died somewhere you can't see, a slightly off water change. Healthy plants absorb the hit. Struggling plants don't.</p>
+          <div class="billboard-banner"><p>Healthier plants = less algae.</p></div>
+
+          <h3>The Three Variables</h3>
+          <p>Every planted tank is controlled by three things: CO2, light, and nutrients. My general approach from day one is to take nutrients out of the equation entirely, keep light on the lower side, and run CO2 significantly higher than average. Fewer variables means less to troubleshoot — and less that can go wrong.</p>
+          <div id="lbTriangleWrap" style="display:flex; justify-content:flex-start; margin-top:20px;"></div>
+        </section>
+
+        <section id="lb-prevention">
+          <h2>Prevention</h2>
+          <p class="lb-lede">Click any tip to expand it.</p>
+          <div id="lbPrevention"></div>
+        </section>
+
+        <section id="lb-treatment">
+          <h2>Treatment</h2>
+          <p class="lb-ov-lede" style="margin-bottom:16px;">Algae in week one or two is completely normal — don't panic. But if you're still dealing with it by week four, it's time to move to active treatment.</p>
+          <p>When algae does appear, the approach is layered. Start with the least invasive steps first and add more based on how serious the problem is. Whatever combination you run, give it a minimum of two weeks — ideally three — before judging whether it's working.</p>
+          <p>If you want to pinpoint the exact cause, split test one change at a time. If you just want the problem gone, run the full framework for your severity level and let it work.</p>
+          <div id="lbSeverity"></div>
+          <div class="lb-flow" id="lbFlow" style="margin-top:28px;"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="theme.js"></script>
+<script src="interactions.js"></script>
+<script>
+(function () {
+  var PREVENTION = [
+    { title: "Start with an aggressive water change schedule",
+      body: "Go overboard on <a href=\"water-change-schedule.html\">water changes</a> at the beginning. It's the easiest, lowest-risk thing you can do — there's no downside, only upside. Consistent water changes dilute excess nutrients before they become a problem. It's a lot easier to prevent an algae outbreak than to recover from one." },
+    { title: "Overfilter and eliminate dead spots",
+      body: "The stronger your flow, the fewer dead spots — and dead spots are where algae takes hold. On my UNS 120m I run two <a href=\"canister-filter.html\">canister filters</a> because one wasn't enough to reach the front half of the tank. The difference in plant health between the two sides was visible. Get the largest filter you can and make sure flow reaches every corner." },
+    { title: "Go bigger than you think you need to",
+      body: "Your risk of algae decreases significantly once you're at 10 gallons or larger. In a small tank, one or two fish dying can genuinely throw off the water chemistry enough to trigger a problem. The larger the body of water, the more stable it is — and the more a small mistake gets absorbed without consequence.<br><br>If you're on the fence between two tank sizes, this is a good reason to go larger. All else being equal, the bigger tank is the more forgiving one." },
+    { title: "Don't dose nutrients early — let your fish do it",
+      body: "Fish waste provides nutrients for plants. In a new tank, that's usually enough. I don't dose fertilizers at the start — it removes a variable entirely and makes the tank easier to read.<br><br>If you do start dosing later, begin at 50% of the recommended amount and increase by 25% each week until you see improvement. Nutrient spikes are the #1 cause of algae. They come from overfeeding, from overdosing, or from a fish dying somewhere out of sight." },
+    { title: "Source your plants carefully",
+      body: "Tissue cultures are guaranteed pest and algae-free — grown above water, so nothing unwanted comes with them. The tradeoff: they have to transition to a submerged environment, and during that transition they grow slowly and are more vulnerable.<br><br>My preference is submerged plants from other hobbyists — no transition period, lower risk if there's no visible algae on them. Either approach works. Just don't buy plants that already have algae on them.",
+      proTip: "Anubias are forgiving and fairly resistant. Bucephalandra is much more sensitive — it needs a stable, mature tank to thrive. Don't start with it." },
+    { title: "Keep light low",
+      body: "Most beginner plants — anubias, mosses, ferns — don't need much <a href=\"light.html\">light</a>. You'd be surprised how little it actually takes. Keep it dimmer than you think is necessary, especially early on." },
+    { title: "Run CO2 from day one",
+      body: "<a href=\"co2.html\">CO2</a> encourages healthy plants, and healthy plants resist algae. Even plants that technically don't need CO2, I run CO2 on every tank with plants. The math is simple: if running CO2 prevents one bad algae outbreak, it's already paid for itself in plants you didn't have to replace — plus the time and frustration saved." },
+    { title: "Start with mature biological media",
+      body: "One of the best things you can do is start a new tank with already-cycled biomedia. I keep one or two canister filters running with an airstone at the bottom between setups — this keeps the biological colony alive and ready. When I'm ready for a new tank, I'm not starting from zero.<br><br>On day one of any new tank, I also dose TurboStart Freshwater at 2–3x the recommended amount to get the biological colony established as fast as possible.",
+      proTip: "Credit: Steven Chong — Keep a canister filter running with just an airstone between tank setups. When you need it, your biological colony is already mature and ready to go." },
+    { title: "Plant heavily from the start",
+      body: "More plants means more nutrient absorption — which means less available for algae. Overplant early, thin it out once the tank is stable.",
+      proTip: "If you have budget left over after covering your equipment, spend it on extra plants. Even a modest amount of extra plant mass from the start gives you a significantly better chance of success — it's one of the highest-value things you can do with remaining budget." },
+    { title: "Dose Excel daily from day one",
+      body: "I use <a href=\"equipment.html\">Seachem Excel</a> every day as a preventative algaecide. If you commit to this from the very first day, you are very unlikely to ever deal with serious algae like black beard algae. Small daily habit, significant long-term payoff." },
+    { title: "Add a cleanup crew early — but understand what they actually do",
+      body: "Algae eaters aren't a fix for an existing problem. If you have a significant outbreak, otocinclus and nerite snails won't solve it. Think of them as ongoing prevention — not a cleanup crew you call after the fact.",
+      proTip: "Amano shrimp are excellent at picking off algae. When you buy them, ask for the smallest ones available. They have a noticeably more voracious appetite than the large ones." },
+    { title: "Use an RODI system",
+      body: "<a href=\"maintenance.html#rodi-setup\">RODI</a> removes the variable of tap water — seasonal mineral shifts, treatment chemicals, inconsistency. You know exactly what's going in. If you're using tap and others in your area have success with it for your plant types, that's fine. But if you're running multiple tanks and want to hold a high standard, RODI is worth it." },
+    { title: "Stay on top of maintenance — trim aggressively and clean the substrate",
+      body: "During every water change, use a turkey baster to free up muck from the substrate, especially in dense carpets or soil where waste accumulates out of sight. That slow buildup can reach a tipping point.<br><br>Trim regularly, and when you see algae on a plant, be honest about whether it will recover. If you're not 80% confident it'll bounce back, cut it. A struggling plant with algae spreading on it is a liability. Remove it before the problem grows." }
+  ];
+
+  var SEVERITY = [
+    { label: "Low problem", steps: "Run Steps 1–2" },
+    { label: "Moderate problem", steps: "Run Steps 1–3" },
+    { label: "Significant problem", steps: "Run Steps 1–5" }
+  ];
+
+  var STEPS = [
+    { num: 1, title: "Increase water changes", body: "More frequent <a href=\"water-change-schedule.html\">water changes</a> dilute nutrients and calm the tank. Zero risk, only upside. Always start here first." },
+    { num: 2, title: "Adjust CO2 and light", list: ["Turn <a href=\"co2.html\">CO2</a> up as high as possible without visibly stressing fish", "Dim <a href=\"light.html\">lights</a> by 25% for a low to moderate problem; 50% for moderate to significant"] },
+    { num: 3, title: "Cut off excess nutrients", list: ["Stop fertilizers immediately", "Reduce fish feeding by 50%"] },
+    { num: 4, title: "Reduce bio-load if overstocked", body: "Shrimp waste in particular accumulates unseen in soil and carpet crevices — a slow buildup that eventually tips the balance. If the tank feels overstocked, reduce numbers." },
+    { num: 5, title: "Add floating plants (red root floaters recommended)", body: "Any floating plant will help — they absorb excess nutrients quickly through their root systems. Red root floaters are the ones I recommend: nicest looking, easiest to manage, and just as effective as anything else." }
+  ];
+  var STEP6 = { num: 6, title: "Spot treat with hydrogen peroxide", body: "Try this before anything stronger. It's cheap, accessible, and worth attempting — roughly a 50/50 shot at working. Don't retreat for at least three days after applying. Give it time to actually work before adding anything else. <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">Watch how to apply it →</a>" };
+  var STEP7 = { num: 7, title: "APT Fix (last resort)", body: "APT Fix is powerful. Use it carefully — and only after everything above has failed." };
+
+  var TRIANGLE_SVG = '<svg viewBox="0 0 280 240" role="img" aria-label="Triangle diagram showing the three variables: CO2, Light, and Nutrients" style="width:100%; max-width:220px; height:auto; overflow:visible;">' +
+    '<line x1="140" y1="20" x2="30" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<line x1="140" y1="20" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<line x1="30" y1="210" x2="250" y2="210" stroke="var(--accent)" stroke-width="1.5"/>' +
+    '<circle cx="140" cy="20" r="7" fill="var(--accent)"/>' +
+    '<circle cx="30" cy="210" r="7" fill="var(--accent)"/>' +
+    '<circle cx="250" cy="210" r="7" fill="var(--accent)"/>' +
+    '<text x="140" y="10" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:500; fill:var(--text);">CO2</text>' +
+    '<text x="30" y="232" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:500; fill:var(--text);">Light</text>' +
+    '<text x="250" y="232" text-anchor="middle" style="font-family:var(--font-mono); font-size:13px; font-weight:500; fill:var(--text);">Nutrients</text>' +
+    '</svg>';
+
+  var APT_SURFACE = [
+    { label: "Rocks or wood", text: "Lower the water level, apply with a very soft paintbrush directly onto the algae, let it sit for about two minutes, then refill. This is the most effective method." },
+    { label: "Plants", text: "Dose the water column instead of applying directly. Topical application is easy to overdo — 30 extra seconds of contact can destroy the plant." }
+  ];
+  var APT_SEVERITY = [
+    { label: "Low to moderate", text: "Start at half the recommended dose." },
+    { label: "Moderate to significant", text: "Full dose." }
+  ];
+
+  document.getElementById('lbTriangleWrap').innerHTML = TRIANGLE_SVG;
+
+  document.getElementById('lbPrevention').innerHTML = PREVENTION.map(function (t, i) {
+    var body = '<p>' + t.body.replace(/<br><br>/g, '</p><p>') + '</p>';
+    if (t.proTip) body += '<div class="lb-quote"><span class="lb-quote-label">Pro tip</span>' + t.proTip + '</div>';
+    return '<details class="lb-tip"><summary><span class="lb-num">' + (i + 1) + '</span>' + t.title + '</summary><div class="lb-tip-body">' + body + '</div></details>';
+  }).join('');
+
+  document.getElementById('lbSeverity').innerHTML = '<div class="severity-grid">' + SEVERITY.map(function (s) {
+    return '<div class="severity-col"><span class="severity-label">' + s.label + '</span><span class="severity-steps">' + s.steps + '</span></div>';
+  }).join('') + '</div>';
+
+  var lbFlowHtml = STEPS.map(function (s) {
+    var body = s.body ? s.body : '<ul>' + s.list.map(function (l) { return '<li>' + l + '</li>'; }).join('') + '</ul>';
+    return '<div class="lb-flow-step"><div class="lb-flow-num">' + s.num + '</div><div><div class="lb-flow-title">' + s.title + '</div><div class="lb-flow-body">' + body + '</div></div></div>';
+  }).join('');
+  lbFlowHtml += '<div class="lb-quote" style="margin:14px 0 0 46px;"><span class="lb-quote-label">Important</span>This is a Band-Aid, not a solution. Steps 1–4 are what actually fix the underlying problem. Floating plants help, but they\'re not addressing the root cause. And once you add them, you need to keep them until the tank is in significantly better condition — remove them too early, before the balance is restored and plant growth has caught up, and the problem comes back. Keep the Band-Aid on until you actually feel better.</div>';
+  lbFlowHtml += '<div class="lb-escalate"><div class="lb-escalate-node">No improvement after 2 weeks → Step 6</div>' +
+    '<div class="lb-flow-step"><div class="lb-flow-num">' + STEP6.num + '</div><div><div class="lb-flow-title">' + STEP6.title + '</div><div class="lb-flow-body">' + STEP6.body + '</div></div></div>' +
+    '<div class="lb-escalate-node">Still no improvement → Step 7</div>' +
+    '<div class="lb-flow-step"><div class="lb-flow-num">' + STEP7.num + '</div><div><div class="lb-flow-title">' + STEP7.title + '</div><div class="lb-flow-body">' + STEP7.body +
+    '<div style="margin-top:12px; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px;">' +
+    '<div><span style="font-family:var(--font-mono); font-size:0.65rem; text-transform:uppercase; color:var(--text-faint);">By surface</span>' + APT_SURFACE.map(function (r) { return '<div style="margin-top:6px;"><strong style="color:var(--text); font-size:0.85rem;">' + r.label + '</strong><div style="font-size:0.85rem;">' + r.text + '</div></div>'; }).join('') + '</div>' +
+    '<div><span style="font-family:var(--font-mono); font-size:0.65rem; text-transform:uppercase; color:var(--text-faint);">By severity</span>' + APT_SEVERITY.map(function (r) { return '<div style="margin-top:6px;"><strong style="color:var(--text); font-size:0.85rem;">' + r.label + '</strong><div style="font-size:0.85rem;">' + r.text + '</div></div>'; }).join('') + '</div>' +
+    '</div></div></div></div></div>';
+  document.getElementById('lbFlow').innerHTML = lbFlowHtml;
+})();
+</script>
+</body>
+</html>
