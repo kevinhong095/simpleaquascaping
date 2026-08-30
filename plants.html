@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Only 4 Plants I Recommend — Planted Tank Guide</title>
+<title>The Foundational Four — Planted Tank Guide</title>
 <meta name="description" content="The best plants to start with — that are actually worth mastering. Ferns, mosses, Anubias, and Bucephalandra, ranked by hardiness.">
 
 <link rel="icon" type="image/png" href="/favicon.png">
@@ -52,8 +52,8 @@
   }
 
   .plants-ref .note-box {
-    background: var(--basket-gold-bg);
-    border: 1px solid rgba(150, 117, 26, 0.3);
+    background: rgba(150, 117, 26, 0.12);
+    border: 1px solid rgba(150, 117, 26, 0.25);
     border-radius: 14px;
     padding: 24px 28px;
     margin-bottom: 8px;
@@ -79,12 +79,10 @@
     transition: transform var(--transition), border-color var(--transition);
   }
   .plants-ref .hardiness-item:hover { transform: translateY(-2px); }
-  .plants-ref .hardiness-item.h-hardy { background: color-mix(in srgb, var(--accent) 12%, var(--card-bg)); border-top-color: var(--accent); }
-  .plants-ref .hardiness-item.h-hardy .hardiness-label { color: var(--accent); }
-  .plants-ref .hardiness-item.h-medium { background: color-mix(in srgb, var(--badge-gold) 12%, var(--card-bg)); border-top-color: var(--badge-gold); }
-  .plants-ref .hardiness-item.h-medium .hardiness-label { color: var(--badge-gold); }
-  .plants-ref .hardiness-item.h-delicate { background: color-mix(in srgb, #D64545 12%, var(--card-bg)); border-top-color: #D64545; }
-  .plants-ref .hardiness-item.h-delicate .hardiness-label { color: #D64545; }
+  .plants-ref .hardiness-item.easiest { background: rgba(72,171,116,0.22); border-top-color: var(--accent); }
+  .plants-ref .hardiness-item.easy { background: rgba(72,171,116,0.14); border-top-color: var(--accent); }
+  .plants-ref .hardiness-item.easy-ish { background: rgba(72,171,116,0.07); border-top-color: var(--accent); }
+  .plants-ref .hardiness-item .hardiness-label { color: var(--accent); }
   .plants-ref .hardiness-name { font-weight: 700; color: var(--text); font-size: 1rem; display: block; margin-bottom: 4px; }
   .plants-ref .hardiness-label {
     font-family: var(--font-mono);
@@ -122,9 +120,9 @@
     border-radius: 999px;
     flex-shrink: 0;
   }
-  .plants-ref .plant-pill.h-hardy { color: var(--accent); background: var(--basket-accent-bg); }
-  .plants-ref .plant-pill.h-medium { color: var(--badge-gold); background: var(--basket-gold-bg); }
-  .plants-ref .plant-pill.h-delicate { color: #D64545; background: var(--basket-red-bg); }
+  .plants-ref .plant-pill.easiest  { color: var(--accent); background: rgba(72,171,116,0.55); }
+  .plants-ref .plant-pill.easy     { color: var(--accent); background: rgba(72,171,116,0.35); }
+  .plants-ref .plant-pill.easy-ish { color: var(--accent); background: rgba(72,171,116,0.18); }
 
   .plants-ref .variety-list { display: flex; flex-direction: column; gap: 7px; margin: 12px 0 18px; padding: 0; max-width: none; }
   .plants-ref .variety-list li {
@@ -163,12 +161,34 @@
     display: block;
     margin-bottom: 6px;
   }
-  .plants-ref .watch-out { margin-top: 14px; font-size: 0.88rem; color: #D64545; line-height: 1.6; }
-  .plants-ref .watch-out strong { color: #D64545; }
+  .plants-ref .why-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .plants-ref .why-table td {
+    padding: 14px 0;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .plants-ref .why-table tr:last-child td { border-bottom: none; }
+  .plants-ref .why-table td:first-child {
+    font-weight: 700;
+    color: var(--text);
+    width: 150px;
+    padding-right: 24px;
+    white-space: nowrap;
+  }
+  .plants-ref .why-table td:last-child { color: var(--text-muted); }
 
   @media (max-width: 760px) {
     .plants-ref h2 { font-size: 1.7rem; }
     .lb-bottom-nav a { padding: 8px 12px; font-size: 0.72rem; }
+  }
+  @media (max-width: 600px) {
+    .plants-ref .why-table, .plants-ref .why-table tbody, .plants-ref .why-table tr, .plants-ref .why-table td { display: block; width: auto; }
+    .plants-ref .why-table tr { padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .plants-ref .why-table tr:last-child { border-bottom: none; }
+    .plants-ref .why-table td { border-bottom: none; padding: 0; white-space: normal; }
+    .plants-ref .why-table td:first-child { padding-bottom: 4px; }
   }
 </style>
 </head>
@@ -197,7 +217,7 @@
     <div class="wrap">
       <a href="index.html" class="back-link">← Back to main guide</a>
       <p class="read-meta">Advanced</p>
-      <h1>The Only 4 Plants I Recommend</h1>
+      <h1>The Foundational Four</h1>
     </div>
   </header>
 
@@ -206,31 +226,71 @@
 
       <section id="pl-overview">
         <h2>Overview</h2>
-        <p class="lb-lede">The best plants to start with — that are actually worth mastering.</p>
+        <p>When you start aquascaping, few things are as overwhelming as plants. What size? What shape? What color? Where do they go? How much light do they need?</p>
+        <p>You get the point.</p>
+        <p>To keep life simple, all of my plants are:</p>
+        <ul class="tip-list" style="max-width:none;">
+          <li><strong>Low tech</strong> — they'll grow fine without CO2, but thrive consistently with it</li>
+          <li><strong>Slow growing</strong> — don't require much maintenance</li>
+          <li><strong>Easy to care for</strong> — low risk of dying off</li>
+        </ul>
 
-        <div class="note-box">
-          <p>These are all epiphytes. They attach to hardscape — rocks, driftwood — instead of rooting into substrate. That simplifies planting, makes rescaping easier, and means you're not dependent on a specific substrate mix to keep them healthy.</p>
-        </div>
+        <blockquote class="pull-quote">"80% of your results come from 20% of your effort."</blockquote>
 
-        <blockquote class="pull-quote">"80% of great planted tanks are built with 20% of the plants. Ferns, mosses, Anubias, and Bucephalandra are that 20%."</blockquote>
+        <p>This isn't to say there aren't other successful approaches to aquascaping — this is just the one that works best for me. With this system, I'm able to:</p>
+        <ul class="tip-list" style="max-width:none;">
+          <li>Build 95%+ of the aquascapes I want with 4 easy plants</li>
+          <li>Keep plants that are easy to use, easy to maintain, and as a result never deal with algae</li>
+          <li>Save hundreds of hours and a lot of money — and ultimately enjoy the hobby more, which is all I care about</li>
+        </ul>
 
         <div class="hardiness-grid">
-          <a class="hardiness-item h-hardy" href="#pl-ferns">
+          <a class="hardiness-item easiest" href="#pl-ferns">
             <span class="hardiness-name">Ferns</span>
-            <span class="hardiness-label">Very hardy</span>
+            <span class="hardiness-label">Easiest</span>
           </a>
-          <a class="hardiness-item h-hardy" href="#pl-mosses">
+          <a class="hardiness-item easiest" href="#pl-mosses">
             <span class="hardiness-name">Mosses</span>
-            <span class="hardiness-label">Very hardy</span>
+            <span class="hardiness-label">Easiest</span>
           </a>
-          <a class="hardiness-item h-medium" href="#pl-anubias">
+          <a class="hardiness-item easy" href="#pl-anubias">
             <span class="hardiness-name">Anubias</span>
-            <span class="hardiness-label">Decently hardy</span>
+            <span class="hardiness-label">Easy</span>
           </a>
-          <a class="hardiness-item h-delicate" href="#pl-bucephalandra">
+          <a class="hardiness-item easy-ish" href="#pl-bucephalandra">
             <span class="hardiness-name">Bucephalandra</span>
-            <span class="hardiness-label">Least hardy</span>
+            <span class="hardiness-label">Easy-ish</span>
           </a>
+        </div>
+      </section>
+
+      <section id="pl-why">
+        <h2>Why These Plants Work</h2>
+        <div class="table-wrap">
+          <table class="why-table">
+            <tbody>
+              <tr>
+                <td>Low Algae Risk</td>
+                <td>All of these plants have low light requirements — which makes it hard for algae to get out of control. They also do great in shaded areas, giving you more flexibility in how you design your tank.</td>
+              </tr>
+              <tr>
+                <td>Low Maintenance</td>
+                <td>They grow so slowly that maintenance is practically zero. Weekly water changes, a turkey baster to clear detritus off the leaves, a trim every 3–6 months. More time enjoying the tank.</td>
+              </tr>
+              <tr>
+                <td>No Aquasoil Needed</td>
+                <td>Aquasoil leaches nutrients into the water during the first month — paired with new plants still transitioning and an unstable tank, that's why most people deal with algae early on. An inert substrate (sand, small pebbles) means one less problem to worry about.</td>
+              </tr>
+              <tr>
+                <td>Flexibility</td>
+                <td>Once stem plants are in soil, that's where they stay. Move them and your tank turns into a brown smoothie. With epiphytes, attached with super glue or plant weights, you can move them anywhere at any time with zero issues.</td>
+              </tr>
+              <tr>
+                <td>Easy to Find</td>
+                <td>Simple enough that they're available at pretty much every in-person and online retailer. No hunting around.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -249,7 +309,7 @@
         <div class="plant-profile" id="pl-ferns">
           <div class="plant-head">
             <h3>Ferns</h3>
-            <span class="plant-pill h-hardy">Very hardy</span>
+            <span class="plant-pill easiest">Easiest</span>
           </div>
           <p>Java Ferns and Bolbitis are the most forgiving plants in the hobby. They grow slowly, tolerate a wide range of water parameters, and do well in low light. If you're just getting started, put most of your budget here.</p>
           <span class="variety-label">Varieties I recommend</span>
@@ -270,38 +330,36 @@
         <div class="plant-profile" id="pl-mosses">
           <div class="plant-head">
             <h3>Mosses</h3>
-            <span class="plant-pill h-hardy">Very hardy</span>
+            <span class="plant-pill easiest">Easiest</span>
           </div>
           <p>Most moss sold outside of tissue culture comes with free pests &amp; snails, which is a significant problem and very difficult to deal with after the fact.</p>
           <div class="buy-pref">
             <span class="buy-pref-label">My buying preference</span>
-            <p style="margin:0;">Buy tissue culture only. It costs more and can be harder to find, but it's not worth the risk.</p>
+            <p style="margin:0;">Buy tissue culture only. It costs more and can be harder to find, but it's not worth the risk. Do not buy mini coral moss — it's invasive and nearly impossible to remove once it establishes in a tank.</p>
           </div>
-          <p class="watch-out"><strong>Watch out.</strong> Do not buy mini coral moss — it's invasive and nearly impossible to remove once it establishes in a tank.</p>
         </div>
 
         <div class="plant-profile" id="pl-anubias">
           <div class="plant-head">
             <h3>Anubias</h3>
-            <span class="plant-pill h-medium">Decently hardy</span>
+            <span class="plant-pill easy">Easy</span>
           </div>
           <p>This is my favorite plant group. Anubias are extremely hardy, slow-growing, and pretty much the same across all varieties in terms of care requirements. The differences between varieties are mostly cosmetic — leaf size, shape, texture. Beyond that, treat them all the same.</p>
           <div class="buy-pref">
             <span class="buy-pref-label">My buying preference</span>
             <p style="margin:0;">Tissue culture is preferred. Emersed Anubias are common and transition reasonably well, but tissue culture avoids the snail and pest problem. When buying locally, check that the rhizome is firm and green — soft or brown rhizomes are a sign of rot.</p>
           </div>
-          <p class="watch-out"><strong>Watch out.</strong> Don't bury the rhizome. Attach it to hardscape. This is the most common mistake with Anubias and it will kill the plant slowly.</p>
         </div>
 
         <div class="plant-profile" id="pl-bucephalandra">
           <div class="plant-head">
             <h3>Bucephalandra</h3>
-            <span class="plant-pill h-delicate">Least hardy</span>
+            <span class="plant-pill easy-ish">Easy-ish</span>
           </div>
           <p>Bucephalandra — "Buce" — is the most delicate of the 4. The variety of colors and textures is unmatched, but it requires patience and the right purchase decision upfront.</p>
           <div class="buy-pref">
             <span class="buy-pref-label">My buying preference</span>
-            <p style="margin:0;">First preference is to buy it grown submerged. If you buy emersed-grown Bucephalandra, expect nearly all of it to melt. It will come back — it will just take a long time, typically at least 3+ months. If submerged isn't available, emersed is fine — just don't do it for your first tank. Wait until you've got a stable system and you're okay watching something melt for a few months before it bounces back.</p>
+            <p style="margin:0;">First preference is to buy it grown submerged. If you buy emersed-grown Bucephalandra, expect nearly all of it to melt. It will come back — it will just take a long time (typically at least 3+ months, so that's why I recommend getting it grown submerged and waiting 3 months so you have minimal die-off). If submerged isn't available, emersed is fine — just don't do it for your first tank. Wait until you've got a stable system and you're okay watching something melt for a few months before it bounces back.</p>
           </div>
         </div>
 
@@ -312,6 +370,7 @@
 
   <nav class="lb-bottom-nav">
     <a href="#pl-overview" data-section="pl-overview">Overview</a>
+    <a href="#pl-why" data-section="pl-why">Why These Plants Work</a>
     <a href="#pl-principles" data-section="pl-principles">Principles</a>
     <a href="#pl-plants" data-section="pl-plants">The Plants</a>
   </nav>
@@ -323,7 +382,7 @@
 <script>
 (function () {
   var navLinks = document.querySelectorAll('.lb-bottom-nav a');
-  var sections = ['pl-overview', 'pl-principles', 'pl-plants'].map(function (id) { return document.getElementById(id); });
+  var sections = ['pl-overview', 'pl-why', 'pl-principles', 'pl-plants'].map(function (id) { return document.getElementById(id); });
   if ('IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {

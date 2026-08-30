@@ -365,7 +365,7 @@ a[target="_blank"]::after {
   font-size: 0.98rem;
   color: var(--text);
   text-decoration: none;
-  padding: 10px 2px;
+  padding: 12px 2px;
   border-bottom: 1px solid var(--border);
   transition: color var(--transition);
 }
@@ -373,6 +373,13 @@ a[target="_blank"]::after {
 .advanced-list > :last-child { border-bottom: none; }
 .advanced-list a:hover, .advanced-list a:focus-visible { color: var(--accent); }
 .advanced-list .advanced-item-soon { color: var(--text-faint); cursor: default; }
+.advanced-list .advanced-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  font-weight: 400;
+  margin-top: 3px;
+}
 
 /* ---------- Advanced sub-page header (full-width, larger h1) ---------- */
 .page-header.advanced-page-header h1 {
