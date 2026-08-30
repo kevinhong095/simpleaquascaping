@@ -950,29 +950,46 @@ a[target="_blank"]::after {
 }
 
 /* ---------- Coming Soon ---------- */
-.coming-soon { background: var(--bg-soft); border-top: 1px solid var(--border); }
+.coming-soon { background: var(--bg-soft); border-top: 1px solid var(--border); padding: 44px 0; }
+.coming-soon .section-head { margin-bottom: 16px; }
 .soon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2px 40px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 32px;
 }
 .soon-list li {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 0;
+  gap: 9px;
+  padding: 6px 0;
   border-bottom: 1px dashed var(--border-strong);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 .soon-list li::before {
   content: "";
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 3px;
   border: 1.5px solid var(--border-strong);
   background: transparent;
   flex-shrink: 0;
+}
+.soon-list li.done {
+  text-decoration: line-through;
+  color: var(--text-faint);
+}
+.soon-list li.done::before {
+  content: "✓";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 /* ---------- Footer ---------- */
