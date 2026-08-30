@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Foundational Four — Planted Tank Guide</title>
+<title>The Only 4 Plants I Recommend — Planted Tank Guide</title>
 <meta name="description" content="The best plants to start with — that are actually worth mastering. Ferns, mosses, Anubias, and Bucephalandra, ranked by hardiness.">
 
 <link rel="icon" type="image/png" href="/favicon.png">
@@ -38,79 +38,167 @@
   .plants-ref p { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin: 0 0 14px; }
   .plants-ref a { color: var(--accent); }
   .plants-ref .lb-lede { font-weight: 500; color: var(--text); font-size: 1rem; margin-bottom: 12px; }
-  .plants-ref .callout p { font-size: 0.94rem; color: var(--text); line-height: 1.6; margin: 0; }
 
+  /* Pareto callout — boxed, centered, no left bar */
   .plants-ref .pull-quote {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    color: var(--text);
-    border-left: 3px solid var(--accent);
-    padding: 4px 0 4px 22px;
-    margin: 24px 0;
+    font-weight: 600;
+    font-size: 1.68rem;
+    line-height: 1.4;
+    color: var(--accent);
+    text-align: center;
+    background: var(--accent-soft);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin: 28px 0;
   }
 
-  .plants-ref .note-box {
-    background: rgba(150, 117, 26, 0.12);
-    border: 1px solid rgba(150, 117, 26, 0.25);
-    border-radius: 14px;
-    padding: 24px 28px;
-    margin-bottom: 8px;
-  }
-  .plants-ref .note-box p { margin-bottom: 12px; }
-  .plants-ref .note-box p:last-child { margin-bottom: 0; }
-
-  /* Hardiness ladder — reuses the severity color system from algae.html */
-  .plants-ref .hardiness-grid {
+  /* 3 traits — icon feature grid */
+  .plants-ref .trait-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin: 28px 0 8px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin: 18px 0 28px;
   }
-  .plants-ref .hardiness-item {
-    display: block;
-    text-decoration: none;
+  .plants-ref .trait-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-top: 2px solid var(--accent);
-    border-radius: var(--radius);
-    padding: 16px 18px;
-    transition: transform var(--transition), border-color var(--transition);
+    border-radius: 12px;
+    padding: 22px 18px;
+    text-align: center;
   }
-  .plants-ref .hardiness-item:hover { transform: translateY(-2px); }
-  .plants-ref .hardiness-item.easiest { background: rgba(72,171,116,0.22); border-top-color: var(--accent); }
-  .plants-ref .hardiness-item.easy { background: rgba(72,171,116,0.14); border-top-color: var(--accent); }
-  .plants-ref .hardiness-item.easy-ish { background: rgba(72,171,116,0.07); border-top-color: var(--accent); }
-  .plants-ref .hardiness-item .hardiness-label { color: var(--accent); }
-  .plants-ref .hardiness-name { font-weight: 700; color: var(--text); font-size: 1rem; display: block; margin-bottom: 4px; }
-  .plants-ref .hardiness-label {
+  .plants-ref .trait-icon {
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+  .plants-ref .trait-card h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 6px;
+  }
+  .plants-ref .trait-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+  /* Hardiness spectrum — horizontal timeline, green -> gold -> blue */
+  .plants-ref .spectrum { position: relative; height: 128px; margin: 32px 0 20px; }
+  .plants-ref .spectrum-track {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    right: 6%;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--badge-gold), var(--badge-blue));
+    transform: translateY(-50%);
+  }
+  .plants-ref .spectrum-stop {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .plants-ref .spectrum-plants { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .plants-ref .spectrum-plants a {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .plants-ref .spectrum-plants a:hover { color: var(--accent); }
+  .plants-ref .spectrum-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--border-strong);
+  }
+  .plants-ref .spectrum-dot.dot-easiest { background: var(--accent); }
+  .plants-ref .spectrum-dot.dot-easy { background: var(--badge-gold); }
+  .plants-ref .spectrum-dot.dot-easy-ish { background: var(--badge-blue); }
+  .plants-ref .spectrum-tier {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.66rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    color: var(--text-faint);
   }
 
+  /* Traditional bordered table */
+  .plants-ref .why-table { width: 100%; border-collapse: collapse; margin-top: 16px; border: 1px solid var(--border-strong); }
+  .plants-ref .why-table td {
+    border: 1px solid var(--border-strong);
+    padding: 14px 16px;
+    vertical-align: top;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .plants-ref .why-table td:first-child {
+    font-weight: 700;
+    color: var(--text);
+    width: 150px;
+    background: var(--bg-soft);
+    white-space: nowrap;
+  }
+  .plants-ref .why-table td:last-child { color: var(--text-muted); }
+
   /* Plant profile */
-  .plants-ref .plant-profile { padding-top: 8px; }
+  .plants-ref .plant-flow { position: relative; padding-left: 28px; }
+  .plants-ref .plant-flow::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 28px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--badge-gold), var(--badge-blue));
+  }
+  .plants-ref .plant-profile { position: relative; padding-top: 8px; }
+  .plants-ref .plant-profile::before {
+    content: "";
+    position: absolute;
+    left: -28px;
+    top: 12px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
   .plants-ref .plant-profile + .plant-profile {
     margin-top: 44px;
     padding-top: 44px;
     border-top: 1px dashed var(--border-strong);
   }
-  .plants-ref .plant-head {
+  .plants-ref .plant-flow-arrow {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
+    justify-content: center;
+    width: 16px;
+    margin: 20px 0 0 -28px;
+    animation: plantFlowBounce 1.8s ease-in-out infinite;
   }
-  .plants-ref .plant-head h3 {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0;
+  @keyframes plantFlowBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .plants-ref .plant-flow-arrow { animation: none; }
+  }
+  .plants-ref .plant-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .plants-ref .plant-head h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 0; }
   .plants-ref .plant-pill {
     font-family: var(--font-mono);
     font-size: 0.66rem;
@@ -120,17 +208,12 @@
     border-radius: 999px;
     flex-shrink: 0;
   }
-  .plants-ref .plant-pill.easiest  { color: var(--accent); background: rgba(72,171,116,0.55); }
-  .plants-ref .plant-pill.easy     { color: var(--accent); background: rgba(72,171,116,0.35); }
-  .plants-ref .plant-pill.easy-ish { color: var(--accent); background: rgba(72,171,116,0.18); }
+  .plants-ref .plant-pill.easiest  { color: var(--accent); background: var(--accent-soft); }
+  .plants-ref .plant-pill.easy     { color: var(--badge-gold); background: var(--badge-gold-soft); }
+  .plants-ref .plant-pill.easy-ish { color: var(--badge-blue); background: var(--badge-blue-soft); }
 
   .plants-ref .variety-list { display: flex; flex-direction: column; gap: 7px; margin: 12px 0 18px; padding: 0; max-width: none; }
-  .plants-ref .variety-list li {
-    position: relative;
-    padding-left: 16px;
-    font-size: 0.92rem;
-    color: var(--text);
-  }
+  .plants-ref .variety-list li { position: relative; padding-left: 16px; font-size: 0.92rem; color: var(--text); }
   .plants-ref .variety-list li::before {
     content: "";
     position: absolute;
@@ -161,34 +244,16 @@
     display: block;
     margin-bottom: 6px;
   }
-  .plants-ref .why-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-  .plants-ref .why-table td {
-    padding: 14px 0;
-    vertical-align: top;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.92rem;
-    line-height: 1.6;
-  }
-  .plants-ref .why-table tr:last-child td { border-bottom: none; }
-  .plants-ref .why-table td:first-child {
-    font-weight: 700;
-    color: var(--text);
-    width: 150px;
-    padding-right: 24px;
-    white-space: nowrap;
-  }
-  .plants-ref .why-table td:last-child { color: var(--text-muted); }
 
   @media (max-width: 760px) {
     .plants-ref h2 { font-size: 1.7rem; }
     .lb-bottom-nav a { padding: 8px 12px; font-size: 0.72rem; }
   }
   @media (max-width: 600px) {
-    .plants-ref .why-table, .plants-ref .why-table tbody, .plants-ref .why-table tr, .plants-ref .why-table td { display: block; width: auto; }
-    .plants-ref .why-table tr { padding-bottom: 14px; border-bottom: 1px solid var(--border); }
-    .plants-ref .why-table tr:last-child { border-bottom: none; }
-    .plants-ref .why-table td { border-bottom: none; padding: 0; white-space: normal; }
-    .plants-ref .why-table td:first-child { padding-bottom: 4px; }
+    .plants-ref .spectrum { height: auto; display: flex; flex-direction: column; gap: 18px; }
+    .plants-ref .spectrum-track { display: none; }
+    .plants-ref .spectrum-stop { position: static; transform: none; flex-direction: row; }
+    .plants-ref .spectrum-plants { flex-direction: row; gap: 6px; }
   }
 </style>
 </head>
@@ -217,7 +282,10 @@
     <div class="wrap">
       <a href="index.html" class="back-link">← Back to main guide</a>
       <p class="read-meta">Advanced</p>
-      <h1>The Foundational Four</h1>
+      <h1>The Only 4 Plants I Recommend</h1>
+      <div class="page-intro">
+        <p>The best plants to start with (that are actually worth mastering)</p>
+      </div>
     </div>
   </header>
 
@@ -229,11 +297,30 @@
         <p>When you start aquascaping, few things are as overwhelming as plants. What size? What shape? What color? Where do they go? How much light do they need?</p>
         <p>You get the point.</p>
         <p>To keep life simple, all of my plants are:</p>
-        <ul class="tip-list" style="max-width:none;">
-          <li><strong>Low tech</strong> — they'll grow fine without CO2, but thrive consistently with it</li>
-          <li><strong>Slow growing</strong> — don't require much maintenance</li>
-          <li><strong>Easy to care for</strong> — low risk of dying off</li>
-        </ul>
+
+        <div class="trait-grid">
+          <div class="trait-card">
+            <div class="trait-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13V6a1 1 0 0 1 1-1h7a7 7 0 0 1 7 7 7 7 0 0 1-7 7Z"/><path d="M11 13 4 6"/></svg>
+            </div>
+            <h4>Low tech</h4>
+            <p>They'll grow fine without CO2, but thrive consistently with it.</p>
+          </div>
+          <div class="trait-card">
+            <div class="trait-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <h4>Slow growing</h4>
+            <p>Don't require much maintenance.</p>
+          </div>
+          <div class="trait-card">
+            <div class="trait-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h4>Easy to care for</h4>
+            <p>Low risk of dying off.</p>
+          </div>
+        </div>
 
         <blockquote class="pull-quote">"80% of your results come from 20% of your effort."</blockquote>
 
@@ -244,23 +331,23 @@
           <li>Save hundreds of hours and a lot of money — and ultimately enjoy the hobby more, which is all I care about</li>
         </ul>
 
-        <div class="hardiness-grid">
-          <a class="hardiness-item easiest" href="#pl-ferns">
-            <span class="hardiness-name">Ferns</span>
-            <span class="hardiness-label">Easiest</span>
-          </a>
-          <a class="hardiness-item easiest" href="#pl-mosses">
-            <span class="hardiness-name">Mosses</span>
-            <span class="hardiness-label">Easiest</span>
-          </a>
-          <a class="hardiness-item easy" href="#pl-anubias">
-            <span class="hardiness-name">Anubias</span>
-            <span class="hardiness-label">Easy</span>
-          </a>
-          <a class="hardiness-item easy-ish" href="#pl-bucephalandra">
-            <span class="hardiness-name">Bucephalandra</span>
-            <span class="hardiness-label">Easy-ish</span>
-          </a>
+        <div class="spectrum">
+          <div class="spectrum-track"></div>
+          <div class="spectrum-stop" style="left:14%;">
+            <span class="spectrum-plants"><a href="#pl-ferns">Ferns</a><a href="#pl-mosses">Mosses</a></span>
+            <span class="spectrum-dot dot-easiest"></span>
+            <span class="spectrum-tier">Easiest</span>
+          </div>
+          <div class="spectrum-stop" style="left:50%;">
+            <span class="spectrum-plants"><a href="#pl-anubias">Anubias</a></span>
+            <span class="spectrum-dot dot-easy"></span>
+            <span class="spectrum-tier">Easy</span>
+          </div>
+          <div class="spectrum-stop" style="left:86%;">
+            <span class="spectrum-plants"><a href="#pl-bucephalandra">Bucephalandra</a></span>
+            <span class="spectrum-dot dot-easy-ish"></span>
+            <span class="spectrum-tier">Easy-ish</span>
+          </div>
         </div>
       </section>
 
@@ -294,18 +381,10 @@
         </div>
       </section>
 
-      <section id="pl-principles">
-        <h2>Basic Principles</h2>
-        <ul class="tip-list" style="max-width:none;">
-          <li><strong>Buy tissue culture whenever you can.</strong> Tissue culture plants are lab-grown, pest-free, and snail-free. For mosses especially, this isn't optional — it's the only way I'd buy them. Online availability is good; local fish stores carry it inconsistently, so call ahead.</li>
-          <li><strong>Plant heavily from the start.</strong> A heavily planted tank from day 1 means less free nutrients for algae to feed on. Don't wait until the hardscape looks right — start dense and thin later if needed.</li>
-          <li><strong>These plants don't go in substrate.</strong> Epiphytes need to be attached to hardscape, not buried. Burying the rhizome causes rot. Use super glue gel or fishing line to tie them to rocks or driftwood.</li>
-        </ul>
-      </section>
-
       <section id="pl-plants">
         <h2>The Plants</h2>
 
+        <div class="plant-flow">
         <div class="plant-profile" id="pl-ferns">
           <div class="plant-head">
             <h3>Ferns</h3>
@@ -362,6 +441,10 @@
             <p style="margin:0;">First preference is to buy it grown submerged. If you buy emersed-grown Bucephalandra, expect nearly all of it to melt. It will come back — it will just take a long time (typically at least 3+ months, so that's why I recommend getting it grown submerged and waiting 3 months so you have minimal die-off). If submerged isn't available, emersed is fine — just don't do it for your first tank. Wait until you've got a stable system and you're okay watching something melt for a few months before it bounces back.</p>
           </div>
         </div>
+        <div class="plant-flow-arrow" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v11M3 8l5 5 5-5" stroke="var(--badge-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        </div>
 
       </section>
 
@@ -371,7 +454,6 @@
   <nav class="lb-bottom-nav">
     <a href="#pl-overview" data-section="pl-overview">Overview</a>
     <a href="#pl-why" data-section="pl-why">Why These Plants Work</a>
-    <a href="#pl-principles" data-section="pl-principles">Principles</a>
     <a href="#pl-plants" data-section="pl-plants">The Plants</a>
   </nav>
 
@@ -382,7 +464,7 @@
 <script>
 (function () {
   var navLinks = document.querySelectorAll('.lb-bottom-nav a');
-  var sections = ['pl-overview', 'pl-why', 'pl-principles', 'pl-plants'].map(function (id) { return document.getElementById(id); });
+  var sections = ['pl-overview', 'pl-why', 'pl-plants'].map(function (id) { return document.getElementById(id); });
   if ('IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
