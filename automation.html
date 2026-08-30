@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Zero-Effort Automation Setup — Simple Aquascaping</title>
+<meta name="description" content="How I automated everything — lights, CO2, skimmers, and filters — with smart plugs and simple schedules.">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:title" content="Simple Aquascaping">
+<meta property="og:description" content="A practical, no-BS guide to aquascaping">
+<meta property="og:image" content="https://simpleaquascaping.com/preview.jpg">
+<meta property="og:url" content="https://simpleaquascaping.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  .automation-ref .lb-content-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8px 24px 96px;
+  }
+  .automation-ref h2 {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 16px;
+    padding-top: 8px;
+    scroll-margin-top: 80px;
+  }
+  .automation-ref h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text);
+    margin: 36px 0 12px;
+  }
+  .automation-ref h3:first-of-type { margin-top: 28px; }
+  .automation-ref section + section { margin-top: 56px; }
+  .automation-ref p { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin: 0 0 14px; }
+  .automation-ref a { color: var(--accent); }
+
+  .automation-ref .use-cases-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+    display: block;
+    margin: 16px 0 10px;
+  }
+  .automation-ref .tip-list { margin-bottom: 4px; }
+
+  /* Equipment list */
+  .automation-ref .equip-list { display: flex; flex-direction: column; gap: 10px; margin: 8px 0 4px; }
+  .automation-ref .equip-item {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .automation-ref .equip-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  /* Pro Tip callout */
+  .automation-ref .pro-tip {
+    background: color-mix(in srgb, var(--badge-gold) 12%, var(--card-bg));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 26px;
+    margin-top: 8px;
+  }
+  .automation-ref .pro-tip p:last-of-type { margin-bottom: 0; }
+  .automation-ref .pro-tip-diagram { margin: 20px 0 4px; }
+  .automation-ref .pro-tip-diagram svg { width: 100%; height: auto; display: block; }
+
+  @media (max-width: 760px) {
+    .automation-ref h2 { font-size: 1.7rem; }
+    .lb-bottom-nav a { padding: 8px 12px; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark">Planted Tank Guide</a>
+    <div class="nav-links">
+      <a href="index.html#setup">Setup</a>
+      <a href="index.html#routine">Routine</a>
+      <a href="index.html#resources">Resources</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+        <span id="themeToggleLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <header class="page-header advanced-page-header">
+    <div class="wrap">
+      <a href="index.html" class="back-link">← Back to main guide</a>
+      <p class="read-meta">Advanced</p>
+      <h1>My Zero-Effort Automation Setup</h1>
+      <div class="page-intro">
+        <p>How I automated everything — lights, CO2, skimmers, and filters.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="automation-ref">
+    <div class="lb-content-wrap">
+
+      <section id="auto-overview">
+        <h2>Overview</h2>
+        <p>Over the years, I've tried pretty much every type of smart plug and timer setup out there.</p>
+        <p>One thing most people don't know: while there are a lot of cheap options on Amazon, you want to buy something with longevity. I've used budget brands before — and when they stop producing them, the app stops working and you're left with a bunch of useless plugs. Buy something that's going to last.</p>
+        <p>I highly recommend Kasa smart plugs. They're reliable, the app is well-supported, and they're what I use across all my tanks.</p>
+      </section>
+
+      <section id="auto-schedule">
+        <h2>My Schedule</h2>
+
+        <h3>Lights</h3>
+        <p>I run my lights 6 hours a day — 4:00 PM to 10:00 PM.</p>
+        <span class="use-cases-label">Use cases</span>
+        <ul class="tip-list">
+          <li>Walking into your apartment with guests? Turn the lights on before you even get through the door.</li>
+          <li>Want to darken the room to sleep? Kill the lights instantly from your phone — no fumbling with switches.</li>
+        </ul>
+
+        <h3>CO2</h3>
+        <p>I run CO2 for 8 hours total — starting 2 hours before lights turn on. CO2 needs time to dissolve and build up in the water before your plants are actively photosynthesizing. By the time the lights come on, it's already there.</p>
+        <span class="use-cases-label">Use cases</span>
+        <ul class="tip-list">
+          <li>Adding new fish from the store? You can temporarily cut CO2 to raise oxygen levels while they acclimate — without touching anything physically.</li>
+        </ul>
+
+        <h3>Filters</h3>
+        <p>Filters run 24/7. But I use smart plugs so I can turn off every filter in my place with a single tap — useful for feeding, water changes, or any time you need flow to stop instantly.</p>
+        <span class="use-cases-label">Use cases</span>
+        <ul class="tip-list">
+          <li>Feeding time — turn off all filters so food doesn't get sucked away before your fish eat.</li>
+          <li>Catching a fish — kill the flow so the current isn't working against you.</li>
+        </ul>
+
+        <h3>Skimmers</h3>
+        <p>Depends on the tank. For tanks with fish that like to swim near the surface, I don't run the skimmer all day. My schedule: wait 1 hour after lights on, run the skimmer for 30 minutes, then off. Keeps the surface clean without disrupting the fish.</p>
+        <span class="use-cases-label">Use cases</span>
+        <ul class="tip-list">
+          <li>Surface agitation affects how much CO2 off-gasses. Running the skimmer on a short timer keeps the surface clean while minimizing CO2 loss during peak plant hours.</li>
+        </ul>
+      </section>
+
+      <section id="auto-equipment">
+        <h2>Equipment I Use</h2>
+        <div class="equip-list">
+          <a class="link-card" href="https://www.amazon.com/Kasa-Smart-Wi-Fi-Plug-TP-Link/dp/B079B7SHD8" target="_blank" rel="noopener noreferrer">Kasa Smart Plugs</a>
+          <a class="link-card" href="https://www.amazon.com/dp/B08RBHN4Z4?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1" target="_blank" rel="noopener noreferrer">Air Pump (Dual Outlets)</a>
+          <a class="link-card" href="https://www.amazon.com/dp/B00GOFS8YK?ref=ppx_yo2ov_dt_b_fed_asin_title" target="_blank" rel="noopener noreferrer">XL Sponge Filter (Super Dense Foam) 10+ gal</a>
+          <div class="equip-item">Black U1 S60U Stand</div>
+          <div class="equip-item">Foresta 60U</div>
+          <div class="equip-item">ADA Shizuku Pod Set</div>
+        </div>
+      </section>
+
+      <section id="auto-tip">
+        <h2>Pro Tip</h2>
+        <div class="pro-tip">
+          <p><strong>Smart Plugs &amp; Surge Protectors</strong></p>
+          <p>Most smart plugs are bulky enough that they block the adjacent outlet on a surge protector — meaning you lose every other outlet. The fix: use a short 3-inch extension cable between the surge protector and the smart plug. The plug hangs off to the side and you can use every outlet on the strip.</p>
+          <div class="pro-tip-diagram">
+            <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: surge protector connects through a short 3-inch extension cable to a smart plug offset to the side, which connects to the device.">
+              <!-- surge protector -->
+              <rect x="16" y="55" width="150" height="60" rx="8" fill="var(--card-bg)" stroke="var(--border-strong)" stroke-width="1.5"/>
+              <circle cx="48" cy="85" r="7" fill="none" stroke="var(--text-faint)" stroke-width="1.5"/>
+              <circle cx="91" cy="85" r="7" fill="none" stroke="var(--text-faint)" stroke-width="1.5"/>
+              <circle cx="134" cy="85" r="7" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+              <text x="91" y="140" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="var(--text-muted)">Surge Protector</text>
+
+              <!-- cable to smart plug -->
+              <path d="M166 85 L206 85" stroke="var(--accent)" stroke-width="2" fill="none"/>
+              <text x="186" y="72" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="var(--accent)">3&quot;</text>
+
+              <!-- smart plug, offset to the side -->
+              <rect x="206" y="66" width="56" height="38" rx="6" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="1.5"/>
+              <circle cx="234" cy="85" r="6" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+              <text x="234" y="122" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="var(--text-muted)">Smart Plug</text>
+
+              <!-- cable to device -->
+              <path d="M262 85 L470 85" stroke="var(--border-strong)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+
+              <!-- device -->
+              <rect x="470" y="55" width="154" height="60" rx="8" fill="var(--card-bg)" stroke="var(--border-strong)" stroke-width="1.5"/>
+              <path d="M498 85 h20 M498 78 h12 M498 92 h12" stroke="var(--text-faint)" stroke-width="1.5" stroke-linecap="round"/>
+              <text x="547" y="140" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="var(--text-muted)">Device (light, CO2, filter…)</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <nav class="lb-bottom-nav">
+    <a href="#auto-overview" data-section="auto-overview">Overview</a>
+    <a href="#auto-schedule" data-section="auto-schedule">My Schedule</a>
+    <a href="#auto-equipment" data-section="auto-equipment">Equipment</a>
+    <a href="#auto-tip" data-section="auto-tip">Pro Tip</a>
+  </nav>
+
+</main>
+
+<script src="theme.js"></script>
+<script src="interactions.js"></script>
+<script>
+(function () {
+  var navLinks = document.querySelectorAll('.lb-bottom-nav a');
+  var sections = ['auto-overview', 'auto-schedule', 'auto-equipment', 'auto-tip'].map(function (id) { return document.getElementById(id); });
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (a) { a.classList.toggle('active', a.dataset.section === entry.target.id); });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { if (s) spy.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

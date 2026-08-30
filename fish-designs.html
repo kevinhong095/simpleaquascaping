@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fish Page Designs — Planted Tank Guide</title>
+<meta name="description" content="Design comparison sandbox for the Top 5 favorites layout on My Top 21 Fish.">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  .fish-ref .lb-content-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 8px 24px 96px;
+  }
+  .fish-ref h2 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin: 0 0 8px;
+    padding-top: 8px;
+    scroll-margin-top: 80px;
+  }
+  .fish-ref .section-sub { margin-bottom: 20px; }
+  .fish-ref section + section { margin-top: 64px; }
+
+  /* ---- Design tab switcher ---- */
+  .design-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .design-tab, .list-design-tab {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    background: var(--card-bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+  }
+  .design-tab:hover, .list-design-tab:hover { transform: translateY(-1px); }
+  .design-tab.active, .list-design-tab.active { background: var(--text); border-color: var(--text); color: var(--bg); }
+  .top5-variant, .list-variant { display: none; }
+  .top5-variant.active, .list-variant.active { display: block; }
+
+  /* ---- Full List Design A: compact pill rows ---- */
+  .cl-a-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+  .cl-a-row { display: flex; align-items: center; gap: 10px; padding: 11px 4px; border-bottom: 1px solid var(--border); }
+  .cl-a-name { font-weight: 600; font-size: 0.92rem; color: var(--text); flex: 1; }
+  .cl-a-fav { font-family: var(--font-mono); font-size: 0.66rem; color: var(--badge-gold); flex-shrink: 0; }
+  .cl-a-pill { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 10px; border-radius: 999px; flex-shrink: 0; }
+  .cl-a-pill.schooling { color: var(--accent); background: var(--accent-soft); }
+  .cl-a-pill.ambiance { color: var(--badge-blue); background: var(--badge-blue-soft); }
+  .cl-a-pill.colorful { color: var(--badge-gold); background: var(--badge-gold-soft); }
+  .cl-a-pill.cleanup { color: var(--badge-orange); background: color-mix(in srgb, var(--badge-orange) 16%, var(--card-bg)); }
+
+  /* ---- Full List Design B: chip cloud ---- */
+  .cl-b-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cl-b-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text); background: var(--card-bg); border: 1px solid var(--border-strong); border-radius: 999px; padding: 9px 16px 9px 12px; }
+  .cl-b-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+  .cl-b-chip.schooling::before { background: var(--accent); }
+  .cl-b-chip.ambiance::before { background: var(--badge-blue); }
+  .cl-b-chip.colorful::before { background: var(--badge-gold); }
+  .cl-b-chip.cleanup::before { background: var(--badge-orange); }
+  .cl-b-star { color: var(--badge-gold); font-size: 0.8rem; }
+
+  /* ---- Full List Design C: compact grid with corner badge ---- */
+  .cl-c-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .cl-c-card { position: relative; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px 14px 14px; }
+  .cl-c-fav { position: absolute; top: -8px; right: 10px; font-family: var(--font-mono); font-size: 0.6rem; background: var(--badge-gold); color: var(--bg); padding: 2px 7px; border-radius: 999px; }
+  .cl-c-name { font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+  .cl-c-pill { display: inline-block; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 999px; }
+  .cl-c-pill.schooling { color: var(--accent); background: var(--accent-soft); }
+  .cl-c-pill.ambiance { color: var(--badge-blue); background: var(--badge-blue-soft); }
+  .cl-c-pill.colorful { color: var(--badge-gold); background: var(--badge-gold-soft); }
+  .cl-c-pill.cleanup { color: var(--badge-orange); background: color-mix(in srgb, var(--badge-orange) 16%, var(--card-bg)); }
+
+  /* ---- Design 1: Strip List ---- */
+  .favorites-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+  }
+  .favorite-row {
+    display: grid;
+    grid-template-columns: 44px 200px 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition);
+  }
+  .favorite-row:hover { background: var(--bg-soft); }
+  .favorite-num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--badge-gold);
+  }
+  .favorite-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+  .favorite-blurb { font-size: 0.88rem; line-height: 1.5; color: var(--text-muted); }
+  @media (max-width: 640px) {
+    .favorite-row { grid-template-columns: 32px 1fr; row-gap: 4px; }
+    .favorite-blurb { grid-column: 2 / 3; }
+  }
+
+  /* ---- Design 2: Bar Chart ---- */
+  .bar-list { display: flex; flex-direction: column; gap: 10px; }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 28px 190px 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 18px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--accent-soft) var(--fill), transparent var(--fill));
+    border: 1px solid var(--border);
+  }
+  .bar-num { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; color: var(--badge-gold); }
+  .bar-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+  .bar-blurb { font-size: 0.85rem; line-height: 1.5; color: var(--text-muted); }
+  @media (max-width: 640px) {
+    .bar-row { grid-template-columns: 24px 1fr; row-gap: 6px; }
+    .bar-blurb { grid-column: 2 / 3; }
+  }
+
+  /* ---- Design 3: Big Numeral Editorial ---- */
+  .big-list { display: flex; flex-direction: column; }
+  .big-row {
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+    padding: 26px 4px;
+    border-bottom: 1px solid var(--border);
+    transition: color var(--transition);
+  }
+  .big-row:first-child { border-top: 1px solid var(--border); }
+  .big-num {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: var(--text-faint);
+    width: 64px;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: color var(--transition);
+  }
+  .big-row:hover .big-num { color: var(--badge-gold); }
+  .big-content { flex: 1; min-width: 0; }
+  .big-name { font-weight: 700; font-size: 1.02rem; color: var(--text); margin-bottom: 4px; }
+  .big-blurb { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+  @media (max-width: 640px) {
+    .big-row { gap: 16px; }
+    .big-num { font-size: 1.8rem; width: 44px; }
+  }
+
+  /* ---- Filter pills ---- */
+  .fish-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 28px; }
+  .fish-filter {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    background: var(--card-bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+  }
+  .fish-filter:hover { transform: translateY(-1px); }
+  .fish-filter.active[data-filter="all"] { background: var(--text); border-color: var(--text); color: var(--bg); }
+  .fish-filter.active[data-filter="schooling"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .fish-filter.active[data-filter="ambiance"] { background: var(--badge-blue); border-color: var(--badge-blue); color: var(--bg); }
+  .fish-filter.active[data-filter="colorful"] { background: var(--badge-gold); border-color: var(--badge-gold); color: var(--bg); }
+  .fish-filter.active[data-filter="cleanup"] { background: var(--badge-orange); border-color: var(--badge-orange); color: var(--bg); }
+
+  /* ---- Fish cards ---- */
+  .fish-card { transition: opacity 0.22s ease, transform 0.22s ease; cursor: default; }
+  .fish-card[data-cat="schooling"] { border-top-color: var(--accent); }
+  .fish-card[data-cat="ambiance"] { border-top-color: var(--badge-blue); }
+  .fish-card[data-cat="colorful"] { border-top-color: var(--badge-gold); }
+  .fish-card[data-cat="cleanup"] { border-top-color: var(--badge-orange); }
+  .fish-card-icon { font-size: 1.4rem; margin-bottom: 14px; }
+  .fish-cat-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+  }
+  .fish-favorite-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--badge-gold);
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 760px) {
+    .lb-bottom-nav a { padding: 8px 12px; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark">Planted Tank Guide</a>
+    <div class="nav-links">
+      <a href="index.html#setup">Setup</a>
+      <a href="index.html#routine">Routine</a>
+      <a href="index.html#resources">Resources</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+        <span id="themeToggleLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <header class="page-header advanced-page-header">
+    <div class="wrap">
+      <a href="fish.html" class="back-link">← Back to My Top 21 Fish</a>
+      <p class="read-meta">Design Sandbox</p>
+      <h1>My Top 21 Fish</h1>
+      <div class="page-intro">
+        <p>Over the years, I've tried pretty much every type of nano fish out there — and I did it intentionally. I wanted firsthand experience with all of it: the best schooling fish, the best fish for cleaning, the best centerpiece fish. All of that takes time to try, keep, and actually learn from.</p>
+        <p>Nearing a decade deep into aquascaping, I've been lucky enough to keep hundreds of different fish.</p>
+        <p>Here are my personal favorites:</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="fish-ref">
+    <div class="lb-content-wrap">
+
+      <section id="fish-top5">
+        <h2>My All-Time Top 5</h2>
+        <p class="section-sub">If I could only keep 5 — these are the ones. Tab through 3 layout options below.</p>
+
+        <div class="design-tabs" role="group" aria-label="Design variant">
+          <button class="design-tab active" data-design="1">Design 1 — Strip List</button>
+          <button class="design-tab" data-design="2">Design 2 — Bar Chart</button>
+          <button class="design-tab" data-design="3">Design 3 — Big Numeral</button>
+        </div>
+
+        <div class="top5-variant active" data-design="1">
+          <div class="favorites-list">
+            <div class="favorite-row">
+              <div class="favorite-num">1</div>
+              <div class="favorite-name">Celestial Pearl Danios</div>
+              <p class="favorite-blurb">I fell in love with these the first time I saw them. Fully grown, the midnight-blue body gets this incredible iridescence, set off by pearly white spots and deep reddish-orange fins. Males will even spar with each other for a female's attention — the behavior alone makes them worth keeping.</p>
+            </div>
+            <div class="favorite-row">
+              <div class="favorite-num">2</div>
+              <div class="favorite-name">Rummy Nose Tetra</div>
+              <p class="favorite-blurb">These are my mom's favorite fish, so you'll always find them somewhere in my personal gallery. I love the slender body, the fin shape, the bright red tip on their nose, and the bold black-and-white striping on their caudal fin. On top of all that, they're the tightest-schooling fish I've ever kept — an extraordinarily tight, cohesive shoal that moves as one.</p>
+            </div>
+            <div class="favorite-row">
+              <div class="favorite-num">3</div>
+              <div class="favorite-name">Pygmy Cory</div>
+              <p class="favorite-blurb">Arguably my favorite for behavior. They waddle and float in place like little helicopters, occasionally darting up to the surface for a quick gulp of air. An underrated schooling fish, too — watching a large pack move together, shaking their bodies in sync, is genuinely incredible to watch.</p>
+            </div>
+            <div class="favorite-row">
+              <div class="favorite-num">4</div>
+              <div class="favorite-name">Scarlet Badis</div>
+              <p class="favorite-blurb">These fish do not get enough love. Fed properly, males show off metallic red stripes running down their bodies and bright blue front fins — color that rivals anything in a reef tank.</p>
+            </div>
+            <div class="favorite-row">
+              <div class="favorite-num">5</div>
+              <div class="favorite-name">Bloody Mary Shrimp</div>
+              <p class="favorite-blurb">So red they practically glow. Scattered throughout the tank — especially hanging out on plants — they add little pops of color everywhere you look, and bring a lot of life into the tank.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="top5-variant" data-design="2">
+          <div class="bar-list">
+            <div class="bar-row" style="--fill:100%;">
+              <div class="bar-num">1</div>
+              <div class="bar-name">Celestial Pearl Danios</div>
+              <p class="bar-blurb">Covered in pearl-like spots, with fins that glow orange under the right light.</p>
+            </div>
+            <div class="bar-row" style="--fill:84%;">
+              <div class="bar-num">2</div>
+              <div class="bar-name">Rummy Nose Tetra</div>
+              <p class="bar-blurb">The tell-tale sign of a healthy tank — their nose flushes bright red when the water's right.</p>
+            </div>
+            <div class="bar-row" style="--fill:68%;">
+              <div class="bar-num">3</div>
+              <div class="bar-name">Pygmy Cory</div>
+              <p class="bar-blurb">Tiny bottom-dwelling clowns that never stop foraging. Impossible not to smile at.</p>
+            </div>
+            <div class="bar-row" style="--fill:52%;">
+              <div class="bar-num">4</div>
+              <div class="bar-name">Scarlet Badis</div>
+              <p class="bar-blurb">Small but ridiculously vivid — a tiny reef fish trapped in a freshwater body.</p>
+            </div>
+            <div class="bar-row" style="--fill:36%;">
+              <div class="bar-num">5</div>
+              <div class="bar-name">Bloody Mary Shrimp</div>
+              <p class="bar-blurb">Solid red from head to tail — the easiest way to add color without adding another fish.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="top5-variant" data-design="3">
+          <div class="big-list">
+            <div class="big-row">
+              <div class="big-num">1</div>
+              <div class="big-content">
+                <div class="big-name">Celestial Pearl Danios</div>
+                <p class="big-blurb">Covered in pearl-like spots, with fins that glow orange under the right light. My all-time favorite, no contest.</p>
+              </div>
+            </div>
+            <div class="big-row">
+              <div class="big-num">2</div>
+              <div class="big-content">
+                <div class="big-name">Rummy Nose Tetra</div>
+                <p class="big-blurb">The tell-tale sign of a healthy tank — their nose flushes bright red when the water's right.</p>
+              </div>
+            </div>
+            <div class="big-row">
+              <div class="big-num">3</div>
+              <div class="big-content">
+                <div class="big-name">Pygmy Cory</div>
+                <p class="big-blurb">Tiny bottom-dwelling clowns that never stop foraging. Impossible not to smile at.</p>
+              </div>
+            </div>
+            <div class="big-row">
+              <div class="big-num">4</div>
+              <div class="big-content">
+                <div class="big-name">Scarlet Badis</div>
+                <p class="big-blurb">Small but ridiculously vivid — a tiny reef fish trapped in a freshwater body.</p>
+              </div>
+            </div>
+            <div class="big-row">
+              <div class="big-num">5</div>
+              <div class="big-content">
+                <div class="big-name">Bloody Mary Shrimp</div>
+                <p class="big-blurb">Solid red from head to tail — the easiest way to add color without adding another fish.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fish-all">
+        <h2>The Full List</h2>
+        <p class="section-sub">3 condensed layout options — tab through them below.</p>
+
+        <div class="design-tabs" role="group" aria-label="Full list design variant">
+          <button class="list-design-tab active" data-listdesign="a">Design A — Pill Rows</button>
+          <button class="list-design-tab" data-listdesign="b">Design B — Chip Cloud</button>
+          <button class="list-design-tab" data-listdesign="c">Design C — Compact Grid</button>
+        </div>
+
+        <div class="list-variant active" data-listdesign="a" id="listDesignA"></div>
+        <div class="list-variant" data-listdesign="b" id="listDesignB"></div>
+        <div class="list-variant" data-listdesign="c" id="listDesignC"></div>
+      </section>
+
+
+    </div>
+  </div>
+
+  <nav class="lb-bottom-nav">
+    <a href="#fish-top5" data-section="fish-top5">Top 5</a>
+    <a href="#fish-all" data-section="fish-all">Full List</a>
+  </nav>
+
+</main>
+
+<script src="theme.js"></script>
+<script src="interactions.js"></script>
+<script>
+(function () {
+  var navLinks = document.querySelectorAll('.lb-bottom-nav a');
+  var sections = ['fish-top5', 'fish-all'].map(function (id) { return document.getElementById(id); });
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (a) { a.classList.toggle('active', a.dataset.section === entry.target.id); });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { if (s) spy.observe(s); });
+  }
+
+  var designTabs = document.querySelectorAll('.design-tab');
+  var variants = document.querySelectorAll('.top5-variant');
+  designTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      designTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      variants.forEach(function (v) { v.classList.toggle('active', v.dataset.design === tab.dataset.design); });
+    });
+  });
+
+  var fishData = [
+    { name: 'Rummy Nose Tetra', cat: 'schooling', catLabel: 'Schooling', rank: 2 },
+    { name: 'Espei Rasbora', cat: 'schooling', catLabel: 'Schooling' },
+    { name: 'Pygmy Cory', cat: 'schooling', catLabel: 'Schooling', rank: 3 },
+    { name: 'Red Cherry Tetra', cat: 'schooling', catLabel: 'Schooling' },
+    { name: 'Black Phantom Tetra', cat: 'ambiance', catLabel: 'Ambiance' },
+    { name: 'Neon Tetra', cat: 'ambiance', catLabel: 'Ambiance' },
+    { name: 'Sparkling Gourami', cat: 'ambiance', catLabel: 'Ambiance' },
+    { name: 'Gardneri Killifish', cat: 'colorful', catLabel: 'Colorful' },
+    { name: 'Ruby Killifish', cat: 'colorful', catLabel: 'Colorful' },
+    { name: 'Scarlet Badis', cat: 'colorful', catLabel: 'Colorful', rank: 4 },
+    { name: 'Celestial Pearl Danios', cat: 'colorful', catLabel: 'Colorful', rank: 1 },
+    { name: 'Bloody Mary Shrimp', cat: 'colorful', catLabel: 'Colorful', rank: 5 },
+    { name: "Annie's Dwarf Goby", cat: 'colorful', catLabel: 'Colorful' },
+    { name: 'Ivanacara Bimaculata', cat: 'colorful', catLabel: 'Colorful' },
+    { name: 'Rainbow Shiners', cat: 'colorful', catLabel: 'Colorful' },
+    { name: 'Pea Puffer', cat: 'cleanup', catLabel: 'Cleaning' },
+    { name: 'Amano Shrimp', cat: 'cleanup', catLabel: 'Cleaning' },
+    { name: 'Otocinclus Catfish', cat: 'cleanup', catLabel: 'Cleaning' },
+    { name: '3-Lined Pencilfish', cat: 'cleanup', catLabel: 'Cleaning' },
+    { name: 'Madagascar Rainbow', cat: 'cleanup', catLabel: 'Cleaning' },
+    { name: 'Panda Garra', cat: 'cleanup', catLabel: 'Cleaning' }
+  ];
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  document.getElementById('listDesignA').innerHTML = '<div class="cl-a-list">' + fishData.map(function (f) {
+    return '<div class="cl-a-row">' +
+      '<span class="cl-a-name">' + esc(f.name) + '</span>' +
+      (f.rank ? '<span class="cl-a-fav">★ #' + f.rank + '</span>' : '') +
+      '<span class="cl-a-pill ' + f.cat + '">' + f.catLabel + '</span>' +
+    '</div>';
+  }).join('') + '</div>';
+
+  document.getElementById('listDesignB').innerHTML = '<div class="cl-b-wrap">' + fishData.map(function (f) {
+    return '<span class="cl-b-chip ' + f.cat + '">' + (f.rank ? '<span class="cl-b-star">★</span>' : '') + esc(f.name) + '</span>';
+  }).join('') + '</div>';
+
+  document.getElementById('listDesignC').innerHTML = '<div class="cl-c-grid">' + fishData.map(function (f) {
+    return '<div class="cl-c-card">' +
+      (f.rank ? '<span class="cl-c-fav">#' + f.rank + '</span>' : '') +
+      '<div class="cl-c-name">' + esc(f.name) + '</div>' +
+      '<span class="cl-c-pill ' + f.cat + '">' + f.catLabel + '</span>' +
+    '</div>';
+  }).join('') + '</div>';
+
+  var listTabs = document.querySelectorAll('.list-design-tab');
+  var listVariants = document.querySelectorAll('.list-variant');
+  listTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      listTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      listVariants.forEach(function (v) { v.classList.toggle('active', v.dataset.listdesign === tab.dataset.listdesign); });
+    });
+  });
+})();
+</script>
+</body>
+</html>
