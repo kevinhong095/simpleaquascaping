@@ -25,10 +25,12 @@
     padding: 8px 24px 96px;
   }
   .plants-ref h2 {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
     margin: 0 0 16px;
     padding-top: 8px;
     scroll-margin-top: 80px;
@@ -39,19 +41,19 @@
   .plants-ref a { color: var(--accent); }
   .plants-ref .lb-lede { font-weight: 500; color: var(--text); font-size: 1rem; margin-bottom: 12px; }
 
-  /* Pareto callout — boxed, centered, no left bar */
+  /* Pareto callout — editorial rule-framed pull-quote, no box */
   .plants-ref .pull-quote {
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 600;
-    font-size: 1.68rem;
-    line-height: 1.4;
-    color: var(--accent);
+    font-size: 1.75rem;
+    line-height: 1.45;
+    color: var(--text);
     text-align: center;
-    background: var(--accent-soft);
-    border-radius: 16px;
-    padding: 36px 32px;
-    margin: 28px 0;
+    border-top: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-strong);
+    padding: 28px 8px;
+    margin: 32px 0;
   }
 
   /* 3 traits — icon feature grid */
@@ -190,12 +192,20 @@
     margin: 20px 0 0 -28px;
     animation: plantFlowBounce 1.8s ease-in-out infinite;
   }
+  .plants-ref .plant-flow-arrow svg {
+    animation: plantFlowGlow 1.8s ease-in-out infinite;
+  }
   @keyframes plantFlowBounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(5px); }
   }
+  @keyframes plantFlowGlow {
+    0%, 100% { filter: drop-shadow(0 0 1px var(--badge-blue)); }
+    50% { filter: drop-shadow(0 0 7px var(--badge-blue)); }
+  }
   @media (prefers-reduced-motion: reduce) {
     .plants-ref .plant-flow-arrow { animation: none; }
+    .plants-ref .plant-flow-arrow svg { animation: none; }
   }
   .plants-ref .plant-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
   .plants-ref .plant-head h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 0; }
@@ -234,7 +244,12 @@
     margin-top: 14px;
   }
 
-  .plants-ref .buy-pref { margin-top: 14px; }
+  .plants-ref .buy-pref {
+    margin-top: 14px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
   .plants-ref .buy-pref-label {
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -244,9 +259,9 @@
     display: block;
     margin-bottom: 6px;
   }
+  .plants-ref .buy-pref p { margin: 0; }
 
   @media (max-width: 760px) {
-    .plants-ref h2 { font-size: 1.7rem; }
     .lb-bottom-nav a { padding: 8px 12px; font-size: 0.72rem; }
   }
   @media (max-width: 600px) {
@@ -284,7 +299,7 @@
       <p class="read-meta">Advanced</p>
       <h1>The Only 4 Plants I Recommend</h1>
       <div class="page-intro">
-        <p>The best plants to start with (that are actually worth mastering)</p>
+        <p>I call these plants the "Core 4" because you can do so much with these plants, that I believe they are worth mastering (sometimes I ponder growing just these 4 plants forever, because they're so effective and simple at the same time).</p>
       </div>
     </div>
   </header>
@@ -295,8 +310,8 @@
       <section id="pl-overview">
         <h2>Overview</h2>
         <p>When you start aquascaping, few things are as overwhelming as plants. What size? What shape? What color? Where do they go? How much light do they need?</p>
-        <p>You get the point.</p>
-        <p>To keep life simple, all of my plants are:</p>
+        <p>You get the point...</p>
+        <p>To keep sanity intact - as of writing this, every single aquarium plant I keep in my personal gallery (of 5-8 tanks depending on how life is going) must meet 3 criteria:</p>
 
         <div class="trait-grid">
           <div class="trait-card">
@@ -304,37 +319,37 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13V6a1 1 0 0 1 1-1h7a7 7 0 0 1 7 7 7 7 0 0 1-7 7Z"/><path d="M11 13 4 6"/></svg>
             </div>
             <h4>Low tech</h4>
-            <p>They'll grow fine without CO2, but thrive consistently with it.</p>
+            <p>They'll grow fine without CO2, but become nearly dummy-proof and insanely easy if you have CO2.</p>
           </div>
           <div class="trait-card">
             <div class="trait-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
             </div>
             <h4>Slow growing</h4>
-            <p>Don't require much maintenance.</p>
+            <p>Require very little maintenance &amp; time to take care.</p>
           </div>
           <div class="trait-card">
             <div class="trait-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
             <h4>Easy to care for</h4>
-            <p>Low risk of dying off.</p>
+            <p>(Practically) indestructible &amp; require close to zero attention.</p>
           </div>
         </div>
 
-        <blockquote class="pull-quote">"80% of your results come from 20% of your effort."</blockquote>
+        <blockquote class="pull-quote">"80% of your results come from 20% of your effort"</blockquote>
 
         <p>This isn't to say there aren't other successful approaches to aquascaping — this is just the one that works best for me. With this system, I'm able to:</p>
         <ul class="tip-list" style="max-width:none;">
           <li>Build 95%+ of the aquascapes I want with 4 easy plants</li>
           <li>Keep plants that are easy to use, easy to maintain, and as a result never deal with algae</li>
-          <li>Save hundreds of hours and a lot of money — and ultimately enjoy the hobby more, which is all I care about</li>
+          <li>Save hundreds of hours and a lot of money.... (and ultimately enjoy the hobby more, which is all I care about anyways)</li>
         </ul>
 
         <div class="spectrum">
           <div class="spectrum-track"></div>
           <div class="spectrum-stop" style="left:14%;">
-            <span class="spectrum-plants"><a href="#pl-ferns">Ferns</a><a href="#pl-mosses">Mosses</a></span>
+            <span class="spectrum-plants"><a href="#pl-mosses">Mosses</a><a href="#pl-ferns">Ferns</a></span>
             <span class="spectrum-dot dot-easiest"></span>
             <span class="spectrum-tier">Easiest</span>
           </div>

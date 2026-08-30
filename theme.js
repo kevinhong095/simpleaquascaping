@@ -33,10 +33,10 @@
   if (saved === 'light' || saved === 'dark') {
     setTheme(saved);
   } else {
-    // No explicit choice yet — default to light regardless of OS/browser
+    // No explicit choice yet — default to dark regardless of OS/browser
     // preference, without persisting it as if the user had chosen it.
-    root.setAttribute('data-theme', 'light');
-    applyLabel('light');
+    root.setAttribute('data-theme', 'dark');
+    applyLabel('dark');
   }
 
   if (btn) {
