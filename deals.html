@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where to Get the Best Deals — Planted Tank Guide</title>
+<meta name="description" content="The exact places I buy fish, plants, lights, driftwood, and hardscape — and how I pay as little as possible.">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:title" content="Simple Aquascaping">
+<meta property="og:description" content="A practical, no-BS guide to aquascaping">
+<meta property="og:image" content="https://simpleaquascaping.com/preview.jpg">
+<meta property="og:url" content="https://simpleaquascaping.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  .deals-ref .lb-content-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 8px 24px 96px;
+  }
+  .deals-ref h2 {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 6px;
+    padding-top: 8px;
+    scroll-margin-top: 80px;
+  }
+  .deals-ref .section-sub { color: var(--text-faint); font-size: 0.92rem; margin-bottom: 22px; max-width: 60ch; }
+  [hidden] { display: none !important; }
+
+  /* ---- Color-coded category panels ---- */
+  .cat {
+    --cat: var(--accent);
+    background: color-mix(in srgb, var(--cat) 7%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--cat) 32%, var(--border));
+    border-top: 5px solid var(--cat);
+    border-radius: 18px;
+    padding: 34px 30px 30px;
+  }
+  .cat-lights { --cat: var(--badge-gold); }
+  .cat-fish { --cat: var(--badge-blue); }
+  .cat-plants { --cat: var(--accent); }
+  .cat-hardscape { --cat: var(--badge-orange); }
+  .deals-ref .cat + .cat { margin-top: 36px; }
+  .cat h2 { display: flex; align-items: center; gap: 14px; }
+  .cat h2::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--cat); flex-shrink: 0; }
+  .cat .deal-kicker, .cat .deal-stat-num { color: var(--cat); }
+  .cat .deal-stat { border-left-color: color-mix(in srgb, var(--cat) 45%, var(--border)); }
+  .cat .link-card:hover, .cat .link-card:focus-visible { border-color: var(--cat); }
+  .deals-ref .cat .callout { margin-top: 18px; }
+  .lb-bottom-nav a[data-section]::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 7px; background: var(--dot, var(--accent)); }
+  .lb-bottom-nav a[data-section="deals-lights"] { --dot: var(--badge-gold); }
+  .lb-bottom-nav a[data-section="deals-fish"] { --dot: var(--badge-blue); }
+  .lb-bottom-nav a[data-section="deals-plants"] { --dot: var(--accent); }
+  .lb-bottom-nav a[data-section="deals-hardscape"] { --dot: var(--badge-orange); }
+
+  /* ---- Deal cards ---- */
+  .deal {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 28px 24px;
+    margin-top: 16px;
+  }
+  .deal-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .deal-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+  }
+  .deal-pill {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 11px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .deal-pills { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+  .deal-pill.online { color: var(--badge-blue); background: var(--badge-blue-soft); }
+  .deal-pill.local { color: var(--badge-orange); background: color-mix(in srgb, var(--badge-orange) 16%, var(--card-bg)); }
+  .deal h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text);
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+  .deal-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 14px; }
+  .deal-row { display: flex; align-items: stretch; justify-content: space-between; gap: 28px; }
+  .deal-info { flex: 1; min-width: 0; }
+  .deal-stat {
+    flex: 0 0 262px;
+    border-left: 1px solid var(--border-strong);
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .deal-stat-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .deal-stat-off { font-size: 1.5rem; font-weight: 700; margin-left: 2px; }
+  .deal-stat-label {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    line-height: 1.55;
+    color: var(--text-faint);
+  }
+  .deal-chip {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 5px 11px;
+  }
+  .deal p { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin: 0 0 12px; max-width: 64ch; }
+  .deal p:last-of-type { margin-bottom: 0; }
+  .deal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .deals-ref .link-card { display: inline-flex; width: auto; gap: 16px; padding: 12px 18px; font-weight: 500; color: var(--text); }
+  .deals-ref .callout { max-width: none; margin: 0 0 4px; }
+  .deals-ref .callout p { margin: 0 0 6px; color: var(--text); }
+  .deals-ref .callout p:last-child { margin-bottom: 0; }
+  .deals-ref .callout a { color: var(--accent); }
+
+  /* ---- How-ordering steps ---- */
+  .order-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 20px 0 4px; padding: 0; }
+  .order-step {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+  .order-step b { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; font-weight: 500; }
+
+  /* ---- Price comparison (stone) ---- */
+  .compare { display: flex; align-items: stretch; gap: 12px; flex-wrap: wrap; margin: 18px 0 4px; }
+  .cmp { flex: 1 1 170px; border-radius: 10px; padding: 14px 18px; border: 1px solid var(--border); background: var(--bg-soft); }
+  .cmp-label { display: block; font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 4px; }
+  .cmp-price { font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; line-height: 1.1; color: var(--text-muted); }
+  .cmp-old .cmp-price { text-decoration: line-through; text-decoration-thickness: 1.5px; opacity: 0.7; }
+  .cmp-new { border-color: var(--accent); background: var(--accent-soft); }
+  .cmp-new .cmp-price { color: var(--accent); }
+  .cmp-arrow { align-self: center; color: var(--text-faint); font-size: 1.2rem; }
+
+  /* ---- Sample price sheet (dropdown) ---- */
+  .price-sheet { margin-top: 22px; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--card-bg); overflow: hidden; }
+  .price-sheet > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 20px;
+    transition: background var(--transition);
+  }
+  .price-sheet > summary::-webkit-details-marker { display: none; }
+  .price-sheet > summary:hover { background: var(--bg-soft); }
+  .ps-sum-title { font-weight: 700; font-size: 0.98rem; color: var(--text); }
+  .ps-sum-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); letter-spacing: 0.04em; margin-left: 10px; }
+  .ps-chev { width: 10px; height: 10px; border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted); transform: rotate(45deg); transition: transform var(--transition); flex-shrink: 0; margin-right: 4px; }
+  .price-sheet[open] > summary { border-bottom: 1px solid var(--border); }
+  .price-sheet[open] .ps-chev { transform: rotate(-135deg); }
+  .ps-intro { padding: 18px 20px 6px; }
+  .ps-intro p { font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); margin: 0 0 12px; max-width: none; }
+  .ps-sale {
+    margin-top: 4px;
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    background: var(--badge-gold-soft);
+    border: 1px solid color-mix(in srgb, var(--badge-gold) 35%, transparent);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .ps-sale-label { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--badge-gold); }
+  .ps-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-faint); letter-spacing: 0.03em; margin-bottom: 6px; }
+  .ps-tools {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 12px 20px;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .ps-search {
+    flex: 1 1 220px;
+    font: inherit; font-size: 0.88rem; color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 9px 16px;
+    min-width: 0;
+  }
+  .ps-search:focus { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+  .ps-jump { display: flex; gap: 8px; }
+  .ps-jump button { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); border: 1px solid var(--border-strong); border-radius: 999px; padding: 7px 14px; }
+  .ps-jump button:hover { color: var(--accent); border-color: var(--accent); }
+  .ps-status { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint); }
+  .ps-scroll { max-height: 72vh; overflow: auto; padding: 4px 20px 24px; scroll-behavior: smooth; }
+  .ps-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--text); margin: 26px 0 4px; display: flex; align-items: baseline; gap: 12px; }
+  .ps-count { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 400; color: var(--text-faint); letter-spacing: 0.04em; }
+  .pg { margin-top: 22px; }
+  .pg-title { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); margin: 0 0 6px; padding-bottom: 6px; border-bottom: 1px solid var(--border-strong); }
+  .price-sheet .pg-note { font-size: 0.78rem; color: var(--text-faint); margin: 6px 0 2px; max-width: none; line-height: 1.5; }
+  .price-sheet .pg-price { display: inline-block; font-family: var(--font-mono); font-size: 0.74rem; color: var(--text); background: var(--bg-soft); border: 1px solid var(--border); border-radius: 999px; padding: 3px 12px; margin: 8px 0 2px; max-width: none; }
+  .pl { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); column-gap: 40px; }
+  .pr { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 7px 0; border-bottom: 1px dashed var(--border); }
+  .pr-main { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; min-width: 0; }
+  .pr-name { font-size: 0.86rem; color: var(--text); }
+  .pr-meta { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+  .pr-size, .pr-note { font-size: 0.74rem; color: var(--text-faint); }
+  .pr-note { flex-basis: 100%; }
+  .pr-flag { font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 999px; }
+  .pr-flag.nice { color: var(--badge-gold); background: var(--badge-gold-soft); }
+  .pr-flag.few { color: var(--badge-orange); background: color-mix(in srgb, var(--badge-orange) 16%, var(--card-bg)); }
+  .pr-flag.wild { color: var(--badge-blue); background: var(--badge-blue-soft); }
+  .pr-flag.tr { color: var(--accent); background: var(--accent-soft); }
+  .pr-price { display: inline-flex; align-items: baseline; justify-content: flex-end; flex-wrap: wrap; gap: 2px 8px; text-align: right; flex-shrink: 0; font-family: var(--font-mono); font-size: 0.8rem; }
+  .pr-reg { font-weight: 500; color: var(--text); }
+  .pr-was { color: var(--text-faint); font-size: 0.74rem; }
+  .pr-sale { color: var(--accent); font-weight: 500; }
+  .pr-tag { font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 2px 6px; }
+  .pr-unit, .pr-min { font-size: 0.66rem; color: var(--text-faint); }
+  .price-sheet .ps-empty { padding: 28px 0; text-align: center; font-size: 0.9rem; color: var(--text-faint); }
+
+  @media (max-width: 760px) {
+    .deals-ref h2 { font-size: 1.7rem; }
+    .deal { padding: 22px 20px 20px; }
+    .cat { padding: 26px 16px 20px; border-radius: 14px; }
+    .lb-bottom-nav a { padding: 8px 12px; font-size: 0.72rem; }
+    .ps-sum-meta { display: block; margin: 4px 0 0; }
+    .ps-jump { display: none; }
+    .pl { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .deal-row { flex-direction: column-reverse; gap: 16px; }
+    .deal-stat { flex: none; border-left: none; padding-left: 0; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-direction: row; align-items: baseline; justify-content: flex-start; gap: 14px; flex-wrap: wrap; }
+    .deal-stat-num { font-size: 2.2rem; }
+    .deal-stat-label { margin-top: 0; }
+  }
+  @media (max-width: 560px) {
+    .compare { flex-direction: column; gap: 8px; }
+    .cmp-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark">Planted Tank Guide</a>
+    <div class="nav-links">
+      <a href="index.html#setup">Setup</a>
+      <a href="index.html#routine">Routine</a>
+      <a href="index.html#resources">Resources</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+        <span id="themeToggleLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <header class="page-header advanced-page-header">
+    <div class="wrap">
+      <a href="index.html" class="back-link">← Back to main guide</a>
+      <p class="read-meta">Advanced</p>
+      <h1>Where to Get the Best Deals</h1>
+      <div class="page-intro">
+        <p>The exact places I buy fish, plants, lights, and hardscape — and how I pay as little as possible.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="deals-ref">
+    <div class="lb-content-wrap">
+
+      <section id="deals-lights" class="cat cat-lights">
+        <h2>Lights</h2>
+        <p class="section-sub">Lighting is the most expensive single item in most setups, so this is where a coupon matters most.</p>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Lights &amp; light arms</span>
+            <span class="deal-pill online">Online</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>Week Aqua on AliExpress</h3>
+            <div class="deal-badges"><span class="deal-chip">Additional 20–40% off with coupons (see below)</span></div>
+            <p>This is where I buy my Week Aqua lights and light arms. Grab a coupon code first (see below), then place your order.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50%+ <span class="deal-stat-off">off</span></span><span class="deal-stat-label">US retail prices (roughly)</span></div>
+          </div>
+          <div class="deal-actions">
+            <a class="link-card" href="https://www.aliexpress.com/p/order/index.html?spm=a2g0o.home.headerAcount.2.468a62782soFW6" target="_blank" rel="noopener noreferrer">Shop Week Aqua on AliExpress</a>
+            <a class="link-card" href="https://www.reddit.com/r/AliExpressCode/" target="_blank" rel="noopener noreferrer">Get coupon codes</a>
+          </div>
+        </article>
+
+        <div class="callout callout-gold" id="coupons">
+          <p class="callout-label" style="font-family: var(--font-body); font-size: 0.94rem; text-transform: none; letter-spacing: normal;">Do this first:</p>
+          <p>Before you buy anything on AliExpress, check the coupon codes on <a href="https://www.reddit.com/r/AliExpressCode/" target="_blank" rel="noopener noreferrer">r/AliExpressCode</a>. Most of the time, I find a code that saves me an additional 20–40%.</p>
+        </div>
+      </section>
+
+      <section id="deals-fish" class="cat cat-fish">
+        <h2>Fish</h2>
+        <p class="section-sub">One online, one local — both far cheaper than a typical fish store.</p>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Cheapest place to buy fish</span>
+            <span class="deal-pill online">Online</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>AquaHuna</h3>
+            <div class="deal-badges"><span class="deal-chip">Fish</span></div>
+            <p>The cheapest place I've found to buy fish.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50% <span class="deal-stat-off">off</span></span><span class="deal-stat-label">major Houston fish store prices (roughly)</span></div>
+          </div>
+          <div class="deal-actions">
+            <a class="link-card" href="https://aquahuna.com/" target="_blank" rel="noopener noreferrer">Visit AquaHuna</a>
+          </div>
+        </article>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Best livestock shop in Houston for pricing</span>
+            <span class="deal-pills"><span class="deal-pill local">Houston</span><span class="deal-pill online">Online</span></span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>Betta Aquatic USA</h3>
+            <div class="deal-badges"><span class="deal-chip">Tank-bred</span><span class="deal-chip">Fish &amp; shrimp</span></div>
+            <p>Every fish in the store is tank-bred, and the pricing on fish and shrimp is extremely good. They ship too, so you can order from them online as well.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50%+ <span class="deal-stat-off">off</span></span><span class="deal-stat-label">major Houston fish store prices (roughly)</span></div>
+          </div>
+          <div class="deal-actions">
+            <a class="link-card" href="https://bettaaquatic.com/collections/tetra-1" target="_blank" rel="noopener noreferrer">Browse Betta Aquatic USA</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="deals-plants" class="cat cat-plants">
+        <h2>Plants</h2>
+        <p class="section-sub">Two sources cover almost everything: a dedicated grower and a hobbyist auction group.</p>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Cheapest — and healthiest — plants in the hobby</span>
+            <span class="deal-pill online">Online</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>First Coast Tropical</h3>
+            <div class="deal-badges"><span class="deal-chip">Healthiest plants</span><span class="deal-chip">Weekly email blast</span></div>
+            <p>The best combination of price and plant health I've found anywhere. Email is the best way to reach Chris, who will add you to the weekly email blast.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50–75%+ <span class="deal-stat-off">off</span></span><span class="deal-stat-label">typical retail prices (roughly)</span></div>
+          </div>
+          <ol class="order-steps">
+            <li class="order-step"><b>Step 1</b>Email Chris to get on the weekly email blast.</li>
+            <li class="order-step"><b>Step 2</b>Order by Thursday.</li>
+            <li class="order-step"><b>Step 3</b>Your order typically ships the following Tuesday.</li>
+            <li class="order-step"><b>Bonus</b>5% off orders of $100 or more.</li>
+          </ol>
+          <div class="deal-actions">
+            <a class="link-card" href="https://firstcoasttropical.wixsite.com/firstcoasttropical/about_us" target="_blank" rel="noopener noreferrer">Visit First Coast Tropical</a>
+          </div>
+
+          <details class="price-sheet" id="priceSheet">
+            <summary>
+              <span><span class="ps-sum-title">View a sample price list</span><span class="ps-sum-meta">538 items · plants &amp; fish</span></span>
+              <span class="ps-chev" aria-hidden="true"></span>
+            </summary>
+            <div class="ps-intro">
+              <p>This is a sample from a past email blast. Prices and availability change every week, so treat it as a rough guide rather than a quote.</p>
+              <div class="ps-sale"><span class="ps-sale-label">Sample sale</span><span><strong>Cherry shrimp:</strong> 10 for $15 · 20 for $25 — they only sell 100 shrimp a week, so act fast.</span></div>
+              <div class="ps-legend"><span>Green price = on sale</span><span>★ nice = a standout</span><span>min = minimum order per type</span></div>
+            </div>
+            <div class="ps-tools">
+              <input class="ps-search" id="psSearch" type="search" placeholder="Search plants &amp; fish… (try “cory”, “anubias”, “sale”)" aria-label="Search the sample price list" autocomplete="off">
+              <span class="ps-status" id="psStatus" aria-live="polite"></span>
+              <span class="ps-jump"><button type="button" data-jump="ps-plants">Plants</button><button type="button" data-jump="ps-fish">Fish</button></span>
+            </div>
+            <div class="ps-scroll" id="psScroll">
+<div class="ps-section" id="ps-plants"><h4 class="ps-title">Plants <span class="ps-count">296 items</span></h4>
+<section class="pg">
+<h5 class="pg-title">New &amp; Limited</h5>
+<ul class="pl">
+<li class="pr" data-q="curly ludwigia new &amp; limited"><span class="pr-main"><span class="pr-name">Curly Ludwigia</span></span><span class="pr-price"><b class="pr-reg">12 for $24</b></span></li>
+<li class="pr" data-q="senegalensis ludwigia new &amp; limited"><span class="pr-main"><span class="pr-name">Senegalensis Ludwigia</span></span><span class="pr-price"><b class="pr-reg">12 for $24</b></span></li>
+<li class="pr" data-q="grisebachii sword new &amp; limited medium"><span class="pr-main"><span class="pr-name">Grisebachii Sword</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$5</b><span class="pr-min">min 6</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Stem Plants</h5>
+<p class="pg-note">Minimum 12 of each type · 3–4 stems per bunch · priced per 12 bunches</p>
+<ul class="pl">
+<li class="pr" data-q="assorted mix (12 bunches) stem plants sale"><span class="pr-main"><span class="pr-name">Assorted Mix (12 Bunches)</span></span><span class="pr-price"><s class="pr-was">$20</s><b class="pr-sale">$18</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="ammannia gracilis stem plants"><span class="pr-main"><span class="pr-name">Ammannia Gracilis</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ammannia senegalensis stem plants"><span class="pr-main"><span class="pr-name">Ammannia Senegalensis</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="anacharis stem plants"><span class="pr-main"><span class="pr-name">Anacharis</span></span><span class="pr-price"><b class="pr-reg">12 for $24</b></span></li>
+<li class="pr" data-q="baby tears stem plants"><span class="pr-main"><span class="pr-name">Baby Tears</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="bacopa stem plants"><span class="pr-main"><span class="pr-name">Bacopa</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="bacopa myriophylloides stem plants"><span class="pr-main"><span class="pr-name">Bacopa Myriophylloides</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="cabomba stem plants"><span class="pr-main"><span class="pr-name">Cabomba</span></span><span class="pr-price"><b class="pr-reg">12 for $24</b></span></li>
+<li class="pr" data-q="cardamine stem plants"><span class="pr-main"><span class="pr-name">Cardamine</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="cuphea anagalloidea stem plants"><span class="pr-main"><span class="pr-name">Cuphea Anagalloidea</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="glossostigma stem plants"><span class="pr-main"><span class="pr-name">Glossostigma</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="hornwort stem plants"><span class="pr-main"><span class="pr-name">Hornwort</span></span><span class="pr-price"><b class="pr-reg">12 for $24</b></span></li>
+<li class="pr" data-q="hygro araguaia stem plants"><span class="pr-main"><span class="pr-name">Hygro Araguaia</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="hygro blue stem plants"><span class="pr-main"><span class="pr-name">Hygro Blue</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="hygro willow stem plants"><span class="pr-main"><span class="pr-name">Hygro Willow</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="limnophila aromatica stem plants"><span class="pr-main"><span class="pr-name">Limnophila Aromatica</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="lloydiella stem plants"><span class="pr-main"><span class="pr-name">Lloydiella</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="lloydiella golden stem plants"><span class="pr-main"><span class="pr-name">Lloydiella Golden</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia cuba stem plants"><span class="pr-main"><span class="pr-name">Ludwigia Cuba</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia dark red stem plants"><span class="pr-main"><span class="pr-name">Ludwigia Dark Red</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia needle leaf stem plants"><span class="pr-main"><span class="pr-name">Ludwigia Needle Leaf</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia ovalis stem plants"><span class="pr-main"><span class="pr-name">Ludwigia Ovalis</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia palustris stem plants"><span class="pr-main"><span class="pr-name">Ludwigia Palustris</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia peruensis stem plants limited"><span class="pr-main"><span class="pr-name">Ludwigia Peruensis</span><span class="pr-meta"><span class="pr-flag few">limited</span></span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia red stem plants"><span class="pr-main"><span class="pr-name">Ludwigia Red</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia super red mini stem plants"><span class="pr-main"><span class="pr-name">Ludwigia Super Red Mini</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="ludwigia white stem plants"><span class="pr-main"><span class="pr-name">Ludwigia White</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="mermaid stem plants"><span class="pr-main"><span class="pr-name">Mermaid</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="mint charlie stem plants"><span class="pr-main"><span class="pr-name">Mint Charlie</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="moneywort stem plants"><span class="pr-main"><span class="pr-name">Moneywort</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="myriophyllum green stem plants"><span class="pr-main"><span class="pr-name">Myriophyllum Green</span></span><span class="pr-price"><b class="pr-reg">12 for $24</b></span></li>
+<li class="pr" data-q="nesaea golden stem plants"><span class="pr-main"><span class="pr-name">Nesaea Golden</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="parrot&#x27;s feather stem plants"><span class="pr-main"><span class="pr-name">Parrot&#x27;s Feather</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="parrot&#x27;s feather dwarf red stem plants"><span class="pr-main"><span class="pr-name">Parrot&#x27;s Feather Dwarf Red</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="pennywort brazilian stem plants"><span class="pr-main"><span class="pr-name">Pennywort Brazilian</span></span><span class="pr-price"><b class="pr-reg">12 for $24</b></span></li>
+<li class="pr" data-q="pogostemon stellatus narrowleaf stem plants"><span class="pr-main"><span class="pr-name">Pogostemon Stellatus Narrowleaf</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala blood red stem plants"><span class="pr-main"><span class="pr-name">Rotala Blood Red</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala green stem plants"><span class="pr-main"><span class="pr-name">Rotala Green</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala nanjenshan stem plants"><span class="pr-main"><span class="pr-name">Rotala Nanjenshan</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala macrandra stem plants"><span class="pr-main"><span class="pr-name">Rotala Macrandra</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala orange juice stem plants"><span class="pr-main"><span class="pr-name">Rotala Orange Juice</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala red cross stem plants"><span class="pr-main"><span class="pr-name">Rotala Red Cross</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala red stem plants"><span class="pr-main"><span class="pr-name">Rotala Red</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="rotala vietnam stem plants"><span class="pr-main"><span class="pr-name">Rotala Vietnam</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="temple scarlet stem plants"><span class="pr-main"><span class="pr-name">Temple Scarlet</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="temple green stem plants"><span class="pr-main"><span class="pr-name">Temple Green</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="wisteria stem plants"><span class="pr-main"><span class="pr-name">Wisteria</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Aponogetons</h5>
+<ul class="pl">
+<li class="pr" data-q="boivinianus aponogetons small"><span class="pr-main"><span class="pr-name">Boivinianus</span><span class="pr-meta"><span class="pr-size">small</span></span></span><span class="pr-price"><b class="pr-reg">$6.50</b></span></li>
+<li class="pr" data-q="boivinianus aponogetons medium"><span class="pr-main"><span class="pr-name">Boivinianus</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$8.50</b></span></li>
+<li class="pr" data-q="longiplumulosus bulb aponogetons"><span class="pr-main"><span class="pr-name">Longiplumulosus Bulb</span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="longiplumulosus aponogetons small"><span class="pr-main"><span class="pr-name">Longiplumulosus</span><span class="pr-meta"><span class="pr-size">small</span></span></span><span class="pr-price"><b class="pr-reg">$6.50</b></span></li>
+<li class="pr" data-q="longiplumulosus aponogetons medium"><span class="pr-main"><span class="pr-name">Longiplumulosus</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$8.50</b></span></li>
+<li class="pr" data-q="natans aponogetons"><span class="pr-main"><span class="pr-name">Natans</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="madagascar lace bulb aponogetons"><span class="pr-main"><span class="pr-name">Madagascar Lace Bulb</span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="madagascar lace aponogetons small"><span class="pr-main"><span class="pr-name">Madagascar Lace</span><span class="pr-meta"><span class="pr-size">small</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="madagascar lace aponogetons medium"><span class="pr-main"><span class="pr-name">Madagascar Lace</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$8.50</b></span></li>
+<li class="pr" data-q="ulvaceus bulb aponogetons"><span class="pr-main"><span class="pr-name">Ulvaceus Bulb</span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="ulvaceus aponogetons small"><span class="pr-main"><span class="pr-name">Ulvaceus</span><span class="pr-meta"><span class="pr-size">small</span></span></span><span class="pr-price"><b class="pr-reg">$6.50</b></span></li>
+<li class="pr" data-q="crispus aponogetons small"><span class="pr-main"><span class="pr-name">Crispus</span><span class="pr-meta"><span class="pr-size">small</span></span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 6</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Vallisneria</h5>
+<ul class="pl">
+<li class="pr" data-q="contort vallisneria"><span class="pr-main"><span class="pr-name">Contort</span></span><span class="pr-price"><b class="pr-reg">$1.10</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="contort bunch vallisneria"><span class="pr-main"><span class="pr-name">Contort Bunch</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="corkscrew bunch vallisneria"><span class="pr-main"><span class="pr-name">Corkscrew Bunch</span></span><span class="pr-price"><b class="pr-reg">$3</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="corkscrew vallisneria"><span class="pr-main"><span class="pr-name">Corkscrew</span></span><span class="pr-price"><b class="pr-reg">$0.80</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="italian vallisneria"><span class="pr-main"><span class="pr-name">Italian</span></span><span class="pr-price"><b class="pr-reg">$0.80</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="italian bunch vallisneria"><span class="pr-main"><span class="pr-name">Italian Bunch</span></span><span class="pr-price"><b class="pr-reg">$2.75</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="jungle vallisneria"><span class="pr-main"><span class="pr-name">Jungle</span></span><span class="pr-price"><b class="pr-reg">$1.25</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="red jungle vallisneria"><span class="pr-main"><span class="pr-name">Red Jungle</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="narrowleaf vallisneria"><span class="pr-main"><span class="pr-name">Narrowleaf</span></span><span class="pr-price"><b class="pr-reg">$1.10</b><span class="pr-min">min 12</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Sagittaria</h5>
+<ul class="pl">
+<li class="pr" data-q="subulata sagittaria always comes in nice"><span class="pr-main"><span class="pr-name">Subulata</span><span class="pr-note">always comes in nice</span></span><span class="pr-price"><b class="pr-reg">$0.80</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="subulata, bunched sagittaria"><span class="pr-main"><span class="pr-name">Subulata, Bunched</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="dwarf sagittaria"><span class="pr-main"><span class="pr-name">Dwarf</span></span><span class="pr-price"><b class="pr-reg">$0.80</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="dwarf, bunched sagittaria"><span class="pr-main"><span class="pr-name">Dwarf, Bunched</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="broadleaf sagittaria"><span class="pr-main"><span class="pr-name">Broadleaf</span></span><span class="pr-price"><b class="pr-reg">$1</b><span class="pr-min">min 12</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Anubias</h5>
+<ul class="pl">
+<li class="pr" data-q="assorted anubias medium"><span class="pr-main"><span class="pr-name">Assorted</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="barteri anubias medium"><span class="pr-main"><span class="pr-name">Barteri</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="coffeefolia anubias medium"><span class="pr-main"><span class="pr-name">Coffeefolia</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="congensis anubias regular"><span class="pr-main"><span class="pr-name">Congensis</span><span class="pr-meta"><span class="pr-size">regular</span></span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="congensis anubias medium"><span class="pr-main"><span class="pr-name">Congensis</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="frazeri anubias medium"><span class="pr-main"><span class="pr-name">Frazeri</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="hastifolia anubias medium"><span class="pr-main"><span class="pr-name">Hastifolia</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="lanceolata anubias medium"><span class="pr-main"><span class="pr-name">Lanceolata</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="nana anubias regular"><span class="pr-main"><span class="pr-name">Nana</span><span class="pr-meta"><span class="pr-size">regular</span></span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="nana anubias medium"><span class="pr-main"><span class="pr-name">Nana</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="nana golden clump anubias"><span class="pr-main"><span class="pr-name">Nana Golden Clump</span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="nancoon anubias medium"><span class="pr-main"><span class="pr-name">Nancoon</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cryptocorynes</h5>
+<ul class="pl">
+<li class="pr" data-q="assorted cryptocorynes medium"><span class="pr-main"><span class="pr-name">Assorted</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="assorted cryptocorynes large"><span class="pr-main"><span class="pr-name">Assorted</span><span class="pr-meta"><span class="pr-size">large</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="balansae cryptocorynes price on request"><span class="pr-main"><span class="pr-name">Balansae</span><span class="pr-note">price on request</span></span><span class="pr-price"><b class="pr-reg">ask</b></span></li>
+<li class="pr" data-q="beckettii cryptocorynes medium"><span class="pr-main"><span class="pr-name">Beckettii</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="costata cryptocorynes medium"><span class="pr-main"><span class="pr-name">Costata</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="lucens cryptocorynes medium"><span class="pr-main"><span class="pr-name">Lucens</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="lucens clump cryptocorynes"><span class="pr-main"><span class="pr-name">Lucens Clump</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="lutea cryptocorynes medium"><span class="pr-main"><span class="pr-name">Lutea</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="parva cryptocorynes"><span class="pr-main"><span class="pr-name">Parva</span></span><span class="pr-price"><b class="pr-reg">$2.25</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="petchii cryptocorynes medium"><span class="pr-main"><span class="pr-name">Petchii</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="pontederifolia cryptocorynes medium"><span class="pr-main"><span class="pr-name">Pontederifolia</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="retrospiralis cryptocorynes medium"><span class="pr-main"><span class="pr-name">Retrospiralis</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="spiralis cryptocorynes large"><span class="pr-main"><span class="pr-name">Spiralis</span><span class="pr-meta"><span class="pr-size">large</span></span></span><span class="pr-price"><b class="pr-reg">$3</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="undulata cryptocorynes medium"><span class="pr-main"><span class="pr-name">Undulata</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="wendtii bronze cryptocorynes medium"><span class="pr-main"><span class="pr-name">Wendtii Bronze</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="wendtii green cryptocorynes medium"><span class="pr-main"><span class="pr-name">Wendtii Green</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="wendtii red cryptocorynes"><span class="pr-main"><span class="pr-name">Wendtii Red</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="wendtii mi oya cryptocorynes medium"><span class="pr-main"><span class="pr-name">Wendtii Mi Oya</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="wendtii tropica cryptocorynes medium"><span class="pr-main"><span class="pr-name">Wendtii Tropica</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 12</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Floating &amp; Carpeting Plants</h5>
+<ul class="pl">
+<li class="pr" data-q="azolla, ½ lb floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Azolla, ½ lb</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="salvinia, ½ lb floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Salvinia, ½ lb</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="giant baby tears portion floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Giant Baby Tears Portion</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="dwarf baby tears portion floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Dwarf Baby Tears Portion</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="guppy grass, ¼ lb floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Guppy Grass, ¼ lb</span></span><span class="pr-price"><b class="pr-reg">$25</b></span></li>
+<li class="pr" data-q="guppy grass, ½ lb floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Guppy Grass, ½ lb</span></span><span class="pr-price"><b class="pr-reg">$40</b></span></li>
+<li class="pr" data-q="glossostigma portion floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Glossostigma Portion</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="pearlweed portion floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Pearlweed Portion</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="pennywort &#x27;japan&#x27; portion floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Pennywort &#x27;Japan&#x27; Portion</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="monte carlo portion floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Monte Carlo Portion</span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="red root floater, ¼ lb floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Red Root Floater, ¼ lb</span></span><span class="pr-price"><b class="pr-reg">$22</b></span></li>
+<li class="pr" data-q="red root floater, ½ lb floating &amp; carpeting plants"><span class="pr-main"><span class="pr-name">Red Root Floater, ½ lb</span></span><span class="pr-price"><b class="pr-reg">$38</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Bucephalandra</h5>
+<p class="pg-price">$6 each · min 3 of each type</p>
+<ul class="pl">
+<li class="pr" data-q="assorted bucephalandra"><span class="pr-main"><span class="pr-name">Assorted</span></span></li>
+<li class="pr" data-q="catherine bucephalandra"><span class="pr-main"><span class="pr-name">Catherine</span></span></li>
+<li class="pr" data-q="giant velvet bucephalandra"><span class="pr-main"><span class="pr-name">Giant Velvet</span></span></li>
+<li class="pr" data-q="mini boyan bucephalandra"><span class="pr-main"><span class="pr-name">Mini Boyan</span></span></li>
+<li class="pr" data-q="red mini bucephalandra"><span class="pr-main"><span class="pr-name">Red Mini</span></span></li>
+<li class="pr" data-q="silver eagle bucephalandra"><span class="pr-main"><span class="pr-name">Silver Eagle</span></span></li>
+<li class="pr" data-q="theia bucephalandra"><span class="pr-main"><span class="pr-name">Theia</span></span></li>
+<li class="pr" data-q="velvet bucephalandra"><span class="pr-main"><span class="pr-name">Velvet</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Moss</h5>
+<ul class="pl">
+<li class="pr" data-q="christmas moss, ¼ lb moss"><span class="pr-main"><span class="pr-name">Christmas Moss, ¼ lb</span></span><span class="pr-price"><b class="pr-reg">$25</b></span></li>
+<li class="pr" data-q="christmas moss, ½ lb moss"><span class="pr-main"><span class="pr-name">Christmas Moss, ½ lb</span></span><span class="pr-price"><b class="pr-reg">$45</b></span></li>
+<li class="pr" data-q="christmas moss, 1 lb moss"><span class="pr-main"><span class="pr-name">Christmas Moss, 1 lb</span></span><span class="pr-price"><b class="pr-reg">$80</b></span></li>
+<li class="pr" data-q="java moss, ¼ lb moss"><span class="pr-main"><span class="pr-name">Java Moss, ¼ lb</span></span><span class="pr-price"><b class="pr-reg">$25</b></span></li>
+<li class="pr" data-q="java moss, ½ lb moss"><span class="pr-main"><span class="pr-name">Java Moss, ½ lb</span></span><span class="pr-price"><b class="pr-reg">$45</b></span></li>
+<li class="pr" data-q="coral moss, 3 × 3 in mat moss"><span class="pr-main"><span class="pr-name">Coral Moss, 3 × 3 in Mat</span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="fissidens nobilis, 3 × 3 in mat moss"><span class="pr-main"><span class="pr-name">Fissidens Nobilis, 3 × 3 in Mat</span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="susswassertang, 3 × 3 in mat moss"><span class="pr-main"><span class="pr-name">Susswassertang, 3 × 3 in Mat</span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="weeping moss, cup moss"><span class="pr-main"><span class="pr-name">Weeping Moss, Cup</span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="java moss, cup moss"><span class="pr-main"><span class="pr-name">Java Moss, Cup</span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Ferns &amp; Water Sprite</h5>
+<ul class="pl">
+<li class="pr" data-q="bolbitis heudelotii ferns &amp; water sprite"><span class="pr-main"><span class="pr-name">Bolbitis Heudelotii</span></span><span class="pr-price"><b class="pr-reg">$5</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="mini bolbitis ferns &amp; water sprite"><span class="pr-main"><span class="pr-name">Mini Bolbitis</span></span><span class="pr-price"><b class="pr-reg">$3</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="java fern ferns &amp; water sprite medium"><span class="pr-main"><span class="pr-name">Java Fern</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="java fern ferns &amp; water sprite large"><span class="pr-main"><span class="pr-name">Java Fern</span><span class="pr-meta"><span class="pr-size">large</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="java fern ferns &amp; water sprite x-large"><span class="pr-main"><span class="pr-name">Java Fern</span><span class="pr-meta"><span class="pr-size">x-large</span></span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="java fern mat, half (3 × 2½ in) ferns &amp; water sprite"><span class="pr-main"><span class="pr-name">Java Fern Mat, Half (3 × 2½ in)</span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="java fern mat, full (3 × 5 in) ferns &amp; water sprite"><span class="pr-main"><span class="pr-name">Java Fern Mat, Full (3 × 5 in)</span></span><span class="pr-price"><b class="pr-reg">$17</b></span></li>
+<li class="pr" data-q="java fern narrow leaf ferns &amp; water sprite"><span class="pr-main"><span class="pr-name">Java Fern Narrow Leaf</span></span><span class="pr-price"><b class="pr-reg">$2.75</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="java windelov ferns &amp; water sprite"><span class="pr-main"><span class="pr-name">Java Windelov</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="java trident ferns &amp; water sprite"><span class="pr-main"><span class="pr-name">Java Trident</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="indian fern water sprite ferns &amp; water sprite 3–4 stems per bunch"><span class="pr-main"><span class="pr-name">Indian Fern Water Sprite</span><span class="pr-note">3–4 stems per bunch</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="lace leaf water sprite ferns &amp; water sprite 3–4 stems per bunch"><span class="pr-main"><span class="pr-name">Lace Leaf Water Sprite</span><span class="pr-note">3–4 stems per bunch</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Sword Plants</h5>
+<ul class="pl">
+<li class="pr" data-q="assorted sword plants medium"><span class="pr-main"><span class="pr-name">Assorted</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="amazon sword plants medium"><span class="pr-main"><span class="pr-name">Amazon</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="altlandsberg sword plants medium"><span class="pr-main"><span class="pr-name">Altlandsberg</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="pygmy chain broadleaf sword plants"><span class="pr-main"><span class="pr-name">Pygmy Chain Broadleaf</span></span><span class="pr-price"><b class="pr-reg">$0.80</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="pygmy chain narrow leaf sword plants"><span class="pr-main"><span class="pr-name">Pygmy Chain Narrow Leaf</span></span><span class="pr-price"><b class="pr-reg">$0.80</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="grandifolius sword plants medium"><span class="pr-main"><span class="pr-name">Grandifolius</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="harbich sword plants medium"><span class="pr-main"><span class="pr-name">Harbich</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="melon sword plants medium"><span class="pr-main"><span class="pr-name">Melon</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="chocolate marble sword plants medium"><span class="pr-main"><span class="pr-name">Chocolate Marble</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$5</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="muricatus sword plants medium"><span class="pr-main"><span class="pr-name">Muricatus</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="ozelot green sword plants medium"><span class="pr-main"><span class="pr-name">Ozelot Green</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="ozelot red sword plants medium"><span class="pr-main"><span class="pr-name">Ozelot Red</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="radican sword plants medium"><span class="pr-main"><span class="pr-name">Radican</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="red melon sword plants medium"><span class="pr-main"><span class="pr-name">Red Melon</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$3.25</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="red rubin sword plants medium"><span class="pr-main"><span class="pr-name">Red Rubin</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$3.25</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="rose sword plants medium"><span class="pr-main"><span class="pr-name">Rose</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="rosette sword plants medium"><span class="pr-main"><span class="pr-name">Rosette</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="ruffle sword plants medium"><span class="pr-main"><span class="pr-name">Ruffle</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$3</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="sparkle sword plants medium"><span class="pr-main"><span class="pr-name">Sparkle</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="vesuvius sword plants"><span class="pr-main"><span class="pr-name">Vesuvius</span></span><span class="pr-price"><b class="pr-reg">$2.50</b><span class="pr-min">min 6</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Misc Plants</h5>
+<ul class="pl">
+<li class="pr" data-q="cardinal plant misc plants"><span class="pr-main"><span class="pr-name">Cardinal Plant</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="creeping rush misc plants"><span class="pr-main"><span class="pr-name">Creeping Rush</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="eriocaulon vietnam misc plants"><span class="pr-main"><span class="pr-name">Eriocaulon Vietnam</span></span><span class="pr-price"><b class="pr-reg">$2.25</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="4 leaf clover misc plants"><span class="pr-main"><span class="pr-name">4 Leaf Clover</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="hairgrass misc plants"><span class="pr-main"><span class="pr-name">Hairgrass</span></span><span class="pr-price"><b class="pr-reg">$1.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="hairgrass dwarf misc plants"><span class="pr-main"><span class="pr-name">Hairgrass Dwarf</span></span><span class="pr-price"><b class="pr-reg">$1.50</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="hairgrass giant misc plants"><span class="pr-main"><span class="pr-name">Hairgrass Giant</span></span><span class="pr-price"><b class="pr-reg">$1.60</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="hygro chai misc plants"><span class="pr-main"><span class="pr-name">Hygro Chai</span></span><span class="pr-price"><b class="pr-reg">$4.50</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="hygro compact misc plants"><span class="pr-main"><span class="pr-name">Hygro Compact</span></span><span class="pr-price"><b class="pr-reg">$1.60</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="littorella uniflora misc plants"><span class="pr-main"><span class="pr-name">Littorella Uniflora</span></span><span class="pr-price"><b class="pr-reg">$1.60</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="micro sword clump misc plants"><span class="pr-main"><span class="pr-name">Micro Sword Clump</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="microsword narrowleaf misc plants"><span class="pr-main"><span class="pr-name">Microsword Narrowleaf</span></span><span class="pr-price"><b class="pr-reg">$2.20</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="samolus red misc plants"><span class="pr-main"><span class="pr-name">Samolus Red</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="staurogyne repens misc plants"><span class="pr-main"><span class="pr-name">Staurogyne Repens</span></span><span class="pr-price"><b class="pr-reg">12 for $21</b></span></li>
+<li class="pr" data-q="staurogyne &#x27;porto velho&#x27; misc plants"><span class="pr-main"><span class="pr-name">Staurogyne &#x27;Porto Velho&#x27;</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="water onion plant misc plants"><span class="pr-main"><span class="pr-name">Water Onion Plant</span></span><span class="pr-price"><b class="pr-reg">$1.20</b><span class="pr-min">min 12</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Lilies &amp; Lotus</h5>
+<ul class="pl">
+<li class="pr" data-q="dwarf aquarium lily lilies &amp; lotus small"><span class="pr-main"><span class="pr-name">Dwarf Aquarium Lily</span><span class="pr-meta"><span class="pr-size">small</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="dwarf lily bulb lilies &amp; lotus"><span class="pr-main"><span class="pr-name">Dwarf Lily Bulb</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="dwarf lily lilies &amp; lotus regular"><span class="pr-main"><span class="pr-name">Dwarf Lily</span><span class="pr-meta"><span class="pr-size">regular</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="tiger lotus bulb lilies &amp; lotus"><span class="pr-main"><span class="pr-name">Tiger Lotus Bulb</span></span><span class="pr-price"><b class="pr-reg">$2</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="tiger lotus lilies &amp; lotus regular"><span class="pr-main"><span class="pr-name">Tiger Lotus</span><span class="pr-meta"><span class="pr-size">regular</span></span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Coco Fiber Mats</h5>
+<ul class="pl">
+<li class="pr" data-q="dwarf baby tears on coco fiber mat coco fiber mats"><span class="pr-main"><span class="pr-name">Dwarf Baby Tears on Coco Fiber Mat</span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="dwarf hairgrass on coco fiber mat coco fiber mats"><span class="pr-main"><span class="pr-name">Dwarf Hairgrass on Coco Fiber Mat</span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Bog Plants (Bunched)</h5>
+<p class="pg-price">12 bunches for $21</p>
+<ul class="pl">
+<li class="pr" data-q="aluminum plant bog plants (bunched)"><span class="pr-main"><span class="pr-name">Aluminum Plant</span></span></li>
+<li class="pr" data-q="dragon tongue bog plants (bunched)"><span class="pr-main"><span class="pr-name">Dragon Tongue</span></span></li>
+<li class="pr" data-q="florida ruffle bog plants (bunched)"><span class="pr-main"><span class="pr-name">Florida Ruffle</span></span></li>
+<li class="pr" data-q="joseph coat bog plants (bunched)"><span class="pr-main"><span class="pr-name">Joseph Coat</span></span></li>
+<li class="pr" data-q="purple waffle bog plants (bunched)"><span class="pr-main"><span class="pr-name">Purple Waffle</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Bog Plants (Bare Root)</h5>
+<ul class="pl">
+<li class="pr" data-q="arrowhead bog plants (bare root)"><span class="pr-main"><span class="pr-name">Arrowhead</span></span><span class="pr-price"><b class="pr-reg">12 for $20</b></span></li>
+<li class="pr" data-q="bamboo curly bog plants (bare root)"><span class="pr-main"><span class="pr-name">Bamboo Curly</span></span><span class="pr-price"><b class="pr-reg">$3.25</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="janet craig bog plants (bare root) no roots"><span class="pr-main"><span class="pr-name">Janet Craig</span><span class="pr-note">no roots</span></span><span class="pr-price"><b class="pr-reg">12 for $20</b></span></li>
+<li class="pr" data-q="mondo grass bog plants (bare root)"><span class="pr-main"><span class="pr-name">Mondo Grass</span></span><span class="pr-price"><b class="pr-reg">12 for $18</b></span></li>
+<li class="pr" data-q="sanderiana variegated bog plants (bare root)"><span class="pr-main"><span class="pr-name">Sanderiana Variegated</span></span><span class="pr-price"><b class="pr-reg">12 for $18</b></span></li>
+<li class="pr" data-q="brazil sword bog plants (bare root) regular"><span class="pr-main"><span class="pr-name">Brazil Sword</span><span class="pr-meta"><span class="pr-size">regular</span></span></span><span class="pr-price"><b class="pr-reg">$2.25</b><span class="pr-min">min 12</span></span></li>
+<li class="pr" data-q="brazil sword bog plants (bare root) medium"><span class="pr-main"><span class="pr-name">Brazil Sword</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$3.25</b><span class="pr-min">min 6</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Plants — True Aquatic Mix</h5>
+<ul class="pl">
+<li class="pr" data-q="true aquatic, regular assorted mix potted plants — true aquatic mix"><span class="pr-main"><span class="pr-name">True Aquatic, Regular Assorted Mix</span></span><span class="pr-price"><b class="pr-reg">$3</b><span class="pr-min">min 6</span></span></li>
+<li class="pr" data-q="true aquatic, fancy assorted mix potted plants — true aquatic mix"><span class="pr-main"><span class="pr-name">True Aquatic, Fancy Assorted Mix</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Stem Plants</h5>
+<p class="pg-price">$3.50 each · min 3 of each type</p>
+<ul class="pl">
+<li class="pr" data-q="baby tears potted stem plants"><span class="pr-main"><span class="pr-name">Baby Tears</span></span></li>
+<li class="pr" data-q="bacopa potted stem plants"><span class="pr-main"><span class="pr-name">Bacopa</span></span></li>
+<li class="pr" data-q="hygro blue potted stem plants"><span class="pr-main"><span class="pr-name">Hygro Blue</span></span></li>
+<li class="pr" data-q="hygro odora potted stem plants"><span class="pr-main"><span class="pr-name">Hygro Odora</span></span></li>
+<li class="pr" data-q="hygro willow potted stem plants"><span class="pr-main"><span class="pr-name">Hygro Willow</span></span></li>
+<li class="pr" data-q="cuba ludwigia potted stem plants"><span class="pr-main"><span class="pr-name">Cuba Ludwigia</span></span></li>
+<li class="pr" data-q="dark red ludwigia potted stem plants"><span class="pr-main"><span class="pr-name">Dark Red Ludwigia</span></span></li>
+<li class="pr" data-q="needle leaf ludwigia potted stem plants"><span class="pr-main"><span class="pr-name">Needle Leaf Ludwigia</span></span></li>
+<li class="pr" data-q="ovalis ludwigia potted stem plants"><span class="pr-main"><span class="pr-name">Ovalis Ludwigia</span></span></li>
+<li class="pr" data-q="red ludwigia potted stem plants"><span class="pr-main"><span class="pr-name">Red Ludwigia</span></span></li>
+<li class="pr" data-q="super red mini ludwigia potted stem plants"><span class="pr-main"><span class="pr-name">Super Red Mini Ludwigia</span></span></li>
+<li class="pr" data-q="white ludwigia potted stem plants"><span class="pr-main"><span class="pr-name">White Ludwigia</span></span></li>
+<li class="pr" data-q="mint charlie potted stem plants"><span class="pr-main"><span class="pr-name">Mint Charlie</span></span></li>
+<li class="pr" data-q="moneywort potted stem plants"><span class="pr-main"><span class="pr-name">Moneywort</span></span></li>
+<li class="pr" data-q="brazil pennywort potted stem plants"><span class="pr-main"><span class="pr-name">Brazil Pennywort</span></span></li>
+<li class="pr" data-q="rotala red potted stem plants"><span class="pr-main"><span class="pr-name">Rotala Red</span></span></li>
+<li class="pr" data-q="rotala vietnam potted stem plants"><span class="pr-main"><span class="pr-name">Rotala Vietnam</span></span></li>
+<li class="pr" data-q="scarlet temple potted stem plants"><span class="pr-main"><span class="pr-name">Scarlet Temple</span></span></li>
+<li class="pr" data-q="green temple potted stem plants"><span class="pr-main"><span class="pr-name">Green Temple</span></span></li>
+<li class="pr" data-q="wisteria potted stem plants"><span class="pr-main"><span class="pr-name">Wisteria</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Ferns</h5>
+<ul class="pl">
+<li class="pr" data-q="mini bolbitis potted ferns"><span class="pr-main"><span class="pr-name">Mini Bolbitis</span></span><span class="pr-price"><b class="pr-reg">$5</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="bolbitis heudelotii potted ferns"><span class="pr-main"><span class="pr-name">Bolbitis Heudelotii</span></span><span class="pr-price"><b class="pr-reg">$6</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="java fern potted ferns"><span class="pr-main"><span class="pr-name">Java Fern</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="java windelov potted ferns"><span class="pr-main"><span class="pr-name">Java Windelov</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="indian fern water sprite potted ferns"><span class="pr-main"><span class="pr-name">Indian Fern Water Sprite</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="lace leaf water sprite potted ferns"><span class="pr-main"><span class="pr-name">Lace Leaf Water Sprite</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 3</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Sagittaria &amp; Vallisneria</h5>
+<ul class="pl">
+<li class="pr" data-q="dwarf sag potted potted sagittaria &amp; vallisneria"><span class="pr-main"><span class="pr-name">Dwarf Sag Potted</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="subulata sag potted sagittaria &amp; vallisneria"><span class="pr-main"><span class="pr-name">Subulata Sag</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="italian val potted sagittaria &amp; vallisneria"><span class="pr-main"><span class="pr-name">Italian Val</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Misc</h5>
+<ul class="pl">
+<li class="pr" data-q="baby tears dwarf potted misc"><span class="pr-main"><span class="pr-name">Baby Tears Dwarf</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="cardinal potted misc"><span class="pr-main"><span class="pr-name">Cardinal</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="crinum calamistratum potted misc"><span class="pr-main"><span class="pr-name">Crinum Calamistratum</span></span><span class="pr-price"><b class="pr-reg">$12</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="hairgrass potted misc"><span class="pr-main"><span class="pr-name">Hairgrass</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="dwarf hairgrass potted misc"><span class="pr-main"><span class="pr-name">Dwarf Hairgrass</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="giant hairgrass potted misc"><span class="pr-main"><span class="pr-name">Giant Hairgrass</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="monte carlo potted misc"><span class="pr-main"><span class="pr-name">Monte Carlo</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="pearlweed potted misc"><span class="pr-main"><span class="pr-name">Pearlweed</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="japan pennywort potted misc"><span class="pr-main"><span class="pr-name">Japan Pennywort</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="creeping rush potted misc"><span class="pr-main"><span class="pr-name">Creeping Rush</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="4 leaf clover potted misc"><span class="pr-main"><span class="pr-name">4 Leaf Clover</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="littorella potted misc"><span class="pr-main"><span class="pr-name">Littorella</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="microsword potted misc"><span class="pr-main"><span class="pr-name">Microsword</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="staurogyne repens potted misc"><span class="pr-main"><span class="pr-name">Staurogyne Repens</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="water onion dwarf potted misc"><span class="pr-main"><span class="pr-name">Water Onion Dwarf</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Anubias</h5>
+<p class="pg-price">$5.50 each · min 3</p>
+<ul class="pl">
+<li class="pr" data-q="assorted potted anubias"><span class="pr-main"><span class="pr-name">Assorted</span></span></li>
+<li class="pr" data-q="afzelii potted anubias"><span class="pr-main"><span class="pr-name">Afzelii</span></span></li>
+<li class="pr" data-q="barteri potted anubias"><span class="pr-main"><span class="pr-name">Barteri</span></span></li>
+<li class="pr" data-q="coffeefolia potted anubias"><span class="pr-main"><span class="pr-name">Coffeefolia</span></span></li>
+<li class="pr" data-q="congensis potted anubias"><span class="pr-main"><span class="pr-name">Congensis</span></span></li>
+<li class="pr" data-q="frazeri potted anubias"><span class="pr-main"><span class="pr-name">Frazeri</span></span></li>
+<li class="pr" data-q="hastifolia potted anubias"><span class="pr-main"><span class="pr-name">Hastifolia</span></span></li>
+<li class="pr" data-q="lanceolata potted anubias"><span class="pr-main"><span class="pr-name">Lanceolata</span></span></li>
+<li class="pr" data-q="nana potted anubias"><span class="pr-main"><span class="pr-name">Nana</span></span></li>
+<li class="pr" data-q="nana petite potted anubias"><span class="pr-main"><span class="pr-name">Nana Petite</span></span></li>
+<li class="pr" data-q="nancoon potted anubias"><span class="pr-main"><span class="pr-name">Nancoon</span></span></li>
+<li class="pr" data-q="nangi potted anubias"><span class="pr-main"><span class="pr-name">Nangi</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Cryptocorynes</h5>
+<p class="pg-price">$3.50 each · min 3</p>
+<ul class="pl">
+<li class="pr" data-q="assorted potted cryptocorynes"><span class="pr-main"><span class="pr-name">Assorted</span></span></li>
+<li class="pr" data-q="lucens potted cryptocorynes"><span class="pr-main"><span class="pr-name">Lucens</span></span></li>
+<li class="pr" data-q="lutea potted cryptocorynes"><span class="pr-main"><span class="pr-name">Lutea</span></span></li>
+<li class="pr" data-q="parva potted cryptocorynes"><span class="pr-main"><span class="pr-name">Parva</span></span></li>
+<li class="pr" data-q="tropica potted cryptocorynes"><span class="pr-main"><span class="pr-name">Tropica</span></span></li>
+<li class="pr" data-q="wendtii green potted cryptocorynes"><span class="pr-main"><span class="pr-name">Wendtii Green</span></span></li>
+<li class="pr" data-q="wendtii brown potted cryptocorynes"><span class="pr-main"><span class="pr-name">Wendtii Brown</span></span></li>
+<li class="pr" data-q="wendtii red potted cryptocorynes"><span class="pr-main"><span class="pr-name">Wendtii Red</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Sword Plants</h5>
+<p class="pg-price">$4 each · min 3</p>
+<ul class="pl">
+<li class="pr" data-q="assorted potted sword plants"><span class="pr-main"><span class="pr-name">Assorted</span></span></li>
+<li class="pr" data-q="altlandsberg potted sword plants"><span class="pr-main"><span class="pr-name">Altlandsberg</span></span></li>
+<li class="pr" data-q="amazon potted sword plants"><span class="pr-main"><span class="pr-name">Amazon</span></span></li>
+<li class="pr" data-q="pygmy chain potted sword plants"><span class="pr-main"><span class="pr-name">Pygmy Chain</span></span></li>
+<li class="pr" data-q="harbich potted sword plants"><span class="pr-main"><span class="pr-name">Harbich</span></span></li>
+<li class="pr" data-q="marble queen potted sword plants"><span class="pr-main"><span class="pr-name">Marble Queen</span></span></li>
+<li class="pr" data-q="melon potted sword plants"><span class="pr-main"><span class="pr-name">Melon</span></span></li>
+<li class="pr" data-q="oriental potted sword plants"><span class="pr-main"><span class="pr-name">Oriental</span></span></li>
+<li class="pr" data-q="ozelot green potted sword plants"><span class="pr-main"><span class="pr-name">Ozelot Green</span></span></li>
+<li class="pr" data-q="ozelot red potted sword plants"><span class="pr-main"><span class="pr-name">Ozelot Red</span></span></li>
+<li class="pr" data-q="radican potted sword plants"><span class="pr-main"><span class="pr-name">Radican</span></span></li>
+<li class="pr" data-q="red flame potted sword plants"><span class="pr-main"><span class="pr-name">Red Flame</span></span></li>
+<li class="pr" data-q="red melon potted sword plants"><span class="pr-main"><span class="pr-name">Red Melon</span></span></li>
+<li class="pr" data-q="red rubin potted sword plants"><span class="pr-main"><span class="pr-name">Red Rubin</span></span></li>
+<li class="pr" data-q="rose potted sword plants"><span class="pr-main"><span class="pr-name">Rose</span></span></li>
+<li class="pr" data-q="ruffle potted sword plants"><span class="pr-main"><span class="pr-name">Ruffle</span></span></li>
+<li class="pr" data-q="sparkle potted sword plants"><span class="pr-main"><span class="pr-name">Sparkle</span></span></li>
+<li class="pr" data-q="vesuvius potted sword plants"><span class="pr-main"><span class="pr-name">Vesuvius</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Potted Bog Plants</h5>
+<ul class="pl">
+<li class="pr" data-q="bella palm potted bog plants"><span class="pr-main"><span class="pr-name">Bella Palm</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="green hedge potted bog plants"><span class="pr-main"><span class="pr-name">Green Hedge</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="joseph coat potted bog plants"><span class="pr-main"><span class="pr-name">Joseph Coat</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="purple waffle potted bog plants"><span class="pr-main"><span class="pr-name">Purple Waffle</span></span><span class="pr-price"><b class="pr-reg">$3.50</b><span class="pr-min">min 3</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Carnivorous Plants</h5>
+<ul class="pl">
+<li class="pr" data-q="nepenthes carnivorous plants 2 in"><span class="pr-main"><span class="pr-name">Nepenthes</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="sarracenia carnivorous plants 2 in"><span class="pr-main"><span class="pr-name">Sarracenia</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="sundew carnivorous plants 2 in"><span class="pr-main"><span class="pr-name">Sundew</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b><span class="pr-min">min 3</span></span></li>
+<li class="pr" data-q="venus fly trap carnivorous plants 3 in"><span class="pr-main"><span class="pr-name">Venus Fly Trap</span><span class="pr-meta"><span class="pr-size">3 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b><span class="pr-min">min 3</span></span></li>
+</ul></section>
+</div>
+<div class="ps-section" id="ps-fish"><h4 class="ps-title">Fish &amp; Inverts <span class="ps-count">242 items</span></h4>
+<section class="pg">
+<h5 class="pg-title">Tetras</h5>
+<ul class="pl">
+<li class="pr" data-q="serpae tetras"><span class="pr-main"><span class="pr-name">Serpae</span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="pristella tetras sale"><span class="pr-main"><span class="pr-name">Pristella</span></span><span class="pr-price"><s class="pr-was">$2.50</s><b class="pr-sale">$2</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="albino buenos aires tetra tetras"><span class="pr-main"><span class="pr-name">Albino Buenos Aires Tetra</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="buenos aires tetra tetras sale"><span class="pr-main"><span class="pr-name">Buenos Aires Tetra</span></span><span class="pr-price"><s class="pr-was">$3</s><b class="pr-sale">$2.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="diamond tetras sale"><span class="pr-main"><span class="pr-name">Diamond</span></span><span class="pr-price"><s class="pr-was">$3.50</s><b class="pr-sale">$3</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="ember tetras"><span class="pr-main"><span class="pr-name">Ember</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="blue tetra tetras"><span class="pr-main"><span class="pr-name">Blue Tetra</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="silver hatchet tetra tetras nice"><span class="pr-main"><span class="pr-name">Silver Hatchet Tetra</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="columbian tetra tetras sale"><span class="pr-main"><span class="pr-name">Columbian Tetra</span></span><span class="pr-price"><s class="pr-was">$3.50</s><b class="pr-sale">$3</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="hy511 tetra tetras"><span class="pr-main"><span class="pr-name">HY511 Tetra</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="whitefin rosy tetra tetras"><span class="pr-main"><span class="pr-name">Whitefin Rosy Tetra</span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+<li class="pr" data-q="glass bloodfin tetras"><span class="pr-main"><span class="pr-name">Glass Bloodfin</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="long fin black skirt tetras"><span class="pr-main"><span class="pr-name">Long Fin Black Skirt</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="red eye tetras large"><span class="pr-main"><span class="pr-name">Red Eye</span><span class="pr-meta"><span class="pr-size">large</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="albino glow lite tetras"><span class="pr-main"><span class="pr-name">Albino Glow Lite</span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="glow lite tetras"><span class="pr-main"><span class="pr-name">Glow Lite</span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="blind cave tetras"><span class="pr-main"><span class="pr-name">Blind Cave</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="head and tail lights tetras"><span class="pr-main"><span class="pr-name">Head and Tail Lights</span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="bloodfin tetra tetras"><span class="pr-main"><span class="pr-name">Bloodfin Tetra</span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="silver dollars tetras nice few left"><span class="pr-main"><span class="pr-name">Silver Dollars</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="rummy nose tetra tetras tank-raised"><span class="pr-main"><span class="pr-name">Rummy Nose Tetra</span><span class="pr-meta"><span class="pr-flag tr">tank-raised</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="congo tetra tetras medium"><span class="pr-main"><span class="pr-name">Congo Tetra</span><span class="pr-meta"><span class="pr-size">medium</span></span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Rasboras</h5>
+<ul class="pl">
+<li class="pr" data-q="rasbora het rasboras"><span class="pr-main"><span class="pr-name">Rasbora Het</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="brilliant rasbora rasboras nice"><span class="pr-main"><span class="pr-name">Brilliant Rasbora</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="scissortail rasboras"><span class="pr-main"><span class="pr-name">Scissortail</span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="asian rummy nose rasboras few left"><span class="pr-main"><span class="pr-name">Asian Rummy Nose</span><span class="pr-meta"><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Danios</h5>
+<ul class="pl">
+<li class="pr" data-q="white cloud danios sale"><span class="pr-main"><span class="pr-name">White Cloud</span></span><span class="pr-price"><s class="pr-was">$2</s><b class="pr-sale">$1.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="gold white cloud danios sale"><span class="pr-main"><span class="pr-name">Gold White Cloud</span></span><span class="pr-price"><s class="pr-was">$2.50</s><b class="pr-sale">$2</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="long fin white clouds danios nice sale"><span class="pr-main"><span class="pr-name">Long Fin White Clouds</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><s class="pr-was">$7</s><b class="pr-sale">$5</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="long fin blue danio danios sale"><span class="pr-main"><span class="pr-name">Long Fin Blue Danio</span></span><span class="pr-price"><s class="pr-was">$2</s><b class="pr-sale">$1.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="long fin zebra danios sale"><span class="pr-main"><span class="pr-name">Long Fin Zebra</span></span><span class="pr-price"><s class="pr-was">$2</s><b class="pr-sale">$1.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="long fin leopard danios sale"><span class="pr-main"><span class="pr-name">Long Fin Leopard</span></span><span class="pr-price"><s class="pr-was">$2</s><b class="pr-sale">$1.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="long fin gold danio danios sale"><span class="pr-main"><span class="pr-name">Long Fin Gold Danio</span></span><span class="pr-price"><s class="pr-was">$2</s><b class="pr-sale">$1.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="giant danios danios"><span class="pr-main"><span class="pr-name">Giant Danios</span></span><span class="pr-price"><b class="pr-reg">$3</b></span></li>
+<li class="pr" data-q="pearl danios sale"><span class="pr-main"><span class="pr-name">Pearl</span></span><span class="pr-price"><s class="pr-was">$2</s><b class="pr-sale">$1.50</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Barbs</h5>
+<ul class="pl">
+<li class="pr" data-q="odessa barbs small sale"><span class="pr-main"><span class="pr-name">Odessa</span><span class="pr-meta"><span class="pr-size">small</span></span></span><span class="pr-price"><s class="pr-was">$3.50</s><b class="pr-sale">$3</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="odessa, pair barbs sale"><span class="pr-main"><span class="pr-name">Odessa, Pair</span></span><span class="pr-price"><s class="pr-was">$10 per pair</s><b class="pr-sale">$8 per pair</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="checkerboard barbs barbs"><span class="pr-main"><span class="pr-name">Checkerboard Barbs</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="long fin tiger barb barbs nice sale"><span class="pr-main"><span class="pr-name">Long Fin Tiger Barb</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="dwarf golden barbs sale"><span class="pr-main"><span class="pr-name">Dwarf Golden</span></span><span class="pr-price"><s class="pr-was">$5</s><b class="pr-sale">$4</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="african barbs sale"><span class="pr-main"><span class="pr-name">African</span></span><span class="pr-price"><s class="pr-was">$7</s><b class="pr-sale">$6</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="cherry barb barbs"><span class="pr-main"><span class="pr-name">Cherry Barb</span></span><span class="pr-price"><b class="pr-reg">$2.50</b></span></li>
+<li class="pr" data-q="long fin cherry barb barbs"><span class="pr-main"><span class="pr-name">Long Fin Cherry Barb</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="rosy barbs barbs pair $7 nice"><span class="pr-main"><span class="pr-name">Rosy Barbs</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">pair $7</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="long fin rosy barb barbs pair $10"><span class="pr-main"><span class="pr-name">Long Fin Rosy Barb</span><span class="pr-note">pair $10</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="red glass barb, pair barbs nice sale"><span class="pr-main"><span class="pr-name">Red Glass Barb, Pair</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><s class="pr-was">$7 per pair</s><b class="pr-sale">$6 per pair</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="tiger barb barbs regular sale"><span class="pr-main"><span class="pr-name">Tiger Barb</span><span class="pr-meta"><span class="pr-size">regular</span></span></span><span class="pr-price"><s class="pr-was">$3.50</s><b class="pr-sale">$2.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="albino tiger barb barbs nice sale"><span class="pr-main"><span class="pr-name">Albino Tiger Barb</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><s class="pr-was">$3</s><b class="pr-sale">$2.50</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="red glass barb barbs"><span class="pr-main"><span class="pr-name">Red Glass Barb</span></span><span class="pr-price"><b class="pr-reg">$3</b></span></li>
+<li class="pr" data-q="ruby barb barbs"><span class="pr-main"><span class="pr-name">Ruby Barb</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="albino cherry barb barbs nice"><span class="pr-main"><span class="pr-name">Albino Cherry Barb</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$3</b></span></li>
+<li class="pr" data-q="green tiger barb barbs regular nice"><span class="pr-main"><span class="pr-name">Green Tiger Barb</span><span class="pr-meta"><span class="pr-size">regular</span><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$3</b></span></li>
+<li class="pr" data-q="gold barb barbs sale"><span class="pr-main"><span class="pr-name">Gold Barb</span></span><span class="pr-price"><s class="pr-was">$3</s><b class="pr-sale">$2.50</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Rainbowfish</h5>
+<ul class="pl">
+<li class="pr" data-q="praecox rainbowfish sale"><span class="pr-main"><span class="pr-name">Praecox</span></span><span class="pr-price"><s class="pr-was">$6</s><b class="pr-sale">$5</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="kali tawa rainbow rainbowfish unsexed"><span class="pr-main"><span class="pr-name">Kali Tawa Rainbow</span><span class="pr-note">unsexed</span></span><span class="pr-price"><b class="pr-reg">$14</b></span></li>
+<li class="pr" data-q="picta aru rainbow rainbowfish unsexed · close to 1 in"><span class="pr-main"><span class="pr-name">Picta Aru Rainbow</span><span class="pr-note">unsexed · close to 1 in</span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="furcatus rainbow rainbowfish starting to sex out"><span class="pr-main"><span class="pr-name">Furcatus Rainbow</span><span class="pr-note">starting to sex out</span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="dority rainbow rainbowfish 2 in"><span class="pr-main"><span class="pr-name">Dority Rainbow</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$14</b></span></li>
+<li class="pr" data-q="kamaka rainbow rainbowfish breeders"><span class="pr-main"><span class="pr-name">Kamaka Rainbow</span><span class="pr-note">breeders</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+<li class="pr" data-q="threadfin rainbow rainbowfish nice"><span class="pr-main"><span class="pr-name">Threadfin Rainbow</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$15 per pair</b></span></li>
+<li class="pr" data-q="millennium rainbow rainbowfish close to 2 in nice"><span class="pr-main"><span class="pr-name">Millennium Rainbow</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">close to 2 in</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+<li class="pr" data-q="turquoise rainbow rainbowfish close to 2 in nice sale"><span class="pr-main"><span class="pr-name">Turquoise Rainbow</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">close to 2 in</span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="red laser rainbows rainbowfish sale"><span class="pr-main"><span class="pr-name">Red Laser Rainbows</span></span><span class="pr-price"><s class="pr-was">$14</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="alleni rainbows rainbowfish sale"><span class="pr-main"><span class="pr-name">Alleni Rainbows</span></span><span class="pr-price"><s class="pr-was">$14</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Corydoras</h5>
+<p class="pg-note">Tank-raised unless marked wild</p>
+<ul class="pl">
+<li class="pr" data-q="blue cory corydoras looks more like slate gray nice"><span class="pr-main"><span class="pr-name">Blue Cory</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">looks more like slate gray</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="panda corys corydoras 1 in"><span class="pr-main"><span class="pr-name">Panda Corys</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="albino corys corydoras 1 in"><span class="pr-main"><span class="pr-name">Albino Corys</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="green corys corydoras 1 in"><span class="pr-main"><span class="pr-name">Green Corys</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="paleatus corys corydoras 1 in"><span class="pr-main"><span class="pr-name">Paleatus Corys</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="julii corys corydoras 1¼ in"><span class="pr-main"><span class="pr-name">Julii Corys</span><span class="pr-meta"><span class="pr-size">1¼ in</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="orange venezuela corys corydoras 1 in"><span class="pr-main"><span class="pr-name">Orange Venezuela Corys</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="pygmaeus cory corydoras wild · tanked for a few weeks nice"><span class="pr-main"><span class="pr-name">Pygmaeus Cory</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">wild · tanked for a few weeks</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="orange laser corys corydoras"><span class="pr-main"><span class="pr-name">Orange Laser Corys</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+<li class="pr" data-q="black cory corydoras tank-raised sale"><span class="pr-main"><span class="pr-name">Black Cory</span><span class="pr-meta"><span class="pr-flag tr">tank-raised</span></span></span><span class="pr-price"><s class="pr-was">$15</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="albino paleatus corydoras"><span class="pr-main"><span class="pr-name">Albino Paleatus</span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="sodalis corys corydoras wild sale"><span class="pr-main"><span class="pr-name">Sodalis Corys</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="elegans corys corydoras wild sale"><span class="pr-main"><span class="pr-name">Elegans Corys</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="skunk corys corydoras wild sale"><span class="pr-main"><span class="pr-name">Skunk Corys</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="nanus cory corydoras wild"><span class="pr-main"><span class="pr-name">Nanus Cory</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="punctatus cory corydoras wild sale"><span class="pr-main"><span class="pr-name">Punctatus Cory</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="incoliana cory corydoras wild · medium–large few left"><span class="pr-main"><span class="pr-name">Incoliana Cory</span><span class="pr-meta"><span class="pr-flag few">few left</span></span><span class="pr-note">wild · medium–large</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+<li class="pr" data-q="delphax corys corydoras wild sale"><span class="pr-main"><span class="pr-name">Delphax Corys</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><s class="pr-was">$18</s><b class="pr-sale">$14</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="violetta corys corydoras tank-raised sale"><span class="pr-main"><span class="pr-name">Violetta Corys</span><span class="pr-meta"><span class="pr-flag tr">tank-raised</span></span></span><span class="pr-price"><s class="pr-was">$15</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="long fin panda corys corydoras tank-raised sale"><span class="pr-main"><span class="pr-name">Long Fin Panda Corys</span><span class="pr-meta"><span class="pr-flag tr">tank-raised</span></span></span><span class="pr-price"><s class="pr-was">$14</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Bristlenose Plecos</h5>
+<ul class="pl">
+<li class="pr" data-q="bristlenose pleco, regular bristlenose plecos 1¼ in"><span class="pr-main"><span class="pr-name">Bristlenose Pleco, Regular</span><span class="pr-note">1¼ in</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="bristlenose pleco, white bristlenose plecos 1¼ in sale"><span class="pr-main"><span class="pr-name">Bristlenose Pleco, White</span><span class="pr-note">1¼ in</span></span><span class="pr-price"><s class="pr-was">$20</s><b class="pr-sale">$15</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Sharks</h5>
+<ul class="pl">
+<li class="pr" data-q="red tail shark sharks"><span class="pr-main"><span class="pr-name">Red Tail Shark</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="rainbow shark sharks"><span class="pr-main"><span class="pr-name">Rainbow Shark</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="albino rainbow shark sharks"><span class="pr-main"><span class="pr-name">Albino Rainbow Shark</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Scavengers</h5>
+<ul class="pl">
+<li class="pr" data-q="true siamese algae eaters scavengers sale"><span class="pr-main"><span class="pr-name">True Siamese Algae Eaters</span></span><span class="pr-price"><s class="pr-was">$5</s><b class="pr-sale">$4</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="batik botia scavengers few left"><span class="pr-main"><span class="pr-name">Batik Botia</span><span class="pr-meta"><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="dojo scavengers"><span class="pr-main"><span class="pr-name">Dojo</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="yo yo loach scavengers"><span class="pr-main"><span class="pr-name">Yo Yo Loach</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="debauwi catfish scavengers sale"><span class="pr-main"><span class="pr-name">Debauwi Catfish</span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="pedi garra scavengers sale"><span class="pr-main"><span class="pr-name">Pedi Garra</span></span><span class="pr-price"><s class="pr-was">$7</s><b class="pr-sale">$6</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="gold spot garra scavengers sale"><span class="pr-main"><span class="pr-name">Gold Spot Garra</span></span><span class="pr-price"><s class="pr-was">$16</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="panda garra scavengers 1¼ in"><span class="pr-main"><span class="pr-name">Panda Garra</span><span class="pr-meta"><span class="pr-size">1¼ in</span></span></span><span class="pr-price"><b class="pr-reg">$17</b></span></li>
+<li class="pr" data-q="spilota garra scavengers sale"><span class="pr-main"><span class="pr-name">Spilota Garra</span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="kuhli loach scavengers"><span class="pr-main"><span class="pr-name">Kuhli Loach</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="black kuhli loach scavengers"><span class="pr-main"><span class="pr-name">Black Kuhli Loach</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="chinese algae eaters scavengers"><span class="pr-main"><span class="pr-name">Chinese Algae Eaters</span></span><span class="pr-price"><b class="pr-reg">4 for $10</b></span></li>
+<li class="pr" data-q="roseline sharks scavengers 2 in sale"><span class="pr-main"><span class="pr-name">Roseline Sharks</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Gouramis</h5>
+<ul class="pl">
+<li class="pr" data-q="blue gourami gouramis"><span class="pr-main"><span class="pr-name">Blue Gourami</span></span><span class="pr-price"><b class="pr-reg">$3</b></span></li>
+<li class="pr" data-q="albino paradise gourami gouramis nice sale"><span class="pr-main"><span class="pr-name">Albino Paradise Gourami</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><s class="pr-was">$8</s><b class="pr-sale">$6</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="blue paradise gourami gouramis sale"><span class="pr-main"><span class="pr-name">Blue Paradise Gourami</span></span><span class="pr-price"><s class="pr-was">$4</s><b class="pr-sale">$3</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="pearl gourami gouramis"><span class="pr-main"><span class="pr-name">Pearl Gourami</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="red honey gourami gouramis"><span class="pr-main"><span class="pr-name">Red Honey Gourami</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="croaking gourami gouramis sale"><span class="pr-main"><span class="pr-name">Croaking Gourami</span></span><span class="pr-price"><s class="pr-was">$4</s><b class="pr-sale">3 for $10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="sparkling gourami gouramis"><span class="pr-main"><span class="pr-name">Sparkling Gourami</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Livebearers (Wild)</h5>
+<ul class="pl">
+<li class="pr" data-q="wild least killifish livebearers (wild)"><span class="pr-main"><span class="pr-name">Wild Least Killifish</span></span><span class="pr-price"><b class="pr-reg">12 for $15</b></span></li>
+<li class="pr" data-q="spotted swords livebearers (wild) wild"><span class="pr-main"><span class="pr-name">Spotted Swords</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="florida mollies livebearers (wild) wild"><span class="pr-main"><span class="pr-name">Florida Mollies</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="humpback limia livebearers (wild)"><span class="pr-main"><span class="pr-name">Humpback Limia</span></span><span class="pr-price"><b class="pr-reg">$25 per pair</b></span></li>
+<li class="pr" data-q="perugiae limia livebearers (wild)"><span class="pr-main"><span class="pr-name">Perugiae Limia</span></span><span class="pr-price"><b class="pr-reg">$25 per pair</b></span></li>
+<li class="pr" data-q="vittata limia livebearers (wild)"><span class="pr-main"><span class="pr-name">Vittata Limia</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Guppies</h5>
+<ul class="pl">
+<li class="pr" data-q="red lyretail guppy guppies"><span class="pr-main"><span class="pr-name">Red Lyretail Guppy</span></span><span class="pr-price"><b class="pr-reg">$6 per pair</b></span></li>
+<li class="pr" data-q="albino koi guppy guppies"><span class="pr-main"><span class="pr-name">Albino Koi Guppy</span></span><span class="pr-price"><b class="pr-reg">$20 per pair</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Swordtails</h5>
+<ul class="pl">
+<li class="pr" data-q="assorted swordtails"><span class="pr-main"><span class="pr-name">Assorted</span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+<li class="pr" data-q="spotted swordtails wild"><span class="pr-main"><span class="pr-name">Spotted</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="orange swordtails"><span class="pr-main"><span class="pr-name">Orange</span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+<li class="pr" data-q="orange wag swords swordtails"><span class="pr-main"><span class="pr-name">Orange Wag Swords</span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Mollies</h5>
+<ul class="pl">
+<li class="pr" data-q="assorted balloon molly mollies"><span class="pr-main"><span class="pr-name">Assorted Balloon Molly</span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+<li class="pr" data-q="gold dust lyretail mollies"><span class="pr-main"><span class="pr-name">Gold Dust Lyretail</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Endlers</h5>
+<ul class="pl">
+<li class="pr" data-q="red endler endlers sale"><span class="pr-main"><span class="pr-name">Red Endler</span></span><span class="pr-price"><s class="pr-was">$5 per pair</s><b class="pr-sale">3 pairs for $10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="blue star endler endlers"><span class="pr-main"><span class="pr-name">Blue Star Endler</span></span><span class="pr-price"><b class="pr-reg">$10 per pair</b></span></li>
+<li class="pr" data-q="black bar endler endlers"><span class="pr-main"><span class="pr-name">Black Bar Endler</span></span><span class="pr-price"><b class="pr-reg">$5 per pair</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Platies</h5>
+<ul class="pl">
+<li class="pr" data-q="sunburst platy platies"><span class="pr-main"><span class="pr-name">Sunburst Platy</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="sunburst wag platy platies nice"><span class="pr-main"><span class="pr-name">Sunburst Wag Platy</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="painted platy platies few left"><span class="pr-main"><span class="pr-name">Painted Platy</span><span class="pr-meta"><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="red crescent platy platies"><span class="pr-main"><span class="pr-name">Red Crescent Platy</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="red wag platies"><span class="pr-main"><span class="pr-name">Red Wag</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="neon wag platies"><span class="pr-main"><span class="pr-name">Neon Wag</span></span><span class="pr-price"><b class="pr-reg">$4.50</b></span></li>
+<li class="pr" data-q="blue wag platy platies"><span class="pr-main"><span class="pr-name">Blue Wag Platy</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="green lantern platy platies"><span class="pr-main"><span class="pr-name">Green Lantern Platy</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="assorted high fin platies"><span class="pr-main"><span class="pr-name">Assorted High Fin</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="assorted platies"><span class="pr-main"><span class="pr-name">Assorted</span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Variatus</h5>
+<ul class="pl">
+<li class="pr" data-q="hawaiian variatus"><span class="pr-main"><span class="pr-name">Hawaiian</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="hf sunset variatus few left"><span class="pr-main"><span class="pr-name">HF Sunset</span><span class="pr-meta"><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="hf blue coral variatus"><span class="pr-main"><span class="pr-name">HF Blue Coral</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Killifish</h5>
+<ul class="pl">
+<li class="pr" data-q="flagfish killifish wild"><span class="pr-main"><span class="pr-name">Flagfish</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><b class="pr-reg">$3.50</b></span></li>
+<li class="pr" data-q="normani killifish sale"><span class="pr-main"><span class="pr-name">Normani</span></span><span class="pr-price"><s class="pr-was">$5</s><b class="pr-sale">$4</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="clown killie, annulatus males killifish wild sale"><span class="pr-main"><span class="pr-name">Clown Killie, Annulatus Males</span><span class="pr-meta"><span class="pr-flag wild">wild</span></span></span><span class="pr-price"><s class="pr-was">$5</s><b class="pr-sale">$4</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="blue gardneri males killifish"><span class="pr-main"><span class="pr-name">Blue Gardneri Males</span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="fp scheeli killifish"><span class="pr-main"><span class="pr-name">FP Scheeli</span></span><span class="pr-price"><b class="pr-reg">$18 per pair</b></span></li>
+<li class="pr" data-q="apl lineatus golden wonder killifish"><span class="pr-main"><span class="pr-name">APL Lineatus Golden Wonder</span></span><span class="pr-price"><b class="pr-reg">$24 per trio</b></span></li>
+<li class="pr" data-q="chrysotus unsexed killifish wild few left"><span class="pr-main"><span class="pr-name">Chrysotus Unsexed</span><span class="pr-meta"><span class="pr-flag wild">wild</span><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Misc Fish &amp; Crustaceans</h5>
+<ul class="pl">
+<li class="pr" data-q="peacock gudgeon misc fish &amp; crustaceans sale"><span class="pr-main"><span class="pr-name">Peacock Gudgeon</span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="dwarf orange mexican crayfish misc fish &amp; crustaceans"><span class="pr-main"><span class="pr-name">Dwarf Orange Mexican Crayfish</span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="woworae ricefish misc fish &amp; crustaceans"><span class="pr-main"><span class="pr-name">Woworae Ricefish</span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="white ricefish misc fish &amp; crustaceans few left"><span class="pr-main"><span class="pr-name">White Ricefish</span><span class="pr-meta"><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Tanganyikan</h5>
+<ul class="pl">
+<li class="pr" data-q="trophus duboisi cichlids — tanganyikan close to 2 in nice"><span class="pr-main"><span class="pr-name">Trophus Duboisi</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">close to 2 in</span></span><span class="pr-price"><b class="pr-reg">$16</b></span></li>
+<li class="pr" data-q="leleupi orange cichlids — tanganyikan 1½ in 4 left — all 4 for $30 nice"><span class="pr-main"><span class="pr-name">Leleupi Orange</span><span class="pr-meta"><span class="pr-size">1½ in</span><span class="pr-flag nice">★ nice</span></span><span class="pr-note">4 left — all 4 for $30</span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="julidochromis ornatus cichlids — tanganyikan 1½ in nice sale"><span class="pr-main"><span class="pr-name">Julidochromis Ornatus</span><span class="pr-meta"><span class="pr-size">1½ in</span><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><s class="pr-was">$14</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="inkfin calvus cichlids — tanganyikan 1 in sale"><span class="pr-main"><span class="pr-name">Inkfin Calvus</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><s class="pr-was">$15</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="black calvus cichlids — tanganyikan 1 in sale"><span class="pr-main"><span class="pr-name">Black Calvus</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><s class="pr-was">$15</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="daffodil brichardi cichlids — tanganyikan 1¼ in"><span class="pr-main"><span class="pr-name">Daffodil Brichardi</span><span class="pr-meta"><span class="pr-size">1¼ in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="red compressiceps cichlids — tanganyikan 1 in sale"><span class="pr-main"><span class="pr-name">Red Compressiceps</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><s class="pr-was">$15</s><b class="pr-sale">$12</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="brevis cichlids cichlids — tanganyikan 1 in sale"><span class="pr-main"><span class="pr-name">Brevis Cichlids</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><s class="pr-was">$12</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Malawi Mbuna</h5>
+<p class="pg-note">1¼ in</p>
+<ul class="pl">
+<li class="pr" data-q="assorted mix (10 fish) cichlids — malawi mbuna"><span class="pr-main"><span class="pr-name">Assorted Mix (10 Fish)</span></span><span class="pr-price"><b class="pr-reg">$30</b></span></li>
+<li class="pr" data-q="socolofi cichlids — malawi mbuna"><span class="pr-main"><span class="pr-name">Socolofi</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="kenyi cichlids — malawi mbuna"><span class="pr-main"><span class="pr-name">Kenyi</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="electric blue johanni cichlids — malawi mbuna"><span class="pr-main"><span class="pr-name">Electric Blue Johanni</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="auratus cichlids — malawi mbuna"><span class="pr-main"><span class="pr-name">Auratus</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="cobalt blue cichlids — malawi mbuna"><span class="pr-main"><span class="pr-name">Cobalt Blue</span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="acei cichlids — malawi mbuna 1½ in"><span class="pr-main"><span class="pr-name">Acei</span><span class="pr-meta"><span class="pr-size">1½ in</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Malawi Haps &amp; Peacocks</h5>
+<ul class="pl">
+<li class="pr" data-q="red fin borleyi cichlids — malawi haps &amp; peacocks 2 in sale"><span class="pr-main"><span class="pr-name">Red Fin Borleyi</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="venustus cichlids — malawi haps &amp; peacocks 2 in sale"><span class="pr-main"><span class="pr-name">Venustus</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><s class="pr-was">$8</s><b class="pr-sale">$7</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="red empress cichlids — malawi haps &amp; peacocks 2 in"><span class="pr-main"><span class="pr-name">Red Empress</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="vc 10 cichlids — malawi haps &amp; peacocks 1½ in"><span class="pr-main"><span class="pr-name">VC 10</span><span class="pr-meta"><span class="pr-size">1½ in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="moorii blue dolphin cichlids — malawi haps &amp; peacocks 2 in 1 left"><span class="pr-main"><span class="pr-name">Moorii Blue Dolphin</span><span class="pr-meta"><span class="pr-size">2 in</span><span class="pr-flag few">1 left</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="ob peacock cichlids — malawi haps &amp; peacocks 1½ in"><span class="pr-main"><span class="pr-name">OB Peacock</span><span class="pr-meta"><span class="pr-size">1½ in</span></span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Victorian</h5>
+<ul class="pl">
+<li class="pr" data-q="ruby green cichlid cichlids — victorian 1.5 in sale"><span class="pr-main"><span class="pr-name">Ruby Green Cichlid</span><span class="pr-meta"><span class="pr-size">1.5 in</span></span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — West African</h5>
+<ul class="pl">
+<li class="pr" data-q="breeding pair — male f2, female albino cichlids — west african sale"><span class="pr-main"><span class="pr-name">Breeding Pair — Male F2, Female Albino</span></span><span class="pr-price"><b class="pr-sale">$15</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="f2 red krib males cichlids — west african 2 in"><span class="pr-main"><span class="pr-name">F2 Red Krib Males</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="f2 red krib pairs cichlids — west african"><span class="pr-main"><span class="pr-name">F2 Red Krib Pairs</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+<li class="pr" data-q="f2 unsexed kribs cichlids — west african"><span class="pr-main"><span class="pr-name">F2 Unsexed Kribs</span></span><span class="pr-price"><b class="pr-reg">3 for $10</b></span></li>
+<li class="pr" data-q="albino kribs unsexed cichlids — west african"><span class="pr-main"><span class="pr-name">Albino Kribs Unsexed</span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+<li class="pr" data-q="albino kribs pairs cichlids — west african"><span class="pr-main"><span class="pr-name">Albino Kribs Pairs</span></span><span class="pr-price"><b class="pr-reg">$20</b></span></li>
+<li class="pr" data-q="turkana jewel cichlids — west african 1 in sale"><span class="pr-main"><span class="pr-name">Turkana Jewel</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><s class="pr-was">$8</s><b class="pr-sale">$5</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="gold line buffalo heads cichlids — west african nice"><span class="pr-main"><span class="pr-name">Gold Line Buffalo Heads</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+<li class="pr" data-q="turquoise jewel cichlids — west african"><span class="pr-main"><span class="pr-name">Turquoise Jewel</span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="red jewel cichlid cichlids — west african 2 in regular"><span class="pr-main"><span class="pr-name">Red Jewel Cichlid</span><span class="pr-meta"><span class="pr-size">2 in</span><span class="pr-size">regular</span></span></span><span class="pr-price"><b class="pr-reg">$5</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Indian &amp; Other</h5>
+<ul class="pl">
+<li class="pr" data-q="red chromide cichlids — indian &amp; other few left"><span class="pr-main"><span class="pr-name">Red Chromide</span><span class="pr-meta"><span class="pr-flag few">few left</span></span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="polleni cichlid cichlids — indian &amp; other 1½ in"><span class="pr-main"><span class="pr-name">Polleni Cichlid</span><span class="pr-meta"><span class="pr-size">1½ in</span></span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Oscars</h5>
+<ul class="pl">
+<li class="pr" data-q="lemon oscar cichlids — oscars 2 in"><span class="pr-main"><span class="pr-name">Lemon Oscar</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$16</b></span></li>
+<li class="pr" data-q="albino tiger oscar cichlids — oscars 2 in plus"><span class="pr-main"><span class="pr-name">Albino Tiger Oscar</span><span class="pr-note">2 in plus</span></span><span class="pr-price"><b class="pr-reg">$16</b></span></li>
+<li class="pr" data-q="albino red oscar cichlids — oscars 2 in plus"><span class="pr-main"><span class="pr-name">Albino Red Oscar</span><span class="pr-note">2 in plus</span></span><span class="pr-price"><b class="pr-reg">$16</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Apistos</h5>
+<ul class="pl">
+<li class="pr" data-q="agasizii orange fire cichlids — apistos 1 left"><span class="pr-main"><span class="pr-name">Agasizii Orange Fire</span><span class="pr-meta"><span class="pr-flag few">1 left</span></span></span><span class="pr-price"><b class="pr-reg">$24</b></span></li>
+<li class="pr" data-q="agasizii red cichlids — apistos pair $50 nice"><span class="pr-main"><span class="pr-name">Agasizii Red</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">pair $50</span></span><span class="pr-price"><b class="pr-reg">$28</b></span></li>
+<li class="pr" data-q="agasizii red point cichlids — apistos"><span class="pr-main"><span class="pr-name">Agasizii Red Point</span></span><span class="pr-price"><b class="pr-reg">$24</b></span></li>
+<li class="pr" data-q="hongsloi cichlids — apistos pair $50 nice"><span class="pr-main"><span class="pr-name">Hongsloi</span><span class="pr-meta"><span class="pr-flag nice">★ nice</span></span><span class="pr-note">pair $50</span></span><span class="pr-price"><b class="pr-reg">$28</b></span></li>
+<li class="pr" data-q="apisto macmasteri cichlids — apistos"><span class="pr-main"><span class="pr-name">Apisto Macmasteri</span></span><span class="pr-price"><b class="pr-reg">$18</b></span></li>
+<li class="pr" data-q="apisto triple red cichlids — apistos $30 per pair"><span class="pr-main"><span class="pr-name">Apisto Triple Red</span><span class="pr-note">$30 per pair</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Cichlids — Other New World</h5>
+<ul class="pl">
+<li class="pr" data-q="bolivian rams cichlids — other new world sale"><span class="pr-main"><span class="pr-name">Bolivian Rams</span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="red head synspilum cichlids — other new world 2 in"><span class="pr-main"><span class="pr-name">Red Head Synspilum</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="festivum cichlids — other new world"><span class="pr-main"><span class="pr-name">Festivum</span></span><span class="pr-price"><b class="pr-reg">$15</b></span></li>
+<li class="pr" data-q="green texas cichlids — other new world 2 in"><span class="pr-main"><span class="pr-name">Green Texas</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="cupido cichlid cichlids — other new world 2 in few left sale"><span class="pr-main"><span class="pr-name">Cupido Cichlid</span><span class="pr-meta"><span class="pr-size">2 in</span><span class="pr-flag few">few left</span></span></span><span class="pr-price"><s class="pr-was">$25</s><b class="pr-sale">$20</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="green terror cichlids — other new world 2 in"><span class="pr-main"><span class="pr-name">Green Terror</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="geo heckelii cichlids — other new world 2 in sale"><span class="pr-main"><span class="pr-name">Geo Heckelii</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="dimerus cichlid cichlids — other new world 3 in 3 left sale"><span class="pr-main"><span class="pr-name">Dimerus Cichlid</span><span class="pr-meta"><span class="pr-size">3 in</span><span class="pr-flag few">3 left</span></span></span><span class="pr-price"><s class="pr-was">$15</s><b class="pr-sale">$10</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="nicaraguense cichlid cichlids — other new world sale"><span class="pr-main"><span class="pr-name">Nicaraguense Cichlid</span></span><span class="pr-price"><s class="pr-was">$10</s><b class="pr-sale">$8</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="aureum cichlid cichlids — other new world 1 in"><span class="pr-main"><span class="pr-name">Aureum Cichlid</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="yellow dovii cichlids — other new world 1 in sale"><span class="pr-main"><span class="pr-name">Yellow Dovii</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><s class="pr-was">$9</s><b class="pr-sale">$7</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="sajica cichlids cichlids — other new world 1 in"><span class="pr-main"><span class="pr-name">Sajica Cichlids</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="green severum cichlids — other new world ~2 in"><span class="pr-main"><span class="pr-name">Green Severum</span><span class="pr-meta"><span class="pr-size">~2 in</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="curviceps cichlids — other new world 1 left"><span class="pr-main"><span class="pr-name">Curviceps</span><span class="pr-meta"><span class="pr-flag few">1 left</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="texas cichlid cichlids — other new world 2 in regular"><span class="pr-main"><span class="pr-name">Texas Cichlid</span><span class="pr-meta"><span class="pr-size">2 in</span><span class="pr-size">regular</span></span></span><span class="pr-price"><b class="pr-reg">$7</b></span></li>
+<li class="pr" data-q="jack dempseys cichlids — other new world 2 in"><span class="pr-main"><span class="pr-name">Jack Dempseys</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$6</b></span></li>
+<li class="pr" data-q="salvini cichlids — other new world 1½ in sale"><span class="pr-main"><span class="pr-name">Salvini</span><span class="pr-meta"><span class="pr-size">1½ in</span></span></span><span class="pr-price"><s class="pr-was">$6</s><b class="pr-sale">$5</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="firemouth cichlids — other new world 1½ in sale"><span class="pr-main"><span class="pr-name">Firemouth</span><span class="pr-meta"><span class="pr-size">1½ in</span></span></span><span class="pr-price"><s class="pr-was">$6</s><b class="pr-sale">$5</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="snow white parrot convict cichlids — other new world ¾ in sale"><span class="pr-main"><span class="pr-name">Snow White Parrot Convict</span><span class="pr-meta"><span class="pr-size">¾ in</span></span></span><span class="pr-price"><s class="pr-was">$4</s><b class="pr-sale">$3</b><span class="pr-tag">sale</span></span></li>
+<li class="pr" data-q="red point males cichlids — other new world 2 in nice"><span class="pr-main"><span class="pr-name">Red Point Males</span><span class="pr-meta"><span class="pr-size">2 in</span><span class="pr-flag nice">★ nice</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="red point cichlids — other new world 1 in"><span class="pr-main"><span class="pr-name">Red Point</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="blue chocolate cichlid cichlids — other new world"><span class="pr-main"><span class="pr-name">Blue Chocolate Cichlid</span></span><span class="pr-price"><b class="pr-reg">$20</b></span></li>
+<li class="pr" data-q="ellioti cichlid cichlids — other new world 1¼ in"><span class="pr-main"><span class="pr-name">Ellioti Cichlid</span><span class="pr-meta"><span class="pr-size">1¼ in</span></span></span><span class="pr-price"><b class="pr-reg">$20</b></span></li>
+<li class="pr" data-q="geo balzani cichlids — other new world"><span class="pr-main"><span class="pr-name">Geo Balzani</span></span><span class="pr-price"><b class="pr-reg">$12</b></span></li>
+<li class="pr" data-q="rainbow cichlid cichlids — other new world 2 in"><span class="pr-main"><span class="pr-name">Rainbow Cichlid</span><span class="pr-meta"><span class="pr-size">2 in</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="polar parrot cichlids — other new world ½ in"><span class="pr-main"><span class="pr-name">Polar Parrot</span><span class="pr-meta"><span class="pr-size">½ in</span></span></span><span class="pr-price"><b class="pr-reg">$4</b></span></li>
+<li class="pr" data-q="nanoluteus cichlids cichlids — other new world 1 in"><span class="pr-main"><span class="pr-name">Nanoluteus Cichlids</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="myrnae cichlid cichlids — other new world 1 in"><span class="pr-main"><span class="pr-name">Myrnae Cichlid</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="true festae cichlids — other new world 1 in"><span class="pr-main"><span class="pr-name">True Festae</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$10</b></span></li>
+<li class="pr" data-q="haitiensis cichlid cichlids — other new world 1 in"><span class="pr-main"><span class="pr-name">Haitiensis Cichlid</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><b class="pr-reg">$8</b></span></li>
+<li class="pr" data-q="keyhole cichlid cichlids — other new world 1 in sale"><span class="pr-main"><span class="pr-name">Keyhole Cichlid</span><span class="pr-meta"><span class="pr-size">1 in</span></span></span><span class="pr-price"><s class="pr-was">$8</s><b class="pr-sale">$7</b><span class="pr-tag">sale</span></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Snails — In House</h5>
+<ul class="pl">
+<li class="pr" data-q="assassin snails snails — in house"><span class="pr-main"><span class="pr-name">Assassin Snails</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery black snails — in house"><span class="pr-main"><span class="pr-name">Mystery Black</span></span><span class="pr-price"><b class="pr-reg">$2</b></span></li>
+<li class="pr" data-q="mystery ivory snails — in house"><span class="pr-main"><span class="pr-name">Mystery Ivory</span></span><span class="pr-price"><b class="pr-reg">$2</b></span></li>
+<li class="pr" data-q="mystery albino snails — in house"><span class="pr-main"><span class="pr-name">Mystery Albino</span></span><span class="pr-price"><b class="pr-reg">$2</b></span></li>
+<li class="pr" data-q="mystery jade snails — in house"><span class="pr-main"><span class="pr-name">Mystery Jade</span></span><span class="pr-price"><b class="pr-reg">$2</b></span></li>
+<li class="pr" data-q="mystery purple black snails — in house"><span class="pr-main"><span class="pr-name">Mystery Purple Black</span></span><span class="pr-price"><b class="pr-reg">$2</b></span></li>
+<li class="pr" data-q="mystery purple albino snails — in house"><span class="pr-main"><span class="pr-name">Mystery Purple Albino</span></span><span class="pr-price"><b class="pr-reg">$2</b></span></li>
+<li class="pr" data-q="mystery assorted snails — in house"><span class="pr-main"><span class="pr-name">Mystery Assorted</span></span><span class="pr-price"><b class="pr-reg">$2</b></span></li>
+</ul></section>
+<section class="pg">
+<h5 class="pg-title">Snails — Pre-Order</h5>
+<p class="pg-note">Minimum 12 of each mystery snail type</p>
+<ul class="pl">
+<li class="pr" data-q="mystery assorted snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Assorted</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery albino snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Albino</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery black snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Black</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery blue snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Blue</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery gold snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Gold</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery ivory snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Ivory</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery jade snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Jade</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery purple black snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Purple Black</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="mystery purple albino snails — pre-order"><span class="pr-main"><span class="pr-name">Mystery Purple Albino</span></span><span class="pr-price"><b class="pr-reg">$1.50</b></span></li>
+<li class="pr" data-q="trapdoor snails snails — pre-order"><span class="pr-main"><span class="pr-name">Trapdoor Snails</span></span><span class="pr-price"><b class="pr-reg">$4</b><span class="pr-min">min 6</span></span></li>
+</ul></section>
+</div>
+              <p class="ps-empty" id="psEmpty" hidden>No matches — try a shorter search.</p>
+            </div>
+          </details>
+        </article>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Cheapest plants from other hobbyists</span>
+            <span class="deal-pill online">Online</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>Plant Auction Group</h3>
+            <div class="deal-badges"><span class="deal-chip">Hobbyist-to-hobbyist</span></div>
+            <p>A Facebook group where hobbyists auction plants to each other. There are great deals in here.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50–75%+ <span class="deal-stat-off">off</span></span><span class="deal-stat-label">typical retail prices (roughly)</span></div>
+          </div>
+          <div class="deal-actions">
+            <a class="link-card" href="https://www.facebook.com/groups/1193418244004340" target="_blank" rel="noopener noreferrer">Join the auction group</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="deals-hardscape" class="cat cat-hardscape">
+        <h2>Hardscape</h2>
+        <p class="section-sub">Driftwood and stone — both local to Houston.</p>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Best-quality driftwood in Houston</span>
+            <span class="deal-pill local">Houston</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>Tim's Driftwood</h3>
+            <div class="deal-badges"><span class="deal-chip">Hand-collected</span><span class="deal-chip">Family-run</span></div>
+            <p>Better quality than any local fish store, and about 50% cheaper.</p>
+            <p>I know the owner personally. He collects every piece himself with his family, so each one has a story behind it — and the quality is incredible.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50% <span class="deal-stat-off">off</span></span><span class="deal-stat-label">local fish store prices (roughly)</span></div>
+          </div>
+          <div class="deal-actions">
+            <a class="link-card" href="https://www.facebook.com/p/Tims-Driftwood-61593993072655/" target="_blank" rel="noopener noreferrer">See Tim's Driftwood</a>
+          </div>
+        </article>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Cheap stone for hardscape</span>
+            <span class="deal-pill local">Houston</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>Landscape supply yards</h3>
+            <div class="deal-badges"><span class="deal-chip">~$0.20/lb</span></div>
+            <p>At a fish store, expect to pay around $5 per pound for rocks. I'd recommend going to a landscape supply yard instead — you'll often find stone for about $0.20 per pound — about 95% cheaper.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">95% <span class="deal-stat-off">off</span></span><span class="deal-stat-label">fish-store rock prices (roughly)</span></div>
+          </div>
+          <div class="compare" aria-label="Price comparison: $5 per pound at a fish store versus about $0.20 per pound at a landscape supply yard">
+            <div class="cmp cmp-old"><span class="cmp-label">Typical fish store</span><span class="cmp-price">$5/lb</span></div>
+            <span class="cmp-arrow" aria-hidden="true">→</span>
+            <div class="cmp cmp-new"><span class="cmp-label">Landscape supply</span><span class="cmp-price">$0.20/lb</span></div>
+          </div>
+          <p style="margin-top:14px;">There are tons of them around the city. Here's one as a reference:</p>
+          <div class="deal-actions" style="margin-top:6px;">
+            <a class="link-card" href="https://centralrockandmulch.com/" target="_blank" rel="noopener noreferrer">Central Rock &amp; Mulch</a>
+          </div>
+        </article>
+      </section>
+
+    </div>
+  </div>
+
+  <nav class="lb-bottom-nav">
+    <a href="#deals-lights" data-section="deals-lights">Lights</a>
+    <a href="#deals-fish" data-section="deals-fish">Fish</a>
+    <a href="#deals-plants" data-section="deals-plants">Plants</a>
+    <a href="#deals-hardscape" data-section="deals-hardscape">Hardscape</a>
+  </nav>
+
+</main>
+
+<script src="theme.js"></script>
+<script src="interactions.js"></script>
+<script>
+(function () {
+  var navLinks = document.querySelectorAll('.lb-bottom-nav a');
+  var sections = ['deals-lights', 'deals-fish', 'deals-plants', 'deals-hardscape'].map(function (id) { return document.getElementById(id); });
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (a) { a.classList.toggle('active', a.dataset.section === entry.target.id); });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { if (s) spy.observe(s); });
+  }
+
+  // Sample price list: live search + jump links
+  var input = document.getElementById('psSearch');
+  var status = document.getElementById('psStatus');
+  var empty = document.getElementById('psEmpty');
+  var scroll = document.getElementById('psScroll');
+  if (!input) return;
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#priceSheet .pr'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('#priceSheet .pg'));
+  var secs = Array.prototype.slice.call(document.querySelectorAll('#priceSheet .ps-section'));
+
+  function apply() {
+    var terms = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var shown = 0;
+    rows.forEach(function (r) {
+      var q = ' ' + r.getAttribute('data-q');
+      var hit = terms.every(function (t) { return q.indexOf(' ' + t) > -1 || q.indexOf('(' + t) > -1 || q.indexOf('-' + t) > -1; });
+      r.hidden = !hit;
+      if (hit) shown++;
+    });
+    groups.forEach(function (g) { g.hidden = !g.querySelector('.pr:not([hidden])'); });
+    secs.forEach(function (s) { s.hidden = !s.querySelector('.pg:not([hidden])'); });
+    empty.hidden = shown > 0;
+    status.textContent = terms.length ? shown + ' of ' + rows.length + ' shown' : '';
+  }
+  input.addEventListener('input', apply);
+
+  Array.prototype.forEach.call(document.querySelectorAll('.ps-jump button'), function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.getAttribute('data-jump'));
+      if (target && !target.hidden) scroll.scrollTo({ top: target.getBoundingClientRect().top - scroll.getBoundingClientRect().top + scroll.scrollTop, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>
