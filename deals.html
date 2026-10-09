@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Where to Get the Best Deals — Planted Tank Guide</title>
-<meta name="description" content="The exact places I buy fish, plants, lights, driftwood, and hardscape — and how I pay as little as possible.">
+<meta name="description" content="The exact places I buy fish, shrimp, plants, lights, driftwood, and hardscape — and how I pay as little as possible.">
 
 <link rel="icon" type="image/png" href="/favicon.png">
 <meta property="og:title" content="Simple Aquascaping">
@@ -49,6 +49,21 @@
   .cat-fish { --cat: var(--badge-blue); }
   .cat-plants { --cat: var(--accent); }
   .cat-hardscape { --cat: var(--badge-orange); }
+  .cat-shrimp { --cat: #e0768a; }
+  :root[data-theme="light"] .cat-shrimp { --cat: #a93a52; }
+  .cat-intro { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); max-width: 66ch; margin: 0 0 12px; }
+  .cat-intro:last-of-type { margin-bottom: 22px; }
+  .deals-ref .deal .deal-example {
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-left: 3px solid var(--cat, var(--accent));
+    background: color-mix(in srgb, var(--cat, var(--accent)) 8%, transparent);
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 0.92rem;
+    max-width: none;
+  }
+  .deals-ref .callout.disclosure { max-width: 68ch; margin: 26px 0 0; }
   .deals-ref .cat + .cat { margin-top: 36px; }
   .cat h2 { display: flex; align-items: center; gap: 14px; }
   .cat h2::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--cat); flex-shrink: 0; }
@@ -59,6 +74,8 @@
   .lb-bottom-nav a[data-section]::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 7px; background: var(--dot, var(--accent)); }
   .lb-bottom-nav a[data-section="deals-lights"] { --dot: var(--badge-gold); }
   .lb-bottom-nav a[data-section="deals-fish"] { --dot: var(--badge-blue); }
+  .lb-bottom-nav a[data-section="deals-shrimp"] { --dot: #e0768a; }
+  :root[data-theme="light"] .lb-bottom-nav a[data-section="deals-shrimp"] { --dot: #a93a52; }
   .lb-bottom-nav a[data-section="deals-plants"] { --dot: var(--accent); }
   .lb-bottom-nav a[data-section="deals-hardscape"] { --dot: var(--badge-orange); }
 
@@ -300,7 +317,12 @@
       <p class="read-meta">Advanced</p>
       <h1>Where to Get the Best Deals</h1>
       <div class="page-intro">
-        <p>The exact places I buy fish, plants, lights, and hardscape — and how I pay as little as possible.</p>
+        <p>The exact places I buy fish, shrimp, plants, lights, and hardscape — and how I pay as little as possible.</p>
+      </div>
+      <div class="callout callout-muted disclosure">
+        <p class="callout-label">A note on this list</p>
+        <p>I'm not financially incentivized to recommend any of these places. I get no commissions, bonuses, or kickbacks.</p>
+        <p style="margin-top:8px;">This list exists because I don't believe in gatekeeping great businesses and hobbyists. A better value means you can do more in the hobby — and support good people at the same time.</p>
       </div>
     </div>
   </header>
@@ -335,47 +357,6 @@
           <p class="callout-label" style="font-family: var(--font-body); font-size: 0.94rem; text-transform: none; letter-spacing: normal;">Do this first:</p>
           <p>Before you buy anything on AliExpress, check the coupon codes on <a href="https://www.reddit.com/r/AliExpressCode/" target="_blank" rel="noopener noreferrer">r/AliExpressCode</a>. Most of the time, I find a code that saves me an additional 20–40%.</p>
         </div>
-      </section>
-
-      <section id="deals-fish" class="cat cat-fish">
-        <h2>Fish</h2>
-        <p class="section-sub">One online, one local — both far cheaper than a typical fish store.</p>
-
-        <article class="deal">
-          <div class="deal-top">
-            <span class="deal-kicker">Cheapest place to buy fish</span>
-            <span class="deal-pill online">Online</span>
-          </div>
-          <div class="deal-row">
-            <div class="deal-info">
-            <h3>AquaHuna</h3>
-            <div class="deal-badges"><span class="deal-chip">Fish</span></div>
-            <p>The cheapest place I've found to buy fish.</p>
-            </div>
-            <div class="deal-stat"><span class="deal-stat-num">50% <span class="deal-stat-off">off</span></span><span class="deal-stat-label">major Houston fish store prices (roughly)</span></div>
-          </div>
-          <div class="deal-actions">
-            <a class="link-card" href="https://aquahuna.com/" target="_blank" rel="noopener noreferrer">Visit AquaHuna</a>
-          </div>
-        </article>
-
-        <article class="deal">
-          <div class="deal-top">
-            <span class="deal-kicker">Best livestock shop in Houston for pricing</span>
-            <span class="deal-pills"><span class="deal-pill local">Houston</span><span class="deal-pill online">Online</span></span>
-          </div>
-          <div class="deal-row">
-            <div class="deal-info">
-            <h3>Betta Aquatic USA</h3>
-            <div class="deal-badges"><span class="deal-chip">Tank-bred</span><span class="deal-chip">Fish &amp; shrimp</span></div>
-            <p>Every fish in the store is tank-bred, and the pricing on fish and shrimp is extremely good. They ship too, so you can order from them online as well.</p>
-            </div>
-            <div class="deal-stat"><span class="deal-stat-num">50%+ <span class="deal-stat-off">off</span></span><span class="deal-stat-label">major Houston fish store prices (roughly)</span></div>
-          </div>
-          <div class="deal-actions">
-            <a class="link-card" href="https://bettaaquatic.com/collections/tetra-1" target="_blank" rel="noopener noreferrer">Browse Betta Aquatic USA</a>
-          </div>
-        </article>
       </section>
 
       <section id="deals-plants" class="cat cat-plants">
@@ -1225,6 +1206,73 @@
         </article>
       </section>
 
+      <section id="deals-fish" class="cat cat-fish">
+        <h2>Fish</h2>
+        <p class="section-sub">One online, one local — both far cheaper than a typical fish store.</p>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Cheapest place to buy fish</span>
+            <span class="deal-pill online">Online</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>AquaHuna</h3>
+            <div class="deal-badges"><span class="deal-chip">Fish</span></div>
+            <p>The cheapest place I've found to buy fish.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50% <span class="deal-stat-off">off</span></span><span class="deal-stat-label">major Houston fish store prices (roughly)</span></div>
+          </div>
+          <div class="deal-actions">
+            <a class="link-card" href="https://aquahuna.com/" target="_blank" rel="noopener noreferrer">Visit AquaHuna</a>
+          </div>
+        </article>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Best livestock shop in Houston for pricing</span>
+            <span class="deal-pills"><span class="deal-pill local">Houston</span><span class="deal-pill online">Online</span></span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+            <h3>Betta Aquatic USA</h3>
+            <div class="deal-badges"><span class="deal-chip">Tank-bred</span><span class="deal-chip">Fish &amp; shrimp</span></div>
+            <p>Every fish in the store is tank-bred, and the pricing on fish and shrimp is extremely good. They ship too, so you can order from them online as well.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50%+ <span class="deal-stat-off">off</span></span><span class="deal-stat-label">major Houston fish store prices (roughly)</span></div>
+          </div>
+          <div class="deal-actions">
+            <a class="link-card" href="https://bettaaquatic.com/collections/tetra-1" target="_blank" rel="noopener noreferrer">Browse Betta Aquatic USA</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="deals-shrimp" class="cat cat-shrimp">
+        <h2>Shrimp</h2>
+        <p class="cat-intro">In my experience, shrimp are the most sensitive category of livestock. They're the least tolerant of mistakes, so sourcing them means focusing on both quality <strong>and</strong> quantity.</p>
+        <p class="cat-intro">I've raised thousands of shrimp and bought from most of the big-name sellers.</p>
+
+        <article class="deal">
+          <div class="deal-top">
+            <span class="deal-kicker">Best value shrimp breeder</span>
+            <span class="deal-pill online">Online</span>
+          </div>
+          <div class="deal-row">
+            <div class="deal-info">
+              <h3>Micro Lobsters</h3>
+              <div class="deal-badges"><span class="deal-chip">Family-run</span><span class="deal-chip">Home-based</span><span class="deal-chip">DOA policy</span><span class="deal-chip">Ships to your door</span></div>
+              <p>My favorite place to buy shrimp. They're a small, family-run business operating out of their home — great quality, better priced, and they ship directly to your door with a DOA policy.</p>
+              <p>It's a home-based, hobbyist-run business with some of the nicest people in the hobby. They're always happy to answer questions and take care of you.</p>
+            </div>
+            <div class="deal-stat"><span class="deal-stat-num">50%+ <span class="deal-stat-off">off</span></span><span class="deal-stat-label">local fish store prices (roughly)</span></div>
+          </div>
+          <p class="deal-example"><strong>Example:</strong> My LFS has Fire Red Cherry Shrimp for $7/ea — these are $3/ea (60% less!)</p>
+          <div class="deal-actions">
+            <a class="link-card" href="https://www.instagram.com/p/DbmWhpohgqL/" target="_blank" rel="noopener noreferrer">Message them on Instagram</a>
+          </div>
+        </article>
+      </section>
+
       <section id="deals-hardscape" class="cat cat-hardscape">
         <h2>Hardscape</h2>
         <p class="section-sub">Driftwood and stone — both local to Houston.</p>
@@ -1278,8 +1326,9 @@
 
   <nav class="lb-bottom-nav">
     <a href="#deals-lights" data-section="deals-lights">Lights</a>
-    <a href="#deals-fish" data-section="deals-fish">Fish</a>
     <a href="#deals-plants" data-section="deals-plants">Plants</a>
+    <a href="#deals-fish" data-section="deals-fish">Fish</a>
+    <a href="#deals-shrimp" data-section="deals-shrimp">Shrimp</a>
     <a href="#deals-hardscape" data-section="deals-hardscape">Hardscape</a>
   </nav>
 
@@ -1290,7 +1339,7 @@
 <script>
 (function () {
   var navLinks = document.querySelectorAll('.lb-bottom-nav a');
-  var sections = ['deals-lights', 'deals-fish', 'deals-plants', 'deals-hardscape'].map(function (id) { return document.getElementById(id); });
+  var sections = ['deals-lights', 'deals-plants', 'deals-fish', 'deals-shrimp', 'deals-hardscape'].map(function (id) { return document.getElementById(id); });
   if ('IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
